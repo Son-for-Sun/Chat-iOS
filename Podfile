@@ -6,7 +6,7 @@ target 'Chat-iOS' do
   use_frameworks!
 
   # Pods for Chat-iOS
-  pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git', :branch =>  'swift3'
+
   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift3'
   pod 'SnapKit', :git => 'https://github.com/SnapKit/SnapKit.git', :branch => 'feature/0.40.0'
 end
