@@ -9,4 +9,9 @@ target 'Chat-iOS' do
 
   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift3'
   pod 'SnapKit', :git => 'https://github.com/SnapKit/SnapKit.git', :branch => 'feature/0.40.0'
+  pod 'Kingfisher', :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'swift3'
+  
+  # OC
+  pod 'MJRefresh'
+  pod 'RESideMenu'
 end

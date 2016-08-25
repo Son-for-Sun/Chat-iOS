@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		46954F4AA4820B4D606AD899 /* Pods_Chat_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7909FAA3E8F0C67FCBF8F416 /* Pods_Chat_iOS.framework */; };
+		AB7F55F81D6F0474005303C5 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F55F71D6F0474005303C5 /* ChatListViewController.swift */; };
+		AB7F55FA1D6F0483005303C5 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F55F91D6F0483005303C5 /* FriendListViewController.swift */; };
+		AB7F55FC1D6F04B4005303C5 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F55FB1D6F04B4005303C5 /* AboutMeViewController.swift */; };
+		AB7F56011D6F0637005303C5 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56001D6F0637005303C5 /* RootViewController.swift */; };
+		AB7F56031D6F0696005303C5 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56021D6F0696005303C5 /* RootTabBarViewController.swift */; };
+		AB7F56061D6F0875005303C5 /* FriendDynamicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56051D6F0875005303C5 /* FriendDynamicsViewController.swift */; };
+		AB7F56081D6F1686005303C5 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56071D6F1686005303C5 /* LeftMenuViewController.swift */; };
+		AB7F560A1D6F19AB005303C5 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56091D6F19AB005303C5 /* ContentViewController.swift */; };
 		ABE495BF1D6DBF180005CA71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE495BE1D6DBF180005CA71 /* AppDelegate.swift */; };
 		ABE495C11D6DBF180005CA71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE495C01D6DBF180005CA71 /* ViewController.swift */; };
 		ABE495C41D6DBF180005CA71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE495C21D6DBF180005CA71 /* Main.storyboard */; };
@@ -17,6 +25,14 @@
 
 /* Begin PBXFileReference section */
 		7909FAA3E8F0C67FCBF8F416 /* Pods_Chat_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB7F55F71D6F0474005303C5 /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		AB7F55F91D6F0483005303C5 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		AB7F55FB1D6F04B4005303C5 /* AboutMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
+		AB7F56001D6F0637005303C5 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		AB7F56021D6F0696005303C5 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
+		AB7F56051D6F0875005303C5 /* FriendDynamicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDynamicsViewController.swift; sourceTree = "<group>"; };
+		AB7F56071D6F1686005303C5 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
+		AB7F56091D6F19AB005303C5 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		ABE495BB1D6DBF180005CA71 /* Chat-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chat-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE495BE1D6DBF180005CA71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABE495C01D6DBF180005CA71 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +65,58 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AB7F55F51D6F0449005303C5 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				AB7F55F71D6F0474005303C5 /* ChatListViewController.swift */,
+			);
+			name = ChatList;
+			sourceTree = "<group>";
+		};
+		AB7F55F61D6F0453005303C5 /* FriendList */ = {
+			isa = PBXGroup;
+			children = (
+				AB7F55F91D6F0483005303C5 /* FriendListViewController.swift */,
+			);
+			name = FriendList;
+			sourceTree = "<group>";
+		};
+		AB7F55FD1D6F04E4005303C5 /* AboutMe */ = {
+			isa = PBXGroup;
+			children = (
+				AB7F55FB1D6F04B4005303C5 /* AboutMeViewController.swift */,
+			);
+			name = AboutMe;
+			sourceTree = "<group>";
+		};
+		AB7F55FE1D6F04FA005303C5 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				ABE495C21D6DBF180005CA71 /* Main.storyboard */,
+				ABE495C71D6DBF180005CA71 /* LaunchScreen.storyboard */,
+			);
+			name = StoryBoard;
+			sourceTree = "<group>";
+		};
+		AB7F55FF1D6F05E6005303C5 /* NavigationAndTabar */ = {
+			isa = PBXGroup;
+			children = (
+				AB7F56001D6F0637005303C5 /* RootViewController.swift */,
+				AB7F56091D6F19AB005303C5 /* ContentViewController.swift */,
+				AB7F56021D6F0696005303C5 /* RootTabBarViewController.swift */,
+				AB7F56071D6F1686005303C5 /* LeftMenuViewController.swift */,
+			);
+			name = NavigationAndTabar;
+			sourceTree = "<group>";
+		};
+		AB7F56041D6F0854005303C5 /* FriendDynamics */ = {
+			isa = PBXGroup;
+			children = (
+				AB7F56051D6F0875005303C5 /* FriendDynamicsViewController.swift */,
+			);
+			name = FriendDynamics;
+			sourceTree = "<group>";
+		};
 		ABE495B21D6DBF180005CA71 = {
 			isa = PBXGroup;
 			children = (
@@ -70,11 +138,15 @@
 		ABE495BD1D6DBF180005CA71 /* Chat-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				AB7F56041D6F0854005303C5 /* FriendDynamics */,
+				AB7F55FF1D6F05E6005303C5 /* NavigationAndTabar */,
+				AB7F55FE1D6F04FA005303C5 /* StoryBoard */,
+				AB7F55FD1D6F04E4005303C5 /* AboutMe */,
+				AB7F55F61D6F0453005303C5 /* FriendList */,
+				AB7F55F51D6F0449005303C5 /* ChatList */,
 				ABE495BE1D6DBF180005CA71 /* AppDelegate.swift */,
 				ABE495C01D6DBF180005CA71 /* ViewController.swift */,
-				ABE495C21D6DBF180005CA71 /* Main.storyboard */,
 				ABE495C51D6DBF180005CA71 /* Assets.xcassets */,
-				ABE495C71D6DBF180005CA71 /* LaunchScreen.storyboard */,
 				ABE495CA1D6DBF180005CA71 /* Info.plist */,
 			);
 			path = "Chat-iOS";
@@ -212,6 +284,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB7F560A1D6F19AB005303C5 /* ContentViewController.swift in Sources */,
+				AB7F55FA1D6F0483005303C5 /* FriendListViewController.swift in Sources */,
+				AB7F55FC1D6F04B4005303C5 /* AboutMeViewController.swift in Sources */,
+				AB7F56031D6F0696005303C5 /* RootTabBarViewController.swift in Sources */,
+				AB7F56011D6F0637005303C5 /* RootViewController.swift in Sources */,
+				AB7F56061D6F0875005303C5 /* FriendDynamicsViewController.swift in Sources */,
+				AB7F56081D6F1686005303C5 /* LeftMenuViewController.swift in Sources */,
+				AB7F55F81D6F0474005303C5 /* ChatListViewController.swift in Sources */,
 				ABE495C11D6DBF180005CA71 /* ViewController.swift in Sources */,
 				ABE495BF1D6DBF180005CA71 /* AppDelegate.swift in Sources */,
 			);
