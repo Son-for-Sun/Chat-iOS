@@ -148,7 +148,7 @@
         <!--Moments-->
         <scene sceneID="udr-Ry-I0S">
             <objects>
-                <viewController id="fNH-Tx-2c1" customClass="FriendDynamicsViewController" customModule="Chat_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="fNH-Tx-2c1" customClass="FriendDynamicsViewController" customModule="Chat_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m2d-U3-HxS"/>
                         <viewControllerLayoutGuide type="bottom" id="Igh-rI-pVa"/>
@@ -156,7 +156,32 @@
                     <view key="view" contentMode="scaleToFill" id="JgY-SK-zIZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a9t-Qo-DlT">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MomentsCell" id="LLo-jY-Pxi">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LLo-jY-Pxi" id="ZYx-km-6nB">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fNH-Tx-2c1" id="nQ3-Kt-QbS"/>
+                                    <outlet property="delegate" destination="fNH-Tx-2c1" id="Gb4-0P-deK"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Igh-rI-pVa" firstAttribute="top" secondItem="a9t-Qo-DlT" secondAttribute="bottom" id="0zh-kc-dCj"/>
+                            <constraint firstItem="a9t-Qo-DlT" firstAttribute="leading" secondItem="JgY-SK-zIZ" secondAttribute="leading" id="WSW-aU-AoK"/>
+                            <constraint firstItem="a9t-Qo-DlT" firstAttribute="top" secondItem="m2d-U3-HxS" secondAttribute="bottom" id="cOV-xW-qvC"/>
+                            <constraint firstAttribute="trailing" secondItem="a9t-Qo-DlT" secondAttribute="trailing" id="kgN-XA-UiJ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Moments" id="CKD-0y-kCu">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="hcF-oR-x1q">
@@ -165,6 +190,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="a9t-Qo-DlT" id="Lv7-Q6-8ep"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zsU-Ip-7Pf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
