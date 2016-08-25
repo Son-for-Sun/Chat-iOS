@@ -7,14 +7,15 @@
 //
 
 import UIKit
-
+import MJRefresh
 class ChatListViewController:UIViewController {
     
 
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -34,6 +35,23 @@ class ChatListViewController:UIViewController {
     }
     */
 
+}
+
+extension ChatListViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath)
+        
+        cell.textLabel?.text = "\(indexPath.row)"
+        return cell
+    }
 }
 
 
