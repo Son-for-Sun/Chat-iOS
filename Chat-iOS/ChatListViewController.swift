@@ -8,6 +8,7 @@
 
 import UIKit
 import MJRefresh
+import Alamofire
 class ChatListViewController:UIViewController {
     
 
@@ -17,6 +18,13 @@ class ChatListViewController:UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        RequestAPI.share.exeRequest(router: UserRouter.login(name: "13834111077", pass: "xiaolei")) { (res) in
+            print(res.result.value)
+        }
+        RequestAPI.share.exeRequest(router: UserRouter.showUser(name: "13834111077")) { (res) in
+            print(res.result.value)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MJRefresh
 class FriendDynamicsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -32,7 +32,10 @@ class FriendDynamicsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    func setUpTableView() {
+        
+    }
 }
 
 extension FriendDynamicsViewController: UITableViewDataSource {

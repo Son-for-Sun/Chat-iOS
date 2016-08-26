@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MJRefresh
 class FriendListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!

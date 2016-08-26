@@ -16,8 +16,9 @@
 		AB7F56061D6F0875005303C5 /* FriendDynamicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56051D6F0875005303C5 /* FriendDynamicsViewController.swift */; };
 		AB7F56081D6F1686005303C5 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56071D6F1686005303C5 /* LeftMenuViewController.swift */; };
 		AB7F560A1D6F19AB005303C5 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56091D6F19AB005303C5 /* ContentViewController.swift */; };
+		AB7F56131D6FCA58005303C5 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56121D6FCA58005303C5 /* UserRouter.swift */; };
+		AB7F56161D6FD457005303C5 /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56151D6FD457005303C5 /* RequestAPI.swift */; };
 		ABE495BF1D6DBF180005CA71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE495BE1D6DBF180005CA71 /* AppDelegate.swift */; };
-		ABE495C11D6DBF180005CA71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE495C01D6DBF180005CA71 /* ViewController.swift */; };
 		ABE495C41D6DBF180005CA71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE495C21D6DBF180005CA71 /* Main.storyboard */; };
 		ABE495C61D6DBF180005CA71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE495C51D6DBF180005CA71 /* Assets.xcassets */; };
 		ABE495C91D6DBF180005CA71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE495C71D6DBF180005CA71 /* LaunchScreen.storyboard */; };
@@ -33,9 +34,10 @@
 		AB7F56051D6F0875005303C5 /* FriendDynamicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDynamicsViewController.swift; sourceTree = "<group>"; };
 		AB7F56071D6F1686005303C5 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		AB7F56091D6F19AB005303C5 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		AB7F56121D6FCA58005303C5 /* UserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
+		AB7F56151D6FD457005303C5 /* RequestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestAPI.swift; sourceTree = "<group>"; };
 		ABE495BB1D6DBF180005CA71 /* Chat-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chat-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE495BE1D6DBF180005CA71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ABE495C01D6DBF180005CA71 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ABE495C31D6DBF180005CA71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ABE495C51D6DBF180005CA71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABE495C81D6DBF180005CA71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -117,6 +119,22 @@
 			name = FriendDynamics;
 			sourceTree = "<group>";
 		};
+		AB7F56111D6FCA3C005303C5 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				AB7F56121D6FCA58005303C5 /* UserRouter.swift */,
+			);
+			name = Routers;
+			sourceTree = "<group>";
+		};
+		AB7F56141D6FD42D005303C5 /* ExeAPIRequest */ = {
+			isa = PBXGroup;
+			children = (
+				AB7F56151D6FD457005303C5 /* RequestAPI.swift */,
+			);
+			name = ExeAPIRequest;
+			sourceTree = "<group>";
+		};
 		ABE495B21D6DBF180005CA71 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +156,8 @@
 		ABE495BD1D6DBF180005CA71 /* Chat-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				AB7F56141D6FD42D005303C5 /* ExeAPIRequest */,
+				AB7F56111D6FCA3C005303C5 /* Routers */,
 				AB7F56041D6F0854005303C5 /* FriendDynamics */,
 				AB7F55FF1D6F05E6005303C5 /* NavigationAndTabar */,
 				AB7F55FE1D6F04FA005303C5 /* StoryBoard */,
@@ -145,7 +165,6 @@
 				AB7F55F61D6F0453005303C5 /* FriendList */,
 				AB7F55F51D6F0449005303C5 /* ChatList */,
 				ABE495BE1D6DBF180005CA71 /* AppDelegate.swift */,
-				ABE495C01D6DBF180005CA71 /* ViewController.swift */,
 				ABE495C51D6DBF180005CA71 /* Assets.xcassets */,
 				ABE495CA1D6DBF180005CA71 /* Info.plist */,
 			);
@@ -285,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB7F560A1D6F19AB005303C5 /* ContentViewController.swift in Sources */,
+				AB7F56131D6FCA58005303C5 /* UserRouter.swift in Sources */,
 				AB7F55FA1D6F0483005303C5 /* FriendListViewController.swift in Sources */,
 				AB7F55FC1D6F04B4005303C5 /* AboutMeViewController.swift in Sources */,
 				AB7F56031D6F0696005303C5 /* RootTabBarViewController.swift in Sources */,
@@ -292,7 +312,7 @@
 				AB7F56061D6F0875005303C5 /* FriendDynamicsViewController.swift in Sources */,
 				AB7F56081D6F1686005303C5 /* LeftMenuViewController.swift in Sources */,
 				AB7F55F81D6F0474005303C5 /* ChatListViewController.swift in Sources */,
-				ABE495C11D6DBF180005CA71 /* ViewController.swift in Sources */,
+				AB7F56161D6FD457005303C5 /* RequestAPI.swift in Sources */,
 				ABE495BF1D6DBF180005CA71 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
