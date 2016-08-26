@@ -47,33 +47,40 @@ class UserMoreInformationTableViewController: UITableViewController {
         }
     }
     
-    
+    //第三个 Section的每个 cell 的操作
     func sectionThree(indxPath:IndexPath) {
-        
+        //登陆按钮的操作
     }
-    
+    //第二个 Section 的每个 cell 的操作
     func sectionTwo(indxPath:IndexPath) {
         switch indxPath.row {
         case 0:
+            // 电话号码的显示
             break
         case 1:
+            //邮箱的显示
             break
         default:
             break
         }
     }
-    
+    //第一个Section 的 每个 cell 的操作
     func sectionOne(indxPath:IndexPath) {
         switch indxPath.row {
         case 0:
+            //更换头像
             break
         case 1:
+            //更换背景图
             break
         case 2:
+            //修改昵称
             break
         case 3:
+            //修改地区
             break
         case 4:
+            //修改个性签名
             break
         default:
             break
