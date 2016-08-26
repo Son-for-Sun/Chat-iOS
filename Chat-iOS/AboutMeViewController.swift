@@ -10,26 +10,30 @@ import UIKit
 
 class AboutMeViewController: UIViewController {
 
+    @IBOutlet weak var sign: UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var backimage: UIImageView!
+    @IBOutlet weak var userPhoto: UIImageView!
+    @IBOutlet weak var vcon: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.white
+        vcon.constant = (view.bounds.size.width * (9 / 16) - view.bounds.size.height / 2) / 2
+        userPhoto.layer.cornerRadius = 111 / 2
+        let tapBackimage = UITapGestureRecognizer(target: self, action: #selector(tapBackImageAction))
+        backimage.addGestureRecognizer(tapBackimage)
+        
+        let tapUsrePhoto = UITapGestureRecognizer(target: self, action: #selector(tapUserPhotoAction))
+        userPhoto.addGestureRecognizer(tapUsrePhoto)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func tapBackImageAction() {
+        print("更换背景图")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tapUserPhotoAction() {
+        print("更换头像")
     }
-    */
 
 }

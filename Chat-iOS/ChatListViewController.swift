@@ -17,14 +17,6 @@ class ChatListViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        RequestAPI.share.exeRequest(router: UserRouter.login(name: "13834111077", pass: "xiaolei")) { (res) in
-            print(res.result.value)
-        }
-        RequestAPI.share.exeRequest(router: UserRouter.showUser(name: "13834111077")) { (res) in
-            print(res.result.value)
-        }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,15 +25,13 @@ class ChatListViewController:UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+     //   segue.destination.hidesBottomBarWhenPushed = true
     }
-    */
+    
 
 }
 
