@@ -11,25 +11,22 @@ import MJRefresh
 class FriendDynamicsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //segue.destination.hidesBottomBarWhenPushed = true
     }
  
+    @IBAction func momentsToAboutMe(_ sender: UIBarButtonItem) {
+        let defaults = UserDefaults.standard
+        if !defaults.bool(forKey: "isLogin") {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "about") as! AboutMeViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     
     func setUpTableView() {
         

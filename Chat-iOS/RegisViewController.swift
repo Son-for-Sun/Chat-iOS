@@ -18,6 +18,7 @@ class RegisViewController: UIViewController {
         super.viewDidLoad()
 
         title = "注册新用户"
+        nicheng.becomeFirstResponder()
     }
 
 

@@ -26,11 +26,18 @@ class ChatListViewController:UIViewController {
     
 
     
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     //   segue.destination.hidesBottomBarWhenPushed = true
+    @IBAction func chatToAbout(_ sender: UIBarButtonItem) {
+        
+        let defaults = UserDefaults.standard
+        if !defaults.bool(forKey: "isLogin") {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "about") as! AboutMeViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
+
     
 
 }

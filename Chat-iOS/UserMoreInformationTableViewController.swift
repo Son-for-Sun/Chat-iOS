@@ -10,10 +10,34 @@ import UIKit
 
 class UserMoreInformationTableViewController: UITableViewController {
 
-
+    let defaults = UserDefaults.standard
+    
+    @IBOutlet weak var loglabel: UILabel!
+    
+    @IBOutlet weak var usersign: UILabel!
+    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var userphone: UILabel!
+    @IBOutlet weak var useremail: UILabel!
+    @IBOutlet weak var userlocation: UILabel!
+    @IBOutlet weak var userphoto: UIImageView!
+    
+    var user: UserModel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loglabel.text = "注销"
+
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let userData = defaults.value(forKey: "userdata") as? Data
+        user = UserModel(fromData: userData)
+        usersign.text = user.signature
+        username.text = user.name
+        userphone.text = user.loginname
+        userlocation.text = user.location
+        useremail.text = user.email
     }
     
     // MARK: - Table view data source
@@ -49,20 +73,11 @@ class UserMoreInformationTableViewController: UITableViewController {
     
     //第三个 Section的每个 cell 的操作
     func sectionThree(indxPath:IndexPath) {
-        //登陆/注册按钮的操作
         
-        let defaults = UserDefaults.standard
-        let isLogin = defaults.bool(forKey: "isLogin")
-        if isLogin {
-            
-            //已经登陆
+        defaults.set(false, forKey: "isLogin")
+        defaults.synchronize()
+        self.navigationController!.popToRootViewController(animated: true)
 
-        }else {
-            //没有登陆
-            let vc = storyboard?.instantiateViewController(withIdentifier: "zhuce") as! RegisViewController
-            navigationController?.pushViewController(vc, animated: true)
-        }
-        
     }
     //第二个 Section 的每个 cell 的操作
     func sectionTwo(indxPath:IndexPath) {
