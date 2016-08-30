@@ -49,7 +49,20 @@ class UserMoreInformationTableViewController: UITableViewController {
     
     //第三个 Section的每个 cell 的操作
     func sectionThree(indxPath:IndexPath) {
-        //登陆按钮的操作
+        //登陆/注册按钮的操作
+        
+        let defaults = UserDefaults.standard
+        let isLogin = defaults.bool(forKey: "isLogin")
+        if isLogin {
+            
+            //已经登陆
+
+        }else {
+            //没有登陆
+            let vc = storyboard?.instantiateViewController(withIdentifier: "zhuce") as! RegisViewController
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
     //第二个 Section 的每个 cell 的操作
     func sectionTwo(indxPath:IndexPath) {
