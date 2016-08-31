@@ -13,6 +13,8 @@
 		AB05C2FC1D75694900C60D8D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C2FB1D75694900C60D8D /* UserModel.swift */; };
 		AB05C2FE1D75A7D000C60D8D /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C2FD1D75A7D000C60D8D /* AddFriendsViewController.swift */; };
 		AB05C3001D75A99200C60D8D /* FriendsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C2FF1D75A99200C60D8D /* FriendsRouter.swift */; };
+		AB05C3041D76A9A100C60D8D /* SSLSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C3021D76A9A100C60D8D /* SSLSecurity.swift */; };
+		AB05C3051D76A9A100C60D8D /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C3031D76A9A100C60D8D /* WebSocket.swift */; };
 		AB7F55F81D6F0474005303C5 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F55F71D6F0474005303C5 /* ChatListViewController.swift */; };
 		AB7F55FA1D6F0483005303C5 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F55F91D6F0483005303C5 /* FriendListViewController.swift */; };
 		AB7F55FC1D6F04B4005303C5 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F55FB1D6F04B4005303C5 /* AboutMeViewController.swift */; };
@@ -35,6 +37,8 @@
 		AB05C2FB1D75694900C60D8D /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AB05C2FD1D75A7D000C60D8D /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
 		AB05C2FF1D75A99200C60D8D /* FriendsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsRouter.swift; sourceTree = "<group>"; };
+		AB05C3021D76A9A100C60D8D /* SSLSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSLSecurity.swift; sourceTree = "<group>"; };
+		AB05C3031D76A9A100C60D8D /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		AB7F55F71D6F0474005303C5 /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		AB7F55F91D6F0483005303C5 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		AB7F55FB1D6F04B4005303C5 /* AboutMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +85,23 @@
 				AB05C2FB1D75694900C60D8D /* UserModel.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		AB05C3061D76A9B000C60D8D /* FrameWork */ = {
+			isa = PBXGroup;
+			children = (
+				AB05C3071D76A9BF00C60D8D /* WebSocket */,
+			);
+			name = FrameWork;
+			sourceTree = "<group>";
+		};
+		AB05C3071D76A9BF00C60D8D /* WebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				AB05C3021D76A9A100C60D8D /* SSLSecurity.swift */,
+				AB05C3031D76A9A100C60D8D /* WebSocket.swift */,
+			);
+			name = WebSocket;
 			sourceTree = "<group>";
 		};
 		AB7F55F51D6F0449005303C5 /* ChatList */ = {
@@ -182,6 +203,7 @@
 		ABE495BD1D6DBF180005CA71 /* Chat-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				AB05C3061D76A9B000C60D8D /* FrameWork */,
 				AB05C2FA1D75692400C60D8D /* Model */,
 				AB7F56171D7011CE005303C5 /* CustomCell */,
 				AB7F56141D6FD42D005303C5 /* ExeAPIRequest */,
@@ -334,9 +356,11 @@
 				AB7F56131D6FCA58005303C5 /* UserRouter.swift in Sources */,
 				AB7F56191D7011FA005303C5 /* LeftMenuTableViewCell.swift in Sources */,
 				AB7F55FA1D6F0483005303C5 /* FriendListViewController.swift in Sources */,
+				AB05C3051D76A9A100C60D8D /* WebSocket.swift in Sources */,
 				AB05C2EF1D752F6300C60D8D /* LoginViewController.swift in Sources */,
 				AB05C2FE1D75A7D000C60D8D /* AddFriendsViewController.swift in Sources */,
 				AB05C2ED1D75205900C60D8D /* RegisViewController.swift in Sources */,
+				AB05C3041D76A9A100C60D8D /* SSLSecurity.swift in Sources */,
 				AB05C2FC1D75694900C60D8D /* UserModel.swift in Sources */,
 				AB7F55FC1D6F04B4005303C5 /* AboutMeViewController.swift in Sources */,
 				AB05C3001D75A99200C60D8D /* FriendsRouter.swift in Sources */,

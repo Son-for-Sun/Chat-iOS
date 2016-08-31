@@ -9,14 +9,27 @@
 import UIKit
 import MJRefresh
 import Alamofire
+import SocketIOClientSwift
 class ChatListViewController:UIViewController {
     
 
     @IBOutlet weak var tableView: UITableView!
 
+    var socket:WebSocket!
+    var webSocket: SocketIOClient!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        socket = WebSocket(url: URL(string: "ws://localhost:3000")!,protocols: ["chat","superchat"])
+        socket.delegate = self
+        socket.connect()
+        
+        webSocket = SocketIOClient(socketURL: URL(string: "http://localhost:3000")!)
+        webSocket.on("message") {data, ack in
+            print("+++++++++++++++++++++socket connected")
+        }
+
+        webSocket.connect()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +52,27 @@ class ChatListViewController:UIViewController {
     }
 
     
+
+}
+
+extension ChatListViewController: WebSocketDelegate, WebSocketPongDelegate {
+    func websocketDidConnect(_ socket: WebSocket) {
+        print("===============websocket is connected")
+    }
+    func websocketDidDisconnect(_ socket: WebSocket, error: NSError?) {
+        print("===============websocket is disconnected: \(error?.localizedDescription)")
+    }
+    func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
+        print("===============got some text: \(text)")
+    }
+    func websocketDidReceiveData(_ socket: WebSocket, data: Data) {
+        print("===============got some data: \(data.count)")
+    }
+    
+    
+    func websocketDidReceivePong(_ socket: WebSocket) {
+        print("=============== some data: ")
+    }
 
 }
 
