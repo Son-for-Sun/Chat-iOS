@@ -10,26 +10,27 @@ import UIKit
 import MJRefresh
 import Alamofire
 import SocketIOClientSwift
+import Starscream
+
 class ChatListViewController:UIViewController {
     
 
     @IBOutlet weak var tableView: UITableView!
 
-    var socket:WebSocket!
+    
     var webSocket: SocketIOClient!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        socket = WebSocket(url: URL(string: "ws://localhost:3000")!,protocols: ["chat","superchat"])
-        socket.delegate = self
-        socket.connect()
+      
         
         webSocket = SocketIOClient(socketURL: URL(string: "http://localhost:3000")!)
+        
         webSocket.on("message") {data, ack in
             print("+++++++++++++++++++++socket connected")
         }
-
         webSocket.connect()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +55,7 @@ class ChatListViewController:UIViewController {
     
 
 }
-
+/*
 extension ChatListViewController: WebSocketDelegate, WebSocketPongDelegate {
     func websocketDidConnect(_ socket: WebSocket) {
         print("===============websocket is connected")
@@ -75,7 +76,7 @@ extension ChatListViewController: WebSocketDelegate, WebSocketPongDelegate {
     }
 
 }
-
+*/
 extension ChatListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

@@ -5,12 +5,12 @@
         <attribute name="email" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="String" syncable="YES"/>
         <attribute name="location" attributeType="String" syncable="YES"/>
-        <attribute name="loginname" attributeType="String" syncable="YES"/>
+        <attribute name="loginname" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="profile" attributeType="String" syncable="YES"/>
         <attribute name="signature" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>

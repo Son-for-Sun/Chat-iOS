@@ -9,7 +9,8 @@ target 'Chat-iOS' do
 
   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift3'
   pod 'Kingfisher', :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'swift3'
-  #pod 'Starscream', :git => 'https://github.com/daltoniam/Starscream.git', :branch => 'swift3'
+  pod 'Starscream', :git => 'https://github.com/daltoniam/Starscream.git', :branch => 'swift3'
+  pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift.git', :branch => 'swift3'
   # OC
   pod 'MJRefresh'
 end
