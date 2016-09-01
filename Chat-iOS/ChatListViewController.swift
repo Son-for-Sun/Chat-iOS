@@ -10,7 +10,6 @@ import UIKit
 import MJRefresh
 import Alamofire
 import SocketIOClientSwift
-import Starscream
 
 class ChatListViewController:UIViewController {
     
@@ -19,18 +18,19 @@ class ChatListViewController:UIViewController {
 
     
     var webSocket: SocketIOClient!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
       
-        
-        webSocket = SocketIOClient(socketURL: URL(string: "http://localhost:3000")!)
+
+       webSocket = SocketIOClient(socketURL: URL(string: "http://localhost:3001")!)
         
         webSocket.on("message") {data, ack in
-            print("+++++++++++++++++++++socket connected")
+            
+            print("+++++++++++++++++++++socket connected","data:",data)
         }
-        webSocket.connect()
-        
+       webSocket.connect()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +40,7 @@ class ChatListViewController:UIViewController {
     
 
     
-    @IBAction func chatToAbout(_ sender: UIBarButtonItem) {
+@IBAction func chatToAbout(_ sender: UIBarButtonItem) {
         
         let defaults = UserDefaults.standard
         if !defaults.bool(forKey: "isLogin") {
@@ -51,32 +51,8 @@ class ChatListViewController:UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-
-    
-
 }
-/*
-extension ChatListViewController: WebSocketDelegate, WebSocketPongDelegate {
-    func websocketDidConnect(_ socket: WebSocket) {
-        print("===============websocket is connected")
-    }
-    func websocketDidDisconnect(_ socket: WebSocket, error: NSError?) {
-        print("===============websocket is disconnected: \(error?.localizedDescription)")
-    }
-    func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
-        print("===============got some text: \(text)")
-    }
-    func websocketDidReceiveData(_ socket: WebSocket, data: Data) {
-        print("===============got some data: \(data.count)")
-    }
-    
-    
-    func websocketDidReceivePong(_ socket: WebSocket) {
-        print("=============== some data: ")
-    }
 
-}
-*/
 extension ChatListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
