@@ -18,6 +18,7 @@ class ChatListViewController:UIViewController {
 
     
     var webSocket: SocketIOClient!
+    var chatList = [ChatListModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +29,11 @@ class ChatListViewController:UIViewController {
         
         webSocket.on("message") {data, ack in
             
-            print("+++++++++++++++++++++socket connected","data:",data)
+            
         }
        webSocket.connect()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    
 @IBAction func chatToAbout(_ sender: UIBarButtonItem) {
         
         let defaults = UserDefaults.standard
@@ -53,19 +47,24 @@ class ChatListViewController:UIViewController {
     }
 }
 
+extension ChatListViewController {
+    func setUpTableView() {
+        
+    }
+}
+
 extension ChatListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return chatList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath)
-        
-        cell.textLabel?.text = "\(indexPath.row)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath) as! ChatListTableViewCell
+        cell.setupCell(chat: chatList[indexPath.row])
         return cell
     }
 }

@@ -40,11 +40,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ojM-UT-URT">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatListCell" id="xzB-a4-waF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatListCell" id="xzB-a4-waF" customClass="ChatListTableViewCell" customModule="Chat_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xzB-a4-waF" id="v6X-4l-W5w">
-                                            <frame key="frameInset" width="375" height="59"/>
+                                            <frame key="frameInset" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Che-vT-f9m">
@@ -82,6 +82,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="chatValue" destination="tFO-wV-1vD" id="oeA-aK-u7d"/>
+                                            <outlet property="time" destination="eJ1-iY-fWh" id="fQI-QO-5WG"/>
+                                            <outlet property="username" destination="YbA-PR-WN0" id="tmC-CP-ZEi"/>
+                                            <outlet property="userphoto" destination="Che-vT-f9m" id="a64-23-hmg"/>
                                             <segue destination="LmR-Pb-yEH" kind="show" id="lS2-TG-fcx"/>
                                         </connections>
                                     </tableViewCell>
@@ -115,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="496.80000000000001" y="1708.6956521739132"/>
+            <point key="canvasLocation" x="398" y="1693"/>
         </scene>
         <!--Root Tab Bar View Controller-->
         <scene sceneID="vkt-gy-bbP">
@@ -272,17 +276,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j7f-Qk-lAK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j7f-Qk-lAK">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactsCell" id="a3N-RQ-aLB">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactsCell" id="a3N-RQ-aLB" customClass="FriendListTableViewCell" customModule="Chat_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a3N-RQ-aLB" id="WoG-AN-Ez0">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XrD-ZS-ZGH">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="5fa-aY-3ox"/>
+                                                        <constraint firstAttribute="width" constant="40" id="J10-Zh-PkG"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M61-mr-OPC">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="M61-mr-OPC" firstAttribute="centerY" secondItem="WoG-AN-Ez0" secondAttribute="centerY" id="Jgq-O4-tNh"/>
+                                                <constraint firstItem="M61-mr-OPC" firstAttribute="leading" secondItem="XrD-ZS-ZGH" secondAttribute="trailing" constant="8" id="Umh-dF-ib3"/>
+                                                <constraint firstItem="XrD-ZS-ZGH" firstAttribute="leading" secondItem="WoG-AN-Ez0" secondAttribute="leading" constant="16" id="XT6-k6-Taz"/>
+                                                <constraint firstItem="XrD-ZS-ZGH" firstAttribute="centerY" secondItem="WoG-AN-Ez0" secondAttribute="centerY" id="tT1-sE-mBc"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="username" destination="M61-mr-OPC" id="A1m-HS-s5e"/>
+                                            <outlet property="userphoto" destination="XrD-ZS-ZGH" id="gUY-qa-rQk"/>
                                             <segue destination="Emn-Lb-R6O" kind="show" id="0TP-W9-RXx"/>
                                         </connections>
                                     </tableViewCell>
@@ -321,7 +346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9D-r0-ak6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1414" y="1709"/>
+            <point key="canvasLocation" x="1413.5999999999999" y="1708.6956521739132"/>
         </scene>
         <!--About-->
         <scene sceneID="Ifn-ng-AKC">

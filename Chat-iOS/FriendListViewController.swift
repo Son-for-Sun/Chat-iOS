@@ -11,6 +11,8 @@ import MJRefresh
 class FriendListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var friends = [User]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,12 +38,12 @@ extension FriendListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return friends.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsCell", for: indexPath)
-        cell.textLabel?.text = "\(indexPath.row)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsCell", for: indexPath) as! FriendListTableViewCell
+        cell.setupCell(userPhotoURL: friends[indexPath.row].avatar, userName: friends[indexPath.row].name)
         return cell
     }
 }
