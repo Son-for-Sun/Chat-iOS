@@ -6,11 +6,10 @@ target 'Chat-iOS' do
   use_frameworks!
 
   # Pods for Chat-iOS
-
-  pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift3'
+  pod 'Alamofire', '~> 4.0'
+  pod 'Moya', :git => 'https://github.com/Moya/Moya.git', :branch => 'swift-3.0'
   pod 'Kingfisher', :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'swift3'
-  # pod 'Starscream', :git => 'https://github.com/daltoniam/Starscream.git', :branch => 'swift3'
-  pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift.git', :branch => 'swift3'
+  pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift.git', :branch => 'development'
   # OC
   pod 'MJRefresh'
 end

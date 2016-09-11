@@ -27,8 +27,8 @@ class ChatListViewController:UIViewController {
 
        webSocket = SocketIOClient(socketURL: URL(string: "http://localhost:3001")!)
         
-        webSocket.on("message") {data, ack in
-            
+       webSocket.on("message") {data, ack in
+            print(data)
             
         }
        webSocket.connect()

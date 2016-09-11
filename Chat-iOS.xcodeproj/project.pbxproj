@@ -13,6 +13,8 @@
 		AB05C2FC1D75694900C60D8D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C2FB1D75694900C60D8D /* UserModel.swift */; };
 		AB05C2FE1D75A7D000C60D8D /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C2FD1D75A7D000C60D8D /* AddFriendsViewController.swift */; };
 		AB05C3001D75A99200C60D8D /* FriendsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C2FF1D75A99200C60D8D /* FriendsRouter.swift */; };
+		AB46D6231D85232900E88F13 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB46D6221D85232900E88F13 /* SwiftyJSON.swift */; };
+		AB46D6251D85237A00E88F13 /* LclJSONSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB46D6241D85237A00E88F13 /* LclJSONSerialization.swift */; };
 		AB7F55F81D6F0474005303C5 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F55F71D6F0474005303C5 /* ChatListViewController.swift */; };
 		AB7F55FA1D6F0483005303C5 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F55F91D6F0483005303C5 /* FriendListViewController.swift */; };
 		AB7F55FC1D6F04B4005303C5 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F55FB1D6F04B4005303C5 /* AboutMeViewController.swift */; };
@@ -21,7 +23,6 @@
 		AB7F56131D6FCA58005303C5 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56121D6FCA58005303C5 /* UserRouter.swift */; };
 		AB7F56161D6FD457005303C5 /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56151D6FD457005303C5 /* RequestAPI.swift */; };
 		AB7F56191D7011FA005303C5 /* LeftMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56181D7011FA005303C5 /* LeftMenuTableViewCell.swift */; };
-		ABC9336B1D76F9750039BEB7 /* Chat-iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ABC933691D76F9750039BEB7 /* Chat-iOS.xcdatamodeld */; };
 		ABC9336D1D76FA5F0039BEB7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9336C1D76FA5F0039BEB7 /* User.swift */; };
 		ABC9336F1D76FC0A0039BEB7 /* MainCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9336E1D76FC0A0039BEB7 /* MainCoreDataStack.swift */; };
 		ABC933731D77CB5E0039BEB7 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC933721D77CB5E0039BEB7 /* ChatListTableViewCell.swift */; };
@@ -41,6 +42,8 @@
 		AB05C2FB1D75694900C60D8D /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AB05C2FD1D75A7D000C60D8D /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
 		AB05C2FF1D75A99200C60D8D /* FriendsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsRouter.swift; sourceTree = "<group>"; };
+		AB46D6221D85232900E88F13 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		AB46D6241D85237A00E88F13 /* LclJSONSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LclJSONSerialization.swift; sourceTree = "<group>"; };
 		AB7F55F71D6F0474005303C5 /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		AB7F55F91D6F0483005303C5 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		AB7F55FB1D6F04B4005303C5 /* AboutMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
@@ -49,7 +52,6 @@
 		AB7F56121D6FCA58005303C5 /* UserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
 		AB7F56151D6FD457005303C5 /* RequestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestAPI.swift; sourceTree = "<group>"; };
 		AB7F56181D7011FA005303C5 /* LeftMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuTableViewCell.swift; sourceTree = "<group>"; };
-		ABC9336A1D76F9750039BEB7 /* Chat-iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Chat-iOS.xcdatamodel"; sourceTree = "<group>"; };
 		ABC9336C1D76FA5F0039BEB7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ABC9336E1D76FC0A0039BEB7 /* MainCoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoreDataStack.swift; sourceTree = "<group>"; };
 		ABC933721D77CB5E0039BEB7 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
@@ -180,8 +182,9 @@
 		ABC933681D76F9600039BEB7 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				ABC933691D76F9750039BEB7 /* Chat-iOS.xcdatamodeld */,
 				ABC9336C1D76FA5F0039BEB7 /* User.swift */,
+				AB46D6241D85237A00E88F13 /* LclJSONSerialization.swift */,
+				AB46D6221D85232900E88F13 /* SwiftyJSON.swift */,
 				ABC9336E1D76FC0A0039BEB7 /* MainCoreDataStack.swift */,
 			);
 			name = CoreData;
@@ -357,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB46D6251D85237A00E88F13 /* LclJSONSerialization.swift in Sources */,
 				AB7F56131D6FCA58005303C5 /* UserRouter.swift in Sources */,
 				AB7F56191D7011FA005303C5 /* LeftMenuTableViewCell.swift in Sources */,
 				AB7F55FA1D6F0483005303C5 /* FriendListViewController.swift in Sources */,
@@ -367,9 +371,9 @@
 				ABC933731D77CB5E0039BEB7 /* ChatListTableViewCell.swift in Sources */,
 				AB7F55FC1D6F04B4005303C5 /* AboutMeViewController.swift in Sources */,
 				AB05C3001D75A99200C60D8D /* FriendsRouter.swift in Sources */,
-				ABC9336B1D76F9750039BEB7 /* Chat-iOS.xcdatamodeld in Sources */,
 				AB7F56031D6F0696005303C5 /* RootTabBarViewController.swift in Sources */,
 				AB7F56061D6F0875005303C5 /* FriendDynamicsViewController.swift in Sources */,
+				AB46D6231D85232900E88F13 /* SwiftyJSON.swift in Sources */,
 				ABDA8C231D7030D7008CBE56 /* UserMoreInformationTableViewController.swift in Sources */,
 				AB7F55F81D6F0474005303C5 /* ChatListViewController.swift in Sources */,
 				ABC933751D77CC0E0039BEB7 /* ChatListModel.swift in Sources */,
@@ -550,19 +554,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		ABC933691D76F9750039BEB7 /* Chat-iOS.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				ABC9336A1D76F9750039BEB7 /* Chat-iOS.xcdatamodel */,
-			);
-			currentVersion = ABC9336A1D76F9750039BEB7 /* Chat-iOS.xcdatamodel */;
-			path = "Chat-iOS.xcdatamodeld";
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = ABE495B31D6DBF180005CA71 /* Project object */;
 }

@@ -7,6 +7,16 @@
 //
 
 import Foundation
+import CoreData
+
+protocol NSManagedObjectContextSettable:class{
+    var managedObjectContext: NSManagedObjectContext! {get set}
+}
+
 public final class MainCoreDataStack {
     
+//    public func createContext() -> NSManagedObjectContext{
+//        
+//        let context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType)
+//    }
 }
