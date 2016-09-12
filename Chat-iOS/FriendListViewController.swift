@@ -11,7 +11,7 @@ import MJRefresh
 class FriendListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var friends = [User]()
+    var friends = [UserModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class FriendListViewController: UIViewController {
 
     @IBAction func friendToAbout(_ sender: AnyObject) {
         let defaults = UserDefaults.standard
-        if !defaults.bool(forKey: "isLogin") {
+        if !defaults.bool(forKey: UserDefaultsKeys.isLogin.rawValue) {
             let vc = storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }else {

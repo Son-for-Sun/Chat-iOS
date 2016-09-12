@@ -37,7 +37,7 @@ class ChatListViewController:UIViewController {
 @IBAction func chatToAbout(_ sender: UIBarButtonItem) {
         
         let defaults = UserDefaults.standard
-        if !defaults.bool(forKey: "isLogin") {
+        if !defaults.bool(forKey: UserDefaultsKeys.isLogin.rawValue) {
             let vc = storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }else {

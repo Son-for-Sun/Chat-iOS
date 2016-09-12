@@ -23,8 +23,7 @@
 		AB7F56131D6FCA58005303C5 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56121D6FCA58005303C5 /* UserRouter.swift */; };
 		AB7F56161D6FD457005303C5 /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56151D6FD457005303C5 /* RequestAPI.swift */; };
 		AB7F56191D7011FA005303C5 /* LeftMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56181D7011FA005303C5 /* LeftMenuTableViewCell.swift */; };
-		ABC9336D1D76FA5F0039BEB7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9336C1D76FA5F0039BEB7 /* User.swift */; };
-		ABC9336F1D76FC0A0039BEB7 /* MainCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9336E1D76FC0A0039BEB7 /* MainCoreDataStack.swift */; };
+		ABC23A711D867835000FB75A /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC23A701D867835000FB75A /* UserDefaultsKeys.swift */; };
 		ABC933731D77CB5E0039BEB7 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC933721D77CB5E0039BEB7 /* ChatListTableViewCell.swift */; };
 		ABC933751D77CC0E0039BEB7 /* ChatListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC933741D77CC0E0039BEB7 /* ChatListModel.swift */; };
 		ABC933771D77D10A0039BEB7 /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC933761D77D10A0039BEB7 /* FriendListTableViewCell.swift */; };
@@ -52,8 +51,7 @@
 		AB7F56121D6FCA58005303C5 /* UserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
 		AB7F56151D6FD457005303C5 /* RequestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestAPI.swift; sourceTree = "<group>"; };
 		AB7F56181D7011FA005303C5 /* LeftMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuTableViewCell.swift; sourceTree = "<group>"; };
-		ABC9336C1D76FA5F0039BEB7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		ABC9336E1D76FC0A0039BEB7 /* MainCoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoreDataStack.swift; sourceTree = "<group>"; };
+		ABC23A701D867835000FB75A /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		ABC933721D77CB5E0039BEB7 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		ABC933741D77CC0E0039BEB7 /* ChatListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListModel.swift; sourceTree = "<group>"; };
 		ABC933761D77D10A0039BEB7 /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 		AB05C2FA1D75692400C60D8D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ABC933681D76F9600039BEB7 /* CoreData */,
 				AB05C2FB1D75694900C60D8D /* UserModel.swift */,
 				ABC933741D77CC0E0039BEB7 /* ChatListModel.swift */,
 			);
@@ -179,15 +176,21 @@
 			name = CustomCell;
 			sourceTree = "<group>";
 		};
-		ABC933681D76F9600039BEB7 /* CoreData */ = {
+		ABC23A6F1D86780D000FB75A /* Commit */ = {
 			isa = PBXGroup;
 			children = (
-				ABC9336C1D76FA5F0039BEB7 /* User.swift */,
+				ABC23A701D867835000FB75A /* UserDefaultsKeys.swift */,
+			);
+			name = Commit;
+			sourceTree = "<group>";
+		};
+		ABC23A721D867BE3000FB75A /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
 				AB46D6241D85237A00E88F13 /* LclJSONSerialization.swift */,
 				AB46D6221D85232900E88F13 /* SwiftyJSON.swift */,
-				ABC9336E1D76FC0A0039BEB7 /* MainCoreDataStack.swift */,
 			);
-			name = CoreData;
+			name = SwiftyJSON;
 			sourceTree = "<group>";
 		};
 		ABE495B21D6DBF180005CA71 = {
@@ -211,6 +214,8 @@
 		ABE495BD1D6DBF180005CA71 /* Chat-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				ABC23A721D867BE3000FB75A /* SwiftyJSON */,
+				ABC23A6F1D86780D000FB75A /* Commit */,
 				AB05C2FA1D75692400C60D8D /* Model */,
 				AB7F56171D7011CE005303C5 /* CustomCell */,
 				AB7F56141D6FD42D005303C5 /* ExeAPIRequest */,
@@ -374,14 +379,13 @@
 				AB7F56031D6F0696005303C5 /* RootTabBarViewController.swift in Sources */,
 				AB7F56061D6F0875005303C5 /* FriendDynamicsViewController.swift in Sources */,
 				AB46D6231D85232900E88F13 /* SwiftyJSON.swift in Sources */,
+				ABC23A711D867835000FB75A /* UserDefaultsKeys.swift in Sources */,
 				ABDA8C231D7030D7008CBE56 /* UserMoreInformationTableViewController.swift in Sources */,
 				AB7F55F81D6F0474005303C5 /* ChatListViewController.swift in Sources */,
 				ABC933751D77CC0E0039BEB7 /* ChatListModel.swift in Sources */,
 				ABC933771D77D10A0039BEB7 /* FriendListTableViewCell.swift in Sources */,
-				ABC9336F1D76FC0A0039BEB7 /* MainCoreDataStack.swift in Sources */,
 				AB7F56161D6FD457005303C5 /* RequestAPI.swift in Sources */,
 				ABE495BF1D6DBF180005CA71 /* AppDelegate.swift in Sources */,
-				ABC9336D1D76FA5F0039BEB7 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
