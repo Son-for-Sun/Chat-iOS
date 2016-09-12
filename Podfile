@@ -7,7 +7,8 @@ target 'Chat-iOS' do
 
   # Pods for Chat-iOS
   pod 'Alamofire', '~> 4.0'
-  pod 'Moya', :git => 'https://github.com/Moya/Moya.git', :branch => 'swift-3.0'
+  #pod 'Moya', :git => 'https://github.com/Moya/Moya.git', :branch => 'swift-3.0'
+  pod 'Result', :git => 'https://github.com/antitypical/Result.git', :branch => 'master'
   pod 'Kingfisher', :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'swift3'
   pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift.git', :branch => 'development'
   # OC

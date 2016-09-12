@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 import Alamofire
-import SocketIOClientSwift
+import SocketIO
 
 class ChatListViewController:UIViewController {
     

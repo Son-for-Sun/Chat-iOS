@@ -12,9 +12,6 @@ import Alamofire
 class RequestAPI {
     static let share = RequestAPI()
     private init(){}
-    func exeRequest(router:RouterProtocol,completionHandler:@escaping (Response<Any, NSError>) -> Void) {
-        Alamofire.request(router.requestURL, withMethod: router.method, parameters: router.requestParameters).responseJSON { (res) in
-            completionHandler(res)
-        }
-    }
+    
+
 }

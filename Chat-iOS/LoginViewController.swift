@@ -32,16 +32,16 @@ class LoginViewController: UIViewController {
         guard  !phone.isEmpty && !pass.isEmpty else {
             return
         }
-        RequestAPI.share.exeRequest(router: UserRouter.login(name: phone, pass: pass)) { (res) in
-            let _user = UserModel(fromData: res.data)
-            guard let _ = _user else {
-                return
-            }
-            let defaults = UserDefaults.standard
-            defaults.set(true, forKey: "isLogin")
-            defaults.synchronize()
-            self.navigationController!.popToRootViewController(animated: true)
-        }
+//        RequestAPI.share.exeRequest(router: UserRouter.login(name: phone, pass: pass)) { (res) in
+//            let _user = UserModel(fromData: res.data)
+//            guard let _ = _user else {
+//                return
+//            }
+//            let defaults = UserDefaults.standard
+//            defaults.set(true, forKey: "isLogin")
+//            defaults.synchronize()
+//            self.navigationController!.popToRootViewController(animated: true)
+//        }
     }
     
     @IBAction func gozhuce(_ sender: AnyObject) {

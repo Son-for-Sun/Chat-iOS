@@ -20,7 +20,7 @@ class AddFriendsViewController: UIViewController {
 
 extension AddFriendsViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let friendPhoneNumber = textField.text
+        _ = textField.text
         let defaults = UserDefaults.standard
         let data = defaults.value(forKey: "userdata") as? Data
 
@@ -28,10 +28,10 @@ extension AddFriendsViewController: UITextFieldDelegate {
         guard let user = usermodel else {
             return false
         }
-        let userPhoneNumber = user.loginname
-        RequestAPI.share.exeRequest(router: FriendsRouter.addNewFriend(userPhoneNumber: userPhoneNumber, friendPhoneNumber: friendPhoneNumber!)) { (res) in
-            print(res.result.value)
-        }
+        _ = user.loginname
+//        RequestAPI.share.exeRequest(router: FriendsRouter.addNewFriend(userPhoneNumber: userPhoneNumber, friendPhoneNumber: friendPhoneNumber!)) { (res) in
+//            print(res.result.value)
+//        }
         return true
     }
 }

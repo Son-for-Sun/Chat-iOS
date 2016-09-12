@@ -39,22 +39,22 @@ class RegisViewController: UIViewController {
             print("errrrr")
             return
         }
-        RequestAPI.share.exeRequest(router:UserRouter.newUser(name: nicheng, pass: pass, phoneNum: logname, email: email)) { (res) in
-            guard let data = res.data else {
-                return
-            }
-            do {
-                let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                guard let jsonDic = jsonData as? NSDictionary,let res = jsonDic["success"] as? Bool else {
-                    return
-                }
-                print(res)
-            }catch {
-                print("data to json is error")
-            }
-            
-            
-        }
+//        RequestAPI.share.exeRequest(router:UserRouter.newUser(name: nicheng, pass: pass, phoneNum: logname, email: email)) { (res) in
+//            guard let data = res.data else {
+//                return
+//            }
+//            do {
+//                let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+//                guard let jsonDic = jsonData as? NSDictionary,let res = jsonDic["success"] as? Bool else {
+//                    return
+//                }
+//                print(res)
+//            }catch {
+//                print("data to json is error")
+//            }
+//            
+//            
+//        }
         
     }
 
