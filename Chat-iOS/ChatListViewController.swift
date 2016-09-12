@@ -23,13 +23,12 @@ class ChatListViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      
-
        webSocket = SocketIOClient(socketURL: URL(string: "http://localhost:3001")!)
         
        webSocket.on("message") {data, ack in
-            print(data)
-            
+            let json = JSON(data.first!)
+            print(json["hello"].stringValue)
+        
         }
        webSocket.connect()
     }

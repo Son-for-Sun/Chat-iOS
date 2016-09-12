@@ -24,6 +24,7 @@
 		AB7F56161D6FD457005303C5 /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56151D6FD457005303C5 /* RequestAPI.swift */; };
 		AB7F56191D7011FA005303C5 /* LeftMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56181D7011FA005303C5 /* LeftMenuTableViewCell.swift */; };
 		ABC23A711D867835000FB75A /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC23A701D867835000FB75A /* UserDefaultsKeys.swift */; };
+		ABC23A741D869A0C000FB75A /* ChangeJianJieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC23A731D869A0C000FB75A /* ChangeJianJieViewController.swift */; };
 		ABC933731D77CB5E0039BEB7 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC933721D77CB5E0039BEB7 /* ChatListTableViewCell.swift */; };
 		ABC933751D77CC0E0039BEB7 /* ChatListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC933741D77CC0E0039BEB7 /* ChatListModel.swift */; };
 		ABC933771D77D10A0039BEB7 /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC933761D77D10A0039BEB7 /* FriendListTableViewCell.swift */; };
@@ -52,6 +53,7 @@
 		AB7F56151D6FD457005303C5 /* RequestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestAPI.swift; sourceTree = "<group>"; };
 		AB7F56181D7011FA005303C5 /* LeftMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuTableViewCell.swift; sourceTree = "<group>"; };
 		ABC23A701D867835000FB75A /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		ABC23A731D869A0C000FB75A /* ChangeJianJieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeJianJieViewController.swift; sourceTree = "<group>"; };
 		ABC933721D77CB5E0039BEB7 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		ABC933741D77CC0E0039BEB7 /* ChatListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListModel.swift; sourceTree = "<group>"; };
 		ABC933761D77D10A0039BEB7 /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				AB7F55FB1D6F04B4005303C5 /* AboutMeViewController.swift */,
 				ABDA8C221D7030D7008CBE56 /* UserMoreInformationTableViewController.swift */,
+				ABC23A731D869A0C000FB75A /* ChangeJianJieViewController.swift */,
 				AB05C2EE1D752F6300C60D8D /* LoginViewController.swift */,
 				AB05C2FD1D75A7D000C60D8D /* AddFriendsViewController.swift */,
 				AB05C2EC1D75205900C60D8D /* RegisViewController.swift */,
@@ -374,6 +377,7 @@
 				AB05C2ED1D75205900C60D8D /* RegisViewController.swift in Sources */,
 				AB05C2FC1D75694900C60D8D /* UserModel.swift in Sources */,
 				ABC933731D77CB5E0039BEB7 /* ChatListTableViewCell.swift in Sources */,
+				ABC23A741D869A0C000FB75A /* ChangeJianJieViewController.swift in Sources */,
 				AB7F55FC1D6F04B4005303C5 /* AboutMeViewController.swift in Sources */,
 				AB05C3001D75A99200C60D8D /* FriendsRouter.swift in Sources */,
 				AB7F56031D6F0696005303C5 /* RootTabBarViewController.swift in Sources */,

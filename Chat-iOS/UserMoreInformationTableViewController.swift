@@ -31,7 +31,7 @@ class UserMoreInformationTableViewController: UITableViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        let userData = defaults.value(forKey: "userdata") as? Data
+        let userData = defaults.value(forKey: UserDefaultsKeys.userdata.rawValue) as? Data
         user = UserModel(fromData: userData)
         usersign.text = user.signature
         username.text = user.name
@@ -76,6 +76,7 @@ class UserMoreInformationTableViewController: UITableViewController {
         
         defaults.set(false, forKey: "isLogin")
         defaults.synchronize()
+        defaults.removeObject(forKey: UserDefaultsKeys.userdata.rawValue)
         self.navigationController!.popToRootViewController(animated: true)
 
     }
@@ -89,7 +90,10 @@ class UserMoreInformationTableViewController: UITableViewController {
             //邮箱的显示
             break
         default:
-            break
+            //修改个人简介
+            let vc = storyboard?.instantiateViewController(withIdentifier: "changejianjie") as! ChangeJianJieViewController
+            vc.user = user
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     //第一个Section 的 每个 cell 的操作
@@ -103,15 +107,63 @@ class UserMoreInformationTableViewController: UITableViewController {
             break
         case 2:
             //修改昵称
-            break
+            changeValue(title: "昵称", rawValue: user.name,index: 2)
         case 3:
             //修改地区
-            break
+            changeValue(title: "地区", rawValue: user.location,index: 3)
         case 4:
             //修改个性签名
-            break
+            changeValue(title: "个性签名", rawValue: user.signature,index: 4)
         default:
             break
         }
     }
+    
+    func changeValue(title: String,rawValue: String,index: Int) {
+        let alter = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        alter.addTextField { (textfeild) in
+            textfeild.placeholder = rawValue
+        }
+        alter.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        alter.addAction(UIAlertAction(title: "确定", style: .default, handler: { (action) in
+            let textfeild = alter.textFields?.first!
+            let value = textfeild?.text
+            guard let newvalue = value else {
+                return
+            }
+            
+            guard !newvalue.isEmpty else {
+                return
+            }
+            
+            func execteRequest(router: RouterProtocol) {
+                RequestAPI.share.exeRequest(router: router, completionHandler: { (response) in
+                    guard let data = response.data else {
+                        return
+                    }
+                    let json = JSON(data: data)
+                    if json["success"].boolValue {
+                        //修改成功
+                        print("修改成功")
+                    }else {
+                        //修改失败
+                        print("修改失败")
+                    }
+                })
+            }
+            switch index {
+            case 2:
+                execteRequest(router: UserRouter.changeName(id: self.user.id, newName: newvalue))
+            case 3:
+                execteRequest(router: UserRouter.changeLocation(id: self.user.id, location: newvalue))
+            case 4:
+                execteRequest(router: UserRouter.changeSignature(id: self.user.id, signature: newvalue))
+            default:
+                break
+            }
+
+        }))
+        self.present(alter, animated: true, completion: nil)
+    }
+    
 }

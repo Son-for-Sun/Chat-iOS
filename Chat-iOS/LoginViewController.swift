@@ -42,6 +42,7 @@ class LoginViewController: UIViewController {
             
             let defaults = UserDefaults.standard
             defaults.set(true, forKey: UserDefaultsKeys.isLogin.rawValue)
+            defaults.setValue(response.data!, forKey: UserDefaultsKeys.userdata.rawValue)
             defaults.synchronize()
             self.navigationController!.popToRootViewController(animated: true)
         }
