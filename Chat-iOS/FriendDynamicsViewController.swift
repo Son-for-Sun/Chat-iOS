@@ -8,6 +8,8 @@
 
 import UIKit
 import MJRefresh
+
+///好友动态，网络获取本地缓存.
 class FriendDynamicsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -19,7 +21,7 @@ class FriendDynamicsViewController: UIViewController {
  
     @IBAction func momentsToAboutMe(_ sender: UIBarButtonItem) {
         let defaults = UserDefaults.standard
-        if !defaults.bool(forKey: "isLogin") {
+        if !defaults.bool(forKey: UserDefaultsKeys.isLogin.rawValue) {
             let vc = storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }else {

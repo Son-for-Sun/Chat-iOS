@@ -9,28 +9,20 @@
 import UIKit
 import MJRefresh
 import Alamofire
-import SocketIO
 
+/// TODO: 聊天列表缓存到本地
 class ChatListViewController:UIViewController {
     
 
     @IBOutlet weak var tableView: UITableView!
 
     
-    var webSocket: SocketIOClient!
+    
     var chatList = [ChatListModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       webSocket = SocketIOClient(socketURL: URL(string: "http://localhost:3001")!)
-        
-       webSocket.on("message") {data, ack in
-            let json = JSON(data.first!)
-            print(json["hello"].stringValue)
-        
-        }
-       webSocket.connect()
+
     }
 
 @IBAction func chatToAbout(_ sender: UIBarButtonItem) {
@@ -65,6 +57,13 @@ extension ChatListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath) as! ChatListTableViewCell
         cell.setupCell(chat: chatList[indexPath.row])
         return cell
+    }
+}
+
+extension ChatListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
 }
 

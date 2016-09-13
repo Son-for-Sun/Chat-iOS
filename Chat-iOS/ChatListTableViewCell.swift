@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+
 class ChatListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var chatValue: UILabel!

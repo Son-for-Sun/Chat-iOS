@@ -25,6 +25,8 @@
 		AB7F56191D7011FA005303C5 /* LeftMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56181D7011FA005303C5 /* LeftMenuTableViewCell.swift */; };
 		ABC23A711D867835000FB75A /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC23A701D867835000FB75A /* UserDefaultsKeys.swift */; };
 		ABC23A741D869A0C000FB75A /* ChangeJianJieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC23A731D869A0C000FB75A /* ChangeJianJieViewController.swift */; };
+		ABC23A761D86C370000FB75A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC23A751D86C370000FB75A /* ChatViewController.swift */; };
+		ABC23A781D8809AF000FB75A /* ResultTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC23A771D8809AF000FB75A /* ResultTest.swift */; };
 		ABC933731D77CB5E0039BEB7 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC933721D77CB5E0039BEB7 /* ChatListTableViewCell.swift */; };
 		ABC933751D77CC0E0039BEB7 /* ChatListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC933741D77CC0E0039BEB7 /* ChatListModel.swift */; };
 		ABC933771D77D10A0039BEB7 /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC933761D77D10A0039BEB7 /* FriendListTableViewCell.swift */; };
@@ -54,6 +56,8 @@
 		AB7F56181D7011FA005303C5 /* LeftMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuTableViewCell.swift; sourceTree = "<group>"; };
 		ABC23A701D867835000FB75A /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		ABC23A731D869A0C000FB75A /* ChangeJianJieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeJianJieViewController.swift; sourceTree = "<group>"; };
+		ABC23A751D86C370000FB75A /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		ABC23A771D8809AF000FB75A /* ResultTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTest.swift; sourceTree = "<group>"; };
 		ABC933721D77CB5E0039BEB7 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		ABC933741D77CC0E0039BEB7 /* ChatListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListModel.swift; sourceTree = "<group>"; };
 		ABC933761D77D10A0039BEB7 /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				AB7F55F71D6F0474005303C5 /* ChatListViewController.swift */,
+				ABC23A751D86C370000FB75A /* ChatViewController.swift */,
 				ABC933721D77CB5E0039BEB7 /* ChatListTableViewCell.swift */,
 			);
 			name = ChatList;
@@ -183,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				ABC23A701D867835000FB75A /* UserDefaultsKeys.swift */,
+				ABC23A771D8809AF000FB75A /* ResultTest.swift */,
 			);
 			name = Commit;
 			sourceTree = "<group>";
@@ -384,7 +390,9 @@
 				AB7F56061D6F0875005303C5 /* FriendDynamicsViewController.swift in Sources */,
 				AB46D6231D85232900E88F13 /* SwiftyJSON.swift in Sources */,
 				ABC23A711D867835000FB75A /* UserDefaultsKeys.swift in Sources */,
+				ABC23A761D86C370000FB75A /* ChatViewController.swift in Sources */,
 				ABDA8C231D7030D7008CBE56 /* UserMoreInformationTableViewController.swift in Sources */,
+				ABC23A781D8809AF000FB75A /* ResultTest.swift in Sources */,
 				AB7F55F81D6F0474005303C5 /* ChatListViewController.swift in Sources */,
 				ABC933751D77CC0E0039BEB7 /* ChatListModel.swift in Sources */,
 				ABC933771D77D10A0039BEB7 /* FriendListTableViewCell.swift in Sources */,

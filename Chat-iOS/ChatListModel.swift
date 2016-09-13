@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct ChatListModel {
     let id:String
     let userName:String

@@ -8,6 +8,8 @@
 
 import UIKit
 import MJRefresh
+
+///TODO 好友列表，网络获取本地缓存。
 class FriendListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!

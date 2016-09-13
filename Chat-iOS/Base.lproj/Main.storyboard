@@ -9,7 +9,7 @@
         <!--聊天界面-->
         <scene sceneID="mbH-tn-TSo">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="LmR-Pb-yEH" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="LmR-Pb-yEH" customClass="ChatListViewController" customModule="Chat_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yyE-ww-KXN"/>
                         <viewControllerLayoutGuide type="bottom" id="aRo-A9-7bJ"/>
