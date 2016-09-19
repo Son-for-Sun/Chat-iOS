@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A304a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pLr-rQ-9S6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A313a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pLr-rQ-9S6">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -454,7 +455,7 @@
                     <navigationItem key="navigationItem" title="About" id="ZUr-k7-kXv">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="k67-CK-OM7">
                             <connections>
-                                <segue destination="Les-6F-1aI" kind="show" id="Eub-R4-9TU"/>
+                                <segue destination="Les-6F-1aI" kind="show" identifier="gomoreinformation" id="Eub-R4-9TU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

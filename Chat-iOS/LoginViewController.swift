@@ -34,16 +34,17 @@ class LoginViewController: UIViewController {
         }
         
         RequestAPI.share.exeRequest(router: UserRouter.login(name: phone, pass: pass)) { [unowned self] (response) in
-            
-            let usermodel = UserModel(fromData: response.data)
-            guard let _ = usermodel else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let user = User(fromData: response.data, context: context)
+    
+            guard let _ = user else {
                 return
             }
             
             let defaults = UserDefaults.standard
             defaults.set(true, forKey: UserDefaultsKeys.isLogin.rawValue)
-            defaults.setValue(response.data!, forKey: UserDefaultsKeys.userdata.rawValue)
             defaults.synchronize()
+            try! context.save()
             self.navigationController!.popToRootViewController(animated: true)
         }
     }

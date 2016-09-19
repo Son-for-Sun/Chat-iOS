@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class AboutMeViewController: UIViewController {
 
     @IBOutlet weak var sign: UILabel!
@@ -19,9 +19,9 @@ class AboutMeViewController: UIViewController {
     @IBOutlet weak var vcon: NSLayoutConstraint!
     @IBOutlet weak var profiletextview: UITextView!
     
-    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let defaults = UserDefaults.standard
-    var user: UserModel!
+    var user: User!
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -32,17 +32,34 @@ class AboutMeViewController: UIViewController {
         
         let tapUsrePhoto = UITapGestureRecognizer(target: self, action: #selector(tapUserPhotoAction))
         userPhoto.addGestureRecognizer(tapUsrePhoto)
+        
+        let fetchrequest = NSFetchRequest<User>(entityName: User.entityName)
+        fetchrequest.fetchLimit = 1
+        do {
+            let users = try context.fetch(fetchrequest) as [User]
+            guard let user = users.first else {
+                return
+            }
+            self.user = user
+            name.text = user.name
+            sign.text = user.signature
+            emaillabel.text = user.email
+            phonenumber.text = user.loginname
+            profiletextview.text = user.profile
+        }catch {
+            print("Core Data 获取数据失败")
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        let userdaata = defaults.value(forKey: "userdata") as? Data
-        user = UserModel(fromData: userdaata)
-        
-        name.text = user.name
-        sign.text = user.signature
-        emaillabel.text = user.email
-        phonenumber.text = user.loginname
-        profiletextview.text = user.profile
+        if user.hasChanges {
+            try! context.save()
+            name.text = user.name
+            sign.text = user.signature
+            emaillabel.text = user.email
+            phonenumber.text = user.loginname
+            profiletextview.text = user.profile
+        }
     }
     func tapBackImageAction() {
         print("更换背景图")
@@ -52,4 +69,16 @@ class AboutMeViewController: UIViewController {
         print("更换头像")
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let id = segue.identifier!
+        switch id {
+        case "gomoreinformation":
+            let vc = segue.destination as! UserMoreInformationTableViewController
+            vc.user = self.user
+            
+        default:
+            break
+        }
+    }
+    
 }

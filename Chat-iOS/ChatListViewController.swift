@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import MJRefresh
 import Alamofire
-
+import CoreData
 /// TODO: 聊天列表缓存到本地
 class ChatListViewController:UIViewController {
     
@@ -22,7 +21,7 @@ class ChatListViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setUpTableView()
     }
 
 @IBAction func chatToAbout(_ sender: UIBarButtonItem) {
@@ -40,7 +39,14 @@ class ChatListViewController:UIViewController {
 
 extension ChatListViewController {
     func setUpTableView() {
-        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetechRequest = NSFetchRequest<User>(entityName: User.entityName)
+        let users = (try! context.fetch(fetechRequest) as [User])
+        let user = users.last!
+        let friends = user.friend
+        for friend in friends! {
+            print(friend.name,friend.id,friend.objectID)
+        }
     }
 }
 

@@ -21,23 +21,25 @@ class UserMoreInformationTableViewController: UITableViewController {
     @IBOutlet weak var userlocation: UILabel!
     @IBOutlet weak var userphoto: UIImageView!
     
-    var user: UserModel!
+    var user: User!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loglabel.text = "注销"
-
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let userData = defaults.value(forKey: UserDefaultsKeys.userdata.rawValue) as? Data
-        user = UserModel(fromData: userData)
+        
         usersign.text = user.signature
         username.text = user.name
         userphone.text = user.loginname
         userlocation.text = user.location
         useremail.text = user.email
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     // MARK: - Table view data source
@@ -76,7 +78,7 @@ class UserMoreInformationTableViewController: UITableViewController {
         
         defaults.set(false, forKey: "isLogin")
         defaults.synchronize()
-        defaults.removeObject(forKey: UserDefaultsKeys.userdata.rawValue)
+        //TODO 删除 CoreData 中的 User 表中的数据
         self.navigationController!.popToRootViewController(animated: true)
 
     }
@@ -136,28 +138,34 @@ class UserMoreInformationTableViewController: UITableViewController {
                 return
             }
             
-            func execteRequest(router: RouterProtocol) {
+            func execteRequest(router: RouterProtocol, callbacl: @escaping (_ result: Bool) -> Void) {
                 RequestAPI.share.exeRequest(router: router, completionHandler: { (response) in
                     guard let data = response.data else {
                         return
                     }
                     let json = JSON(data: data)
-                    if json["success"].boolValue {
-                        //修改成功
-                        print("修改成功")
-                    }else {
-                        //修改失败
-                        print("修改失败")
-                    }
+                    callbacl(json["success"].boolValue)
                 })
             }
             switch index {
             case 2:
-                execteRequest(router: UserRouter.changeName(id: self.user.id, newName: newvalue))
+                execteRequest(router: UserRouter.changeName(id: self.user.id, newName: newvalue), callbacl: { (res) in
+                    if res {
+                        self.user.name = newvalue
+                        self.username.text = newvalue
+                    }
+                })
             case 3:
-                execteRequest(router: UserRouter.changeLocation(id: self.user.id, location: newvalue))
+                execteRequest(router: UserRouter.changeLocation(id: self.user.id, location: newvalue), callbacl: { (res) in
+                    self.user.location = newvalue
+                    self.userlocation.text = newvalue
+                })
             case 4:
-                execteRequest(router: UserRouter.changeSignature(id: self.user.id, signature: newvalue))
+                
+                execteRequest(router:  UserRouter.changeSignature(id: self.user.id, signature: newvalue), callbacl: { (res) in
+                    self.user.signature = newvalue
+                    self.usersign.text = newvalue
+                })
             default:
                 break
             }

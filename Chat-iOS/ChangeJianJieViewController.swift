@@ -10,7 +10,7 @@ import UIKit
 
 class ChangeJianJieViewController: UIViewController {
 
-    var user: UserModel!
+    var user: User!
     
     @IBOutlet weak var jianjieTextView: UITextView!
     override func viewDidLoad() {
