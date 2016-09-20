@@ -79,6 +79,7 @@ class UserMoreInformationTableViewController: UITableViewController {
         defaults.set(false, forKey: "isLogin")
         defaults.synchronize()
         //TODO 删除 CoreData 中的 User 表中的数据
+        
         self.navigationController!.popToRootViewController(animated: true)
 
     }

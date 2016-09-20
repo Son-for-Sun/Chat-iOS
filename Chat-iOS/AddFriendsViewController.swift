@@ -22,13 +22,13 @@ extension AddFriendsViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         _ = textField.text
         let defaults = UserDefaults.standard
-        let data = defaults.value(forKey: "userdata") as? Data
+        let _ = defaults.value(forKey: "userdata") as? Data
 
-        let usermodel = UserModel(fromData: data)
-        guard let user = usermodel else {
-            return false
-        }
-        _ = user.loginname
+//        let usermodel = Friend()
+//        guard let user = usermodel else {
+//            return false
+//        }
+//        _ = user.loginname
 //        RequestAPI.share.exeRequest(router: FriendsRouter.addNewFriend(userPhoneNumber: userPhoneNumber, friendPhoneNumber: friendPhoneNumber!)) { (res) in
 //            print(res.result.value)
 //        }

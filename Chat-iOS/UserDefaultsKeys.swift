@@ -10,5 +10,4 @@ import Foundation
 
 enum UserDefaultsKeys: String {
     case isLogin = "isLogin"
-    case userdata = "userdata"
 }

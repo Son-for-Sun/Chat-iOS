@@ -20,7 +20,7 @@ class ChatListTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
     
-    func setupCell(chat:ChatListModel) {
+    func setupCell(chat: ChatList) {
         time.text = chat.time
         chatValue.text = chat.chatValue
         username.text = chat.userName

@@ -12,4 +12,6 @@ target 'Chat-iOS' do
   pod 'Result', :git => 'https://github.com/antitypical/Result.git', :branch => 'master'
   #pod 'Kingfisher', '~> 3.0'
   pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift.git', :branch => 'development'
+  
+  pod 'MJRefresh'
 end

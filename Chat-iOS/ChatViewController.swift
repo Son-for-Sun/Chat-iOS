@@ -11,8 +11,8 @@ import SocketIO
 
 class ChatViewController: UIViewController {
 
-    var user: UserModel!
-    var friend: UserModel!
+    var user: User!
+    var friend: Friend!
     
     var webSocket: SocketIOClient!
     

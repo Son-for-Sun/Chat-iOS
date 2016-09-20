@@ -17,7 +17,7 @@ class ChatListViewController:UIViewController {
 
     
     
-    var chatList = [ChatListModel]()
+    var chatList = [ChatList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +39,7 @@ class ChatListViewController:UIViewController {
 
 extension ChatListViewController {
     func setUpTableView() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let fetechRequest = NSFetchRequest<User>(entityName: User.entityName)
-        let users = (try! context.fetch(fetechRequest) as [User])
-        let user = users.last!
-        let friends = user.friend
-        for friend in friends! {
-            print(friend.name,friend.id,friend.objectID)
-        }
+
     }
 }
 

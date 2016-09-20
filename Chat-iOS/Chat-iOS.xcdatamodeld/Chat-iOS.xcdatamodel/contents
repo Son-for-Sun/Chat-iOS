@@ -7,6 +7,9 @@
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userPhoto" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="DynamicsCache" representedClassName=".DynamicsCache" syncable="YES">
+        <attribute name="cacheData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+    </entity>
     <entity name="Friend" representedClassName=".Friend" syncable="YES">
         <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -31,11 +34,13 @@
         <attribute name="profile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="signature" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="v" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="friend" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Friend" inverseName="own" inverseEntity="Friend" syncable="YES"/>
+        <relationship name="friend" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Friend" inverseName="own" inverseEntity="Friend" syncable="YES"/>
     </entity>
+    <fetchRequest name="friends" entity="Friend" predicateString="email CONTAINS &quot;fdgh&quot;" includePropertyValues="YES" returnObjectsAsFaults="YES" resultType="1"/>
     <elements>
         <element name="ChatList" positionX="-47" positionY="-63" width="128" height="118"/>
         <element name="Friend" positionX="-63" positionY="171" width="128" height="208"/>
         <element name="User" positionX="189" positionY="-64" width="128" height="208"/>
+        <element name="DynamicsCache" positionX="63" positionY="90" width="128" height="60"/>
     </elements>
 </model>
