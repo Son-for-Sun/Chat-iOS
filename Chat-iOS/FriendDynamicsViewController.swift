@@ -55,9 +55,22 @@ class FriendDynamicsViewController: UIViewController {
         }
     }
     
+    
+    func pullDownFetchData() {
+        request.includesPropertyValues = true
+        request.returnsObjectsAsFaults = false
+        let data = try! context.fetch(request).first
+        if let isdata = data  {
+            context.delete(isdata)
+            try! context.save()
+        }
+        fetchDataFormNet()
+    }
+    
     func setUpTableView() {
         
         if let data = fetchDataFromCoreData() {
+          
             let res = paseDataToJSON(data: data.cacheData)
             guard let resarray = res else {
                 noDataNoties()
