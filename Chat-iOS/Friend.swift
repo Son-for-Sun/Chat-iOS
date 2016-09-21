@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-
+import SwiftyJSON
 class Friend: NSManagedObject {
     
     @NSManaged var v: String

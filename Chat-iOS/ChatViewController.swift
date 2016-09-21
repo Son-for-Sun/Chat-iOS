@@ -8,7 +8,7 @@
 
 import UIKit
 import SocketIO
-
+import SwiftyJSON
 class ChatViewController: UIViewController {
 
     var user: User!

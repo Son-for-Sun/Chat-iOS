@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class ChangeJianJieViewController: UIViewController {
 
     var user: User!

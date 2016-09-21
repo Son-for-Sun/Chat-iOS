@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 struct DynamicsModel {
     
     /// 用户ID

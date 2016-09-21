@@ -9,21 +9,8 @@
 import UIKit
 import CoreData
 import MJRefresh
+import SwiftyJSON
 
-/*
- let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
- let requst = NSFetchRequest<User>(entityName: User.entityName)
- 
- let users = try! context.fetch(requst)
- if !users.isEmpty {
- let user = users.first!
- 
- RequestAPI.share.exeRequest(router: FriendDynamics.add(userid: user.id, userName: user.name, userava: user.avatar, vaslue: "杨晓磊正在发朋友圈你好吗", pushdate: Date().description), completionHandler: { (data) in
- let jsondata = JSON(data: data.data!)
- print(jsondata["success"].bool)
- })
- }
- */
 
 ///好友动态，网络获取本地缓存.
 class FriendDynamicsViewController: UIViewController {
@@ -44,6 +31,23 @@ class FriendDynamicsViewController: UIViewController {
         setUpTableView()
     }
  
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "toinsforfdk":
+            let vc = segue.destination as! DynamicsValueInformationViewController
+            let index = tableView.indexPathForSelectedRow!
+            let dyn = dynamics[index.row]
+            vc.dynamic = dyn
+        default:
+            break
+        }
+    }
+    
+    
+    /// 点击左上角的按钮跳转关于我的主页
+    ///
+    /// - parameter sender: button
     @IBAction func momentsToAboutMe(_ sender: UIBarButtonItem) {
         let defaults = UserDefaults.standard
         if !defaults.bool(forKey: UserDefaultsKeys.isLogin.rawValue) {
@@ -56,37 +60,35 @@ class FriendDynamicsViewController: UIViewController {
     }
     
     
+    /// 下拉刷新时从网络获取数据
     func pullDownFetchData() {
         request.includesPropertyValues = true
         request.returnsObjectsAsFaults = false
         let data = try! context.fetch(request).first
-        if let isdata = data  {
-            context.delete(isdata)
-            try! context.save()
+        
+        guard let isdata = data else {
+            //如果没有数据那么则直接获取数据
+            fetchDataFormNet()
+            return
         }
+        ///如果存在缓存，则先删除缓存然后再获取新的数据
+        context.delete(isdata)
+        try! context.save()
         fetchDataFormNet()
     }
     
+    /// 初始化 tableview
     func setUpTableView() {
-        
-        if let data = fetchDataFromCoreData() {
-          
-            let res = paseDataToJSON(data: data.cacheData)
-            guard let resarray = res else {
-                noDataNoties()
-                return
-            }
-            dynamics = resarray
-        }else{
-            //缓存中没有数据从网络获取
-            fetchDataFormNet()
-        }
+        fetchDataFromCoreData()
     }
     
     
+    /// 当没有数据时作出的错误提示
     func noDataNoties() {
         print("发生了错误")
     }
+    
+    /// 从网络中获取数据
     func fetchDataFormNet() {
         RequestAPI.share.exeRequest(router: FriendDynamics.show(pushdate: Date().description)) { (response) in
             
@@ -104,12 +106,25 @@ class FriendDynamicsViewController: UIViewController {
         }
     }
     
-    func fetchDataFromCoreData() -> DynamicsCache?{
+    /// 从缓存中获数据
+    ///
+    /// - returns: 返回缓存中的数据可能是空值
+    func fetchDataFromCoreData(){
         request.includesPropertyValues = true
         request.returnsObjectsAsFaults = false
-        return try! context.fetch(request).first
+        let data = try! context.fetch(request).first
+        guard  let dataa = data?.cacheData, let resarray = self.paseDataToJSON(data: dataa)  else {
+            noDataNoties()
+            return
+        }
+        self.dynamics = resarray
     }
     
+    /// 将数据解析成数据模型
+    ///
+    /// - parameter data: 要解析的数据
+    ///
+    /// - returns: 返回的数据模型
     func paseDataToJSON(data:Data) -> [DynamicsModel]? {
         
         let json = JSON(data: data)
@@ -136,7 +151,7 @@ extension FriendDynamicsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MomentsCell", for: indexPath)
         let value = dynamics[indexPath.row]
-        cell.textLabel?.text = "\(value.userName)"
+        cell.textLabel?.text = "\(value.pushvalue)"
         return cell
     }
 }

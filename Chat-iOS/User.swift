@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-
+import SwiftyJSON
 final class User: NSManagedObject {
     
     @NSManaged var v: String
@@ -23,6 +23,7 @@ final class User: NSManagedObject {
     @NSManaged var signature: String
     @NSManaged var friend: Set<Friend>?
     
+   
     override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
     }

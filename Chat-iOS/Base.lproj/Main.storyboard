@@ -166,7 +166,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="XQI-2z-Den" kind="show" id="mIg-ts-Xh1"/>
+                                            <segue destination="XQI-2z-Den" kind="show" identifier="toinsforfdk" id="mIg-ts-Xh1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -190,6 +190,11 @@
                                 <action selector="momentsToAboutMe:" destination="fNH-Tx-2c1" id="2pf-4p-HdY"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Jml-Fj-vYT">
+                            <connections>
+                                <segue destination="OSj-wb-d2R" kind="show" identifier="newmoments" id="2F7-a3-EBo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="a9t-Qo-DlT" id="Lv7-Q6-8ep"/>
@@ -198,6 +203,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zsU-Ip-7Pf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2881" y="1727"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="Lsh-qP-AgP">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="OSj-wb-d2R" customClass="PushNewFriendDynamicsViewController" customModule="Chat_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TT8-Bl-HDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="9FQ-UU-UoD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h2U-hg-faL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="在这里填写你要发布的内容" translatesAutoresizingMaskIntoConstraints="NO" id="6qy-S6-e4N">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6qy-S6-e4N" secondAttribute="height" multiplier="16:9" id="BNy-XR-Aky"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6qy-S6-e4N" secondAttribute="trailing" constant="8" id="Gar-JB-pYd"/>
+                            <constraint firstItem="6qy-S6-e4N" firstAttribute="leading" secondItem="h2U-hg-faL" secondAttribute="leading" constant="8" id="Lmu-UR-R8u"/>
+                            <constraint firstItem="6qy-S6-e4N" firstAttribute="top" secondItem="TT8-Bl-HDJ" secondAttribute="bottom" constant="8" id="TKO-FB-GYm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="A9c-Wv-EiC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="C0g-Ge-fnl">
+                            <connections>
+                                <action selector="pushText:" destination="OSj-wb-d2R" id="fp7-iA-4Uo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="pushtextview" destination="6qy-S6-e4N" id="Hry-pd-IMj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vuH-qc-6iU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3605.5999999999999" y="1725.7871064467768"/>
         </scene>
         <!--添加-->
         <scene sceneID="HEk-2w-M5v">
@@ -249,7 +297,7 @@
         <!--动态详情-->
         <scene sceneID="cI6-j8-pWz">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="XQI-2z-Den" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="XQI-2z-Den" customClass="DynamicsValueInformationViewController" customModule="Chat_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Skv-Ip-SDx"/>
                         <viewControllerLayoutGuide type="bottom" id="KYa-M5-Vtt"/>

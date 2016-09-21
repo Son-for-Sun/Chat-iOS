@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import CoreData
+import SwiftyJSON
 class UserMoreInformationTableViewController: UITableViewController {
 
     let defaults = UserDefaults.standard
@@ -79,7 +80,12 @@ class UserMoreInformationTableViewController: UITableViewController {
         defaults.set(false, forKey: "isLogin")
         defaults.synchronize()
         //TODO 删除 CoreData 中的 User 表中的数据
-        
+
+        let res = NSFetchRequest<User>(entityName: User.entityName)
+        res.returnsObjectsAsFaults = false
+        let users = try! context.fetch(res).first!
+        context.delete(users)
+        try! context.save()
         self.navigationController!.popToRootViewController(animated: true)
 
     }
