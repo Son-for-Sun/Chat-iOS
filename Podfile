@@ -7,7 +7,7 @@ target 'Chat-iOS' do
   use_frameworks!
 
   # Pods for Chat-iOS
-  pod 'Alamofire', '~> 4.0'
+  
   pod 'SwiftyJSON', :git => 'https://github.com/IBM-Swift/SwiftyJSON.git', :branch => 'master'
   pod 'Kingfisher', '~> 3.0'
   pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift.git', :branch => 'development'
