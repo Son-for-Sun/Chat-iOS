@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A313a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pLr-rQ-9S6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pLr-rQ-9S6">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -107,7 +107,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Chat" id="mNH-fq-OgL">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="bGi-VJ-rco">
+                        <barButtonItem key="leftBarButtonItem" image="Ninja Turtle" id="bGi-VJ-rco">
                             <connections>
                                 <action selector="chatToAbout:" destination="BYZ-38-t0r" id="Yim-rl-fg5"/>
                             </connections>
@@ -185,12 +185,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Moments" id="CKD-0y-kCu">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="5Em-ax-QlZ">
+                        <barButtonItem key="leftBarButtonItem" image="Ninja Turtle" id="5Em-ax-QlZ">
                             <connections>
                                 <action selector="momentsToAboutMe:" destination="fNH-Tx-2c1" id="2pf-4p-HdY"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Jml-Fj-vYT">
+                        <barButtonItem key="rightBarButtonItem" image="Plus" id="Jml-Fj-vYT">
                             <connections>
                                 <segue destination="OSj-wb-d2R" kind="show" identifier="newmoments" id="2F7-a3-EBo"/>
                             </connections>
@@ -377,12 +377,12 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Friend" id="vau-wA-5u0">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="iOC-1S-E1W">
+                        <barButtonItem key="leftBarButtonItem" image="Ninja Turtle" id="iOC-1S-E1W">
                             <connections>
                                 <action selector="friendToAbout:" destination="RBu-wg-YjF" id="PQY-O6-PXv"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ugn-X4-PwE">
+                        <barButtonItem key="rightBarButtonItem" image="Plus" id="Ugn-X4-PwE">
                             <connections>
                                 <segue destination="SDZ-WS-ohi" kind="show" id="yCE-Vf-o2G"/>
                             </connections>
@@ -415,8 +415,7 @@
                                     <constraint firstAttribute="width" secondItem="xj0-Z2-qTh" secondAttribute="height" multiplier="16:9" id="68J-zF-tsa"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cv4-pi-Soo">
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mummy Filled" translatesAutoresizingMaskIntoConstraints="NO" id="Cv4-pi-Soo">
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Cv4-pi-Soo" secondAttribute="height" multiplier="1:1" id="85Z-hF-zgH"/>
                                     <constraint firstAttribute="width" constant="111" id="gpe-oa-2fU"/>
@@ -436,11 +435,10 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Prn-rY-aqN">
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1KU-kG-jzr">
-                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Callback" translatesAutoresizingMaskIntoConstraints="NO" id="1KU-kG-jzr">
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="44" id="JCh-JB-dgj"/>
-                                                    <constraint firstAttribute="height" constant="44" id="nHR-Dh-cfb"/>
+                                                    <constraint firstAttribute="width" constant="25" id="JCh-JB-dgj"/>
+                                                    <constraint firstAttribute="height" constant="25" id="nHR-Dh-cfb"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13834111077" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhY-My-03m">
@@ -452,11 +450,10 @@
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rw9-aX-t1z">
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9tu-we-Dog">
-                                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Message" translatesAutoresizingMaskIntoConstraints="NO" id="9tu-we-Dog">
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="mv2-qX-pIp"/>
-                                                    <constraint firstAttribute="width" constant="44" id="uWj-HS-vby"/>
+                                                    <constraint firstAttribute="height" constant="25" id="mv2-qX-pIp"/>
+                                                    <constraint firstAttribute="width" constant="25" id="uWj-HS-vby"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1414225@qq.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cp-fT-J88">
@@ -537,7 +534,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qr2-4f-2o9" id="9a6-pQ-BvE">
-                                            <frame key="frameInset" width="342" height="65.5"/>
+                                            <frame key="frameInset" width="342" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkA-GH-dOG">
@@ -545,10 +542,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="28s-cF-86f">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mummy Filled" translatesAutoresizingMaskIntoConstraints="NO" id="28s-cF-86f">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="n5t-aM-Zqd"/>
-                                                        <constraint firstAttribute="height" constant="60" id="quK-d6-TmE"/>
+                                                        <constraint firstAttribute="width" constant="40" id="n5t-aM-Zqd"/>
+                                                        <constraint firstAttribute="height" constant="40" id="quK-d6-TmE"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -666,13 +663,13 @@
                                         <rect key="frame" x="0.0" y="313" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="05Q-Yz-v82" id="88y-g7-gxS">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ydj-4w-4hi">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Callback" translatesAutoresizingMaskIntoConstraints="NO" id="ydj-4w-4hi">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="Gos-OM-Prd"/>
-                                                        <constraint firstAttribute="height" constant="40" id="bnE-sJ-ujg"/>
+                                                        <constraint firstAttribute="width" constant="25" id="Gos-OM-Prd"/>
+                                                        <constraint firstAttribute="height" constant="25" id="bnE-sJ-ujg"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxI-dW-XiF">
@@ -693,13 +690,13 @@
                                         <rect key="frame" x="0.0" y="357" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w4V-s6-wYb" id="VNC-X5-9fv">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZQs-i6-SLw">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Message" translatesAutoresizingMaskIntoConstraints="NO" id="ZQs-i6-SLw">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="Mnw-hw-hTN"/>
-                                                        <constraint firstAttribute="width" constant="40" id="tab-60-e42"/>
+                                                        <constraint firstAttribute="height" constant="25" id="Mnw-hw-hTN"/>
+                                                        <constraint firstAttribute="width" constant="25" id="tab-60-e42"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bP-FP-97M">
@@ -1052,11 +1049,11 @@
             </objects>
             <point key="canvasLocation" x="1454" y="2492"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--消息-->
         <scene sceneID="0sv-Xm-J41">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W2L-XP-yxc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="HLf-9F-slw"/>
+                    <tabBarItem key="tabBarItem" title="消息" image="Speech Bubble" selectedImage="Speech Bubble Filled" id="HLf-9F-slw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZR7-ns-eSR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1071,11 +1068,11 @@
             </objects>
             <point key="canvasLocation" x="473" y="946"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--联系人-->
         <scene sceneID="LDk-0u-Tle">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hDa-uM-hZM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="zbB-uP-tpX"/>
+                    <tabBarItem key="tabBarItem" title="联系人" image="Contacts" selectedImage="Contacts Filled" id="zbB-uP-tpX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kgq-lP-HC6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1090,11 +1087,11 @@
             </objects>
             <point key="canvasLocation" x="1414" y="946"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--广场-->
         <scene sceneID="LZl-iI-Lhn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D1h-17-CC1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="G3X-sk-N2J"/>
+                    <tabBarItem key="tabBarItem" title="广场" image="Novel" selectedImage="Novel Filled" id="G3X-sk-N2J"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zes-Zq-1Lu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1110,4 +1107,17 @@
             <point key="canvasLocation" x="2238" y="953"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Callback" width="50" height="50"/>
+        <image name="Contacts" width="25" height="25"/>
+        <image name="Contacts Filled" width="25" height="25"/>
+        <image name="Message" width="50" height="50"/>
+        <image name="Mummy Filled" width="50" height="50"/>
+        <image name="Ninja Turtle" width="25" height="25"/>
+        <image name="Novel" width="25" height="25"/>
+        <image name="Novel Filled" width="25" height="25"/>
+        <image name="Plus" width="25" height="25"/>
+        <image name="Speech Bubble" width="25" height="25"/>
+        <image name="Speech Bubble Filled" width="25" height="25"/>
+    </resources>
 </document>
