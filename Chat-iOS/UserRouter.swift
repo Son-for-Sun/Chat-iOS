@@ -7,16 +7,13 @@
 //
 
 import Foundation
+import Moya
 import Alamofire
-public let baseURL = "http://localhost:3000/api"
 
-protocol RouterProtocol {
-    var requestURL: String {get}
-    var requestParameters: [String:String]? {get}
-    var method: HTTPMethod {get}
-}
-enum UserRouter:RouterProtocol {
-    
+
+let UserRouterMoyaProvider = MoyaProvider<UserRouterMoya>()
+
+enum UserRouterMoya {
     case login(name: String, pass: String)
     case showUser(name: String)
     case newUser(name: String, pass: String, phoneNum: String, email: String)
@@ -26,43 +23,43 @@ enum UserRouter:RouterProtocol {
     case changeLocation(id: String, location: String)
     case changeSignature(id: String, signature: String)
     case changeProfile(id: String, profile: String)
-    
-    private var userURL: String {
-        return baseURL + "/user"
+}
+
+extension UserRouterMoya: TargetType {
+    var baseURL: URL {
+        return URL(string: "http://localhost:3000/api/user")!
     }
-    
-    var method: HTTPMethod {
-        switch self {
-        case .showUser:
-            return .get
-        default:
-            return .post
-        }
-    }
-    var requestURL:String {
+    var path: String {
         switch self {
         case .login:
-            return userURL + "/login"
+            return  "/login"
         case .showUser(let name):
-            return userURL + "/\(name)"
+            return "/\(name)"
         case .newUser:
-            return userURL + "/newUser"
+            return "/newUser"
         case .changeName:
-            return userURL + "/newname"
+            return "/newname"
         case .changePass:
-            return userURL + "/changepass"
+            return "/changepass"
         case .changeAvatar:
-            return userURL + "/updateavatar"
+            return "/updateavatar"
         case .changeLocation:
-            return userURL + "/updatelocation"
+            return "/updatelocation"
         case .changeSignature:
-            return userURL + "/updatesignature"
+            return "/updatesignature"
         case .changeProfile:
-            return userURL + "/updatepro"
+            return "/updatepro"
         }
     }
-    
-    var requestParameters: [String:String]? {
+    var method: Moya.Method {
+        switch self {
+        case .showUser:
+            return .GET
+        default:
+            return .POST
+        }
+    }
+    var parameters: [String: Any]? {
         switch self {
         case let .login(name, pass):
             return ["name":name,"pass":pass]
@@ -84,4 +81,9 @@ enum UserRouter:RouterProtocol {
             return ["id":id,"profile":profile]
         }
     }
+    var sampleData: Data { return "fdfd".data(using: String.Encoding.utf8)! }
+    
+    var task: Task { return .request }
 }
+
+

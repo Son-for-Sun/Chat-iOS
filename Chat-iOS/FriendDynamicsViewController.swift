@@ -90,19 +90,23 @@ class FriendDynamicsViewController: UIViewController {
     
     /// 从网络中获取数据
     func fetchDataFormNet() {
-        RequestAPI.share.exeRequest(router: FriendDynamics.show(pushdate: Date().description)) { (response) in
-            
-            guard let data = response.data , let resarray = self.paseDataToJSON(data: data) else {
-                self.noDataNoties()
-                return
+        
+        friendDynamicsProvider.request(FriendDynamics.show(pushdate: "")) { (result) in
+            switch result {
+            case .success(let response):
+                guard let resayy = self.paseDataToJSON(data: response.data) else {
+                    fallthrough
+                }
+                self.dynamics = resayy
+                //向CoreData 中缓存数据
+                let cachedes = NSEntityDescription.entity(forEntityName: DynamicsCache.entityName, in: self.context)!
+                let ccache = DynamicsCache(entity: cachedes, insertInto: self.context)
+                ccache.cacheData = response.data
+                try! self.context.save()
+                
+            case .failure:
+                break
             }
-            
-            self.dynamics = resarray
-            //向CoreData 中缓存数据
-            let cachedes = NSEntityDescription.entity(forEntityName: DynamicsCache.entityName, in: self.context)!
-            let ccache = DynamicsCache(entity: cachedes, insertInto: self.context)
-            ccache.cacheData = data
-            try! self.context.save()
         }
     }
     

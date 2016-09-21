@@ -145,33 +145,52 @@ class UserMoreInformationTableViewController: UITableViewController {
                 return
             }
             
-            func execteRequest(router: RouterProtocol, callbacl: @escaping (_ result: Bool) -> Void) {
-                RequestAPI.share.exeRequest(router: router, completionHandler: { (response) in
-                    guard let data = response.data else {
-                        return
-                    }
-                    let json = JSON(data: data)
-                    callbacl(json["success"].boolValue)
-                })
-            }
             switch index {
             case 2:
-                execteRequest(router: UserRouter.changeName(id: self.user.id, newName: newvalue), callbacl: { (res) in
-                    if res {
-                        self.user.name = newvalue
-                        self.username.text = newvalue
+                UserRouterMoyaProvider.request(UserRouterMoya.changeName(id: self.user.id, newName: newvalue), completion: { (result) in
+                    switch result {
+                    case .success(let response):
+                        let json = JSON(data: response.data)
+                        if json["success"].boolValue {
+                            self.user.name = newvalue
+                            self.username.text = newvalue
+                        }else {
+                         fallthrough
+                        }
+                    case .failure(_): break
+                        
                     }
                 })
             case 3:
-                execteRequest(router: UserRouter.changeLocation(id: self.user.id, location: newvalue), callbacl: { (res) in
-                    self.user.location = newvalue
-                    self.userlocation.text = newvalue
+                
+                UserRouterMoyaProvider.request(UserRouterMoya.changeLocation(id: self.user.id, location: newvalue), completion: { (result) in
+                    switch result {
+                    case .success(let response):
+                        let json = JSON(data: response.data)
+                        if json["success"].boolValue {
+                            self.user.location = newvalue
+                            self.userlocation.text = newvalue
+                        }else {
+                            fallthrough
+                        }
+                    case .failure:
+                        break
+                    }
                 })
             case 4:
-                
-                execteRequest(router:  UserRouter.changeSignature(id: self.user.id, signature: newvalue), callbacl: { (res) in
-                    self.user.signature = newvalue
-                    self.usersign.text = newvalue
+                UserRouterMoyaProvider.request(UserRouterMoya.changeSignature(id: self.user.id, signature: newvalue), completion: { (result) in
+                    switch result {
+                    case .success(let response):
+                        let json = JSON(data: response.data)
+                        if json["success"].boolValue {
+                            self.user.signature = newvalue
+                            self.usersign.text = newvalue
+                        }else {
+                            fallthrough
+                        }
+                    case .failure:
+                        break
+                    }
                 })
             default:
                 break

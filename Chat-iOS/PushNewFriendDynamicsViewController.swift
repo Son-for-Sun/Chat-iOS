@@ -42,13 +42,18 @@ class PushNewFriendDynamicsViewController: UIViewController {
             return
         }
         if pushvalue.characters.count > 0 {
-            
-            RequestAPI.share.exeRequest(router: FriendDynamics.add(userid: use.id, userName: use.name, userava: use.avatar, vaslue: pushvalue, pushdate: Date().description), completionHandler: { (response) in
-                guard let data = response.data else {
-                    return
+            friendDynamicsProvider.request(FriendDynamics.add(userid: use.id, userName: use.name, userava: use.avatar, vaslue: pushvalue, pushdate: ""), completion: { (result) in
+                switch result {
+                case .success(let response):
+                    let jsondata = JSON(data: response.data)
+                    if jsondata["success"].boolValue {
+                        print("发表成功")
+                    }else {
+                        fallthrough
+                    }
+                case .failure:
+                    break
                 }
-                let jsondata = JSON(data: data)
-                print(jsondata["success"].boolValue)
             })
         }
     }

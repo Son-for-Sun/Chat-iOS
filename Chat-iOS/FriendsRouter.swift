@@ -6,25 +6,29 @@
 //  Copyright © 2016年 xiaolei. All rights reserved.
 //
 
-import Alamofire
 
-enum FriendsRouter: RouterProtocol {
+import Moya
+
+let friendsRouterProvider = MoyaProvider<FriendsRouter>()
+
+enum FriendsRouter {
     
     case addNewFriend(userPhoneNumber:String,friendPhoneNumber:String)
     case deletFriend(userPhoneNumber:String,friendPhoneNumber:String)
-    private var friendsURL:String {
-        return baseURL + "/friend"
-    }
-    
-    var requestURL: String {
+}
+
+extension FriendsRouter: TargetType {
+    var baseURL: URL { return URL(string: "http://localhost:3000/api/friend")! }
+    var path: String {
         switch self {
         case .addNewFriend:
-            return friendsURL + "/newfriend"
+            return "/newfriend"
         case .deletFriend:
-            return friendsURL + "/deleteFriend"
+            return "/deleteFriend"
         }
     }
-    var requestParameters: [String:String]? {
+    var method: Moya.Method { return .POST }
+    var parameters: [String: Any]? {
         switch self {
         case .addNewFriend(let userPhoneNumber, let friendPhoneNumber):
             return ["name1":userPhoneNumber,"name2":friendPhoneNumber]
@@ -32,8 +36,7 @@ enum FriendsRouter: RouterProtocol {
             return ["name1":userPhoneNumber,"name2":friendPhoneNumber]
         }
     }
-    var method: HTTPMethod {
-        return .post
-    }
+    var sampleData: Data { return "yangxiaolei".data(using: String.Encoding.utf8)! }
+    var task: Task { return .request }
 
 }

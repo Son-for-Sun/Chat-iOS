@@ -21,14 +21,19 @@ class ChangeJianJieViewController: UIViewController {
     
     func okChanged() -> Void {
         let value = jianjieTextView.text
-        
-        RequestAPI.share.exeRequest(router: UserRouter.changeProfile(id: user.id, profile: value!)) { (response) in
-            let json = JSON(data: response.data!)
-            if json["success"].boolValue {
-                print("修改成功")
-            }else {
-                print("修改失败")
+        UserRouterMoyaProvider.request(UserRouterMoya.changeProfile(id: user.id, profile: value!)) { (result) in
+            switch result {
+            case .failure(_):
+                break
+            case .success(let response):
+                let json = JSON(data: response.data)
+                if json["success"].boolValue {
+                    print("修改成功")
+                }else {
+                    print("修改失败")
+                }
             }
         }
+
     }
 }

@@ -32,20 +32,25 @@ class LoginViewController: UIViewController {
         guard  !phone.isEmpty && !pass.isEmpty else {
             return
         }
-        
-        RequestAPI.share.exeRequest(router: UserRouter.login(name: phone, pass: pass)) { [unowned self] (response) in
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let user = User(fromData: response.data, context: context)
-    
-            guard let _ = user else {
-                return
+        UserRouterMoyaProvider.request(UserRouterMoya.login(name: phone, pass: pass)) { (result) in
+            switch result {
+            case .success(let responseData):
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                let user = User(fromData: responseData.data, context: context)
+                
+                guard let _ = user else {
+                    return
+                }
+                
+                let defaults = UserDefaults.standard
+                defaults.set(true, forKey: UserDefaultsKeys.isLogin.rawValue)
+                defaults.synchronize()
+                try! context.save()
+                self.navigationController!.popToRootViewController(animated: true)
+                
+            case .failure(_):
+                break
             }
-            
-            let defaults = UserDefaults.standard
-            defaults.set(true, forKey: UserDefaultsKeys.isLogin.rawValue)
-            defaults.synchronize()
-            try! context.save()
-            self.navigationController!.popToRootViewController(animated: true)
         }
     }
     

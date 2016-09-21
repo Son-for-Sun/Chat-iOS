@@ -8,21 +8,32 @@
 
 import Foundation
 import Alamofire
+import Moya
 
-enum FriendDynamics: RouterProtocol {
+let friendDynamicsProvider = MoyaProvider<FriendDynamics>()
+
+enum FriendDynamics {
     
     case add(userid: String, userName: String, userava: String, vaslue: String, pushdate: String)
     case show(pushdate: String)
     
-    var requestURL: String {
+}
+
+extension FriendDynamics: TargetType {
+    var baseURL: URL { return URL(string: "http://localhost:3000/api/life")! }
+    
+    var path: String {
         switch self {
         case .add:
-            return lifeURL + "/newlife"
+            return "/newlife"
         default:
-            return lifeURL + "/selecall"
+            return "/selecall"
         }
     }
-    var requestParameters: [String:String]? {
+    
+    var method: Moya.Method { return .POST }
+    
+    var parameters: [String: Any]? {
         switch self {
         case let .add(userid, userName, userava, vaslue, pushdate):
             return ["userid":userid,"userName":userName,"userava":userava,"vaslue":vaslue,"pushdate":pushdate]
@@ -31,7 +42,6 @@ enum FriendDynamics: RouterProtocol {
             return ["pushdate":pushdate]
         }
     }
-    var method: HTTPMethod { return .post}
-    
-    private var lifeURL: String {return baseURL + "/life"}
+    var sampleData: Data { return "yangxiaoeli".data(using: String.Encoding.utf8)! }
+    var task: Task { return .request }
 }
