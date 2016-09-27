@@ -6,11 +6,10 @@
 //  Copyright © 2016年 xiaolei. All rights reserved.
 //
 
-import Foundation
-import Alamofire
+
 import Moya
 
-let friendDynamicsProvider = MoyaProvider<FriendDynamics>()
+let friendDynamicRXprovider = RxMoyaProvider<FriendDynamics>()
 
 enum FriendDynamics {
     
@@ -18,6 +17,8 @@ enum FriendDynamics {
     case show(pushdate: String)
     
 }
+
+
 
 extension FriendDynamics: TargetType {
     var baseURL: URL { return URL(string: "http://localhost:3000/api/life")! }

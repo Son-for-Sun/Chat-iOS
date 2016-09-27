@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import SwiftyJSON
+import RxSwift
 class PushNewFriendDynamicsViewController: UIViewController {
 
     @IBOutlet weak var pushtextview: UITextView!
@@ -16,6 +17,8 @@ class PushNewFriendDynamicsViewController: UIViewController {
     let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     
     var use: User!
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,19 +45,17 @@ class PushNewFriendDynamicsViewController: UIViewController {
             return
         }
         if pushvalue.characters.count > 0 {
-            friendDynamicsProvider.request(FriendDynamics.add(userid: use.id, userName: use.name, userava: use.avatar, vaslue: pushvalue, pushdate: ""), completion: { (result) in
-                switch result {
-                case .success(let response):
-                    let jsondata = JSON(data: response.data)
-                    if jsondata["success"].boolValue {
-                        print("发表成功")
-                    }else {
-                        fallthrough
-                    }
-                case .failure:
-                    break
+            friendDynamicRXprovider.request(FriendDynamics.add(userid: use.id, userName: use.name, userava: use.avatar, vaslue: pushvalue, pushdate: "")).subscribe(onNext: { (res) in
+                let json = try! res.filterSuccessfulStatusAndRedirectCodes().data
+                let jsondata = JSON(data: json)
+                if jsondata["success"].boolValue {
+                    self.navigationController!.popViewController(animated: true)
+                }else {
+                    self.navigationController!.popViewController(animated: true)
                 }
-            })
+                }, onError: { (error) in
+                    self.navigationController!.popViewController(animated: true)
+                }).addDisposableTo(disposeBag)
         }
     }
     

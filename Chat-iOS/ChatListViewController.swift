@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import CoreData
+import SwiftyJSON
 /// TODO: 聊天列表缓存到本地
 class ChatListViewController:UIViewController {
     

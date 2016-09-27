@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
         UserRouterMoyaProvider.request(UserRouterMoya.login(name: phone, pass: pass)) { (result) in
             switch result {
             case .success(let responseData):
+                
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
                 let user = User(fromData: responseData.data, context: context)
                 
