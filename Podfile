@@ -14,6 +14,6 @@ target 'Chat-iOS' do
   pod 'Moya', '8.0.0-beta.2'
   pod 'Moya/RxSwift'
   pod 'RxSwift', '3.0.0-beta.1'
-  #pod 'RxCocoa', '3.0.0-beta.1'
+  pod 'RxCocoa', '3.0.0-beta.1'
   pod 'MJRefresh'
 end

@@ -7,21 +7,35 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DynamicsValueInformationViewController: UIViewController {
 
+    @IBOutlet weak var leabelte: UILabel!
+    @IBOutlet weak var button: UIButton!
     
+    private let disposeBag = DisposeBag()
     var dynamic: DynamicsModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(dynamic)
-        // Do any additional setup after loading the view.
+        
+
+        button.rx.tap.subscribe { [weak self] (event) in
+            switch event {
+            case .next:
+                self?.leabelte.text = "1"
+            default:
+                break
+            }
+        }.addDisposableTo(disposeBag)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
 
