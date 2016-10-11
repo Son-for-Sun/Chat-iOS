@@ -10,6 +10,11 @@ import UIKit
 import CoreData
 import SwiftyJSON
 import RxSwift
+
+
+protocol PushNewFriendDynamicsDelegate {
+    func didPushNewFriendDynamics()
+}
 class PushNewFriendDynamicsViewController: UIViewController {
 
     @IBOutlet weak var pushtextview: UITextView!
@@ -19,6 +24,8 @@ class PushNewFriendDynamicsViewController: UIViewController {
     var use: User!
     
     let disposeBag = DisposeBag()
+    
+    var delegate: PushNewFriendDynamicsDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +52,13 @@ class PushNewFriendDynamicsViewController: UIViewController {
             return
         }
         if pushvalue.characters.count > 0 {
-            friendDynamicRXprovider.request(FriendDynamics.add(userid: use.id, userName: use.name, userava: use.avatar, vaslue: pushvalue, pushdate: "")).subscribe(onNext: { (res) in
+            friendDynamicRXprovider.request(FriendDynamics.add(userid: use.id, userName: use.name, userava: use.avatar, vaslue: pushvalue, pushdate: Date().description)).subscribe(onNext: { (res) in
                 let json = try! res.filterSuccessfulStatusAndRedirectCodes().data
                 let jsondata = JSON(data: json)
                 if jsondata["success"].boolValue {
+                    self.delegate.didPushNewFriendDynamics()
                     self.navigationController!.popViewController(animated: true)
+                    
                 }else {
                     self.navigationController!.popViewController(animated: true)
                 }

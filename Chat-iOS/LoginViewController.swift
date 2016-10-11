@@ -40,6 +40,7 @@ class LoginViewController: UIViewController {
                 let user = User(fromData: responseData.data, context: context)
                 
                 guard let _ = user else {
+                    print("no user")
                     return
                 }
                 
@@ -50,6 +51,7 @@ class LoginViewController: UIViewController {
                 self.navigationController!.popToRootViewController(animated: true)
                 
             case .failure(_):
+                print(" error ")
                 break
             }
         }

@@ -7,24 +7,25 @@
 //
 
 import UIKit
-import CoreData
 import MJRefresh
 import SwiftyJSON
 import RxSwift
 import Kingfisher
+import Haneke
 ///好友动态，网络获取本地缓存.
 class FriendDynamicsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    let request = NSFetchRequest<DynamicsCache>(entityName: DynamicsCache.entityName)
+
     let disposeBag = DisposeBag()
     var dynamics = [DynamicsModel]() {
         didSet{
             tableView.reloadData()
         }
     }
+    
+    let cache = Shared.dataCache
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class FriendDynamicsViewController: UIViewController {
  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        tableView.mj_header.beginRefreshing()
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,6 +45,9 @@ class FriendDynamicsViewController: UIViewController {
             let index = tableView.indexPathForSelectedRow!
             let dyn = dynamics[index.row]
             vc.dynamic = dyn
+        case "newmoments":
+            let vc = segue.destination as! PushNewFriendDynamicsViewController
+            vc.delegate = self
         default:
             break
         }
@@ -67,18 +71,6 @@ class FriendDynamicsViewController: UIViewController {
     
     /// 下拉刷新时从网络获取数据
     func pullDownFetchData() {
-        request.includesPropertyValues = true
-        request.returnsObjectsAsFaults = false
-        let data = try! context.fetch(request).first
-        
-        guard let isdata = data else {
-            ///如果没有数据那么则直接获取数据
-            fetchDataFormNet()
-            return
-        }
-        ///如果存在缓存，则先删除缓存然后再获取新的数据
-        context.delete(isdata)
-        try! context.save()
         fetchDataFormNet()
     }
     
@@ -102,13 +94,12 @@ class FriendDynamicsViewController: UIViewController {
 
         friendDynamicRXprovider.request(FriendDynamics.show(pushdate: "")).subscribe(onNext: { (response) in
             do {
-                let getResponseObject = try response.filterSuccessfulStatusAndRedirectCodes().mapArray(DynamicsModel.self)
+                let getResponseObject = try response.filterSuccessfulStatusAndRedirectCodes().mapArray(DynamicsModel.self).sorted(by: { (one, two) -> Bool in
+                    return one.pushdate > two.pushdate
+                })
                 self.dynamics = getResponseObject
-                //向CoreData 中缓存数据
-                let cachedes = NSEntityDescription.entity(forEntityName: DynamicsCache.entityName, in: self.context)!
-                let ccache = DynamicsCache(entity: cachedes, insertInto: self.context)
-                ccache.cacheData = response.data
-                try! self.context.save()
+                //缓存数据
+                self.cache.set(value: response.data, key: "FriendDynamicsViewController")
                 self.tableView.mj_header.endRefreshing()
             }catch {
                 self.noDataNoties()
@@ -124,17 +115,23 @@ class FriendDynamicsViewController: UIViewController {
     /// 从缓存中获数据
     ///
     /// - returns: 返回缓存中的数据可能是空值
-    func fetchDataFromCoreData(){
-        request.includesPropertyValues = true
-        request.returnsObjectsAsFaults = false
-        let data = try! context.fetch(request).first
-        let objectArray = data?.cacheData.mapObjectsArray(type: DynamicsModel.self)
+        func fetchDataFromCoreData(){
         
-        guard let resarray = objectArray else {
-            fetchDataFormNet()
-            return
+        cache.fetch(key: "FriendDynamicsViewController").onSuccess {(data) in
+            
+                let objectArray = data.mapObjectsArray(type: DynamicsModel.self)?.sorted(by: { (one, two) -> Bool in
+                    
+                    return one.pushdate > two.pushdate
+                })
+                
+                guard let resarray = objectArray else {
+                    self.fetchDataFormNet()
+                    return
+                }
+                self.dynamics = resarray
+            }.onFailure { _ in
+             self.fetchDataFormNet()
         }
-        self.dynamics = resarray
     }
 }
 
@@ -152,5 +149,11 @@ extension FriendDynamicsViewController: UITableViewDataSource {
         cell.pushvalue.text = value.pushvalue
         cell.userimage.kf.setImage(with: value.userava, placeholder: Image(named: "Mummy Filled"))
         return cell
+    }
+}
+
+extension FriendDynamicsViewController: PushNewFriendDynamicsDelegate {
+    func didPushNewFriendDynamics() {
+        self.tableView.mj_header.beginRefreshing()
     }
 }
