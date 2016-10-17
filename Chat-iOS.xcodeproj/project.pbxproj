@@ -17,7 +17,6 @@
 		AB2C03CD1D8E806D00FC6155 /* ManagedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2C03CC1D8E806D00FC6155 /* ManagedObjectType.swift */; };
 		AB2C03CF1D8F716300FC6155 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2C03CE1D8F716300FC6155 /* User.swift */; };
 		AB675D5B1D91620800B87F11 /* FriendDynamics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB675D5A1D91620800B87F11 /* FriendDynamics.swift */; };
-		AB675D5D1D916DD500B87F11 /* DynamicsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB675D5C1D916DD500B87F11 /* DynamicsCache.swift */; };
 		AB675D5F1D9171AE00B87F11 /* DynamicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB675D5E1D9171AE00B87F11 /* DynamicsModel.swift */; };
 		AB675D611D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB675D601D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift */; };
 		AB675D631D9239A600B87F11 /* DynamicsValueInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB675D621D9239A600B87F11 /* DynamicsValueInformationViewController.swift */; };
@@ -56,7 +55,6 @@
 		AB2C03CC1D8E806D00FC6155 /* ManagedObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectType.swift; sourceTree = "<group>"; };
 		AB2C03CE1D8F716300FC6155 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AB675D5A1D91620800B87F11 /* FriendDynamics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDynamics.swift; sourceTree = "<group>"; };
-		AB675D5C1D916DD500B87F11 /* DynamicsCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicsCache.swift; sourceTree = "<group>"; };
 		AB675D5E1D9171AE00B87F11 /* DynamicsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicsModel.swift; sourceTree = "<group>"; };
 		AB675D601D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNewFriendDynamicsViewController.swift; sourceTree = "<group>"; };
 		AB675D621D9239A600B87F11 /* DynamicsValueInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicsValueInformationViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				AB2C03CA1D8E747800FC6155 /* ChatList.swift */,
 				ABF234021D8FC74200AD1BA2 /* Friend.swift */,
 				AB2C03CE1D8F716300FC6155 /* User.swift */,
-				AB675D5C1D916DD500B87F11 /* DynamicsCache.swift */,
 				AB2C03CC1D8E806D00FC6155 /* ManagedObjectType.swift */,
 			);
 			name = CoreData;
@@ -418,7 +415,6 @@
 				ABC23A761D86C370000FB75A /* ChatViewController.swift in Sources */,
 				ABDA8C231D7030D7008CBE56 /* UserMoreInformationTableViewController.swift in Sources */,
 				AB2C03CB1D8E747800FC6155 /* ChatList.swift in Sources */,
-				AB675D5D1D916DD500B87F11 /* DynamicsCache.swift in Sources */,
 				AB2C03CF1D8F716300FC6155 /* User.swift in Sources */,
 				ABC23A781D8809AF000FB75A /* ResultTest.swift in Sources */,
 				AB2C03CD1D8E806D00FC6155 /* ManagedObjectType.swift in Sources */,

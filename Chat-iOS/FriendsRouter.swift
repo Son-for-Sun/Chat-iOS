@@ -12,7 +12,7 @@ import Moya
 let friendsRouterProvider = MoyaProvider<FriendsRouter>()
 
 enum FriendsRouter {
-    
+    case allFriend(userphonenumber: String)
     case addNewFriend(userPhoneNumber:String,friendPhoneNumber:String)
     case deletFriend(userPhoneNumber:String,friendPhoneNumber:String)
 }
@@ -25,6 +25,8 @@ extension FriendsRouter: TargetType {
             return "/newfriend"
         case .deletFriend:
             return "/deleteFriend"
+        case .allFriend:
+            return "/all"
         }
     }
     var method: Moya.Method { return .POST }
@@ -34,6 +36,8 @@ extension FriendsRouter: TargetType {
             return ["name1":userPhoneNumber,"name2":friendPhoneNumber]
         case .deletFriend(let userPhoneNumber, let friendPhoneNumber):
             return ["name1":userPhoneNumber,"name2":friendPhoneNumber]
+        case .allFriend(let userphonenumber):
+            return ["name":userphonenumber]
         }
     }
     var sampleData: Data { return "yangxiaolei".data(using: String.Encoding.utf8)! }

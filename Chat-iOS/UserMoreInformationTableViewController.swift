@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import CoreData
+import QueryKit
 import SwiftyJSON
+
 class UserMoreInformationTableViewController: UITableViewController {
 
     let defaults = UserDefaults.standard
@@ -24,7 +25,7 @@ class UserMoreInformationTableViewController: UITableViewController {
     
     var user: User!
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let context = dataStack.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,11 +81,8 @@ class UserMoreInformationTableViewController: UITableViewController {
         defaults.set(false, forKey: "isLogin")
         defaults.synchronize()
         //TODO 删除 CoreData 中的 User 表中的数据
-
-        let res = NSFetchRequest<User>(entityName: User.entityName)
-        res.returnsObjectsAsFaults = false
-        let users = try! context.fetch(res).first!
-        context.delete(users)
+        let querySort = QuerySet<User>(context, User.entityName)
+        let _ = try! querySort.delete()
         try! context.save()
         self.navigationController!.popToRootViewController(animated: true)
 

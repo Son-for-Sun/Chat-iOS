@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+import QueryKit
 import SwiftyJSON
 import RxSwift
 
@@ -19,10 +19,10 @@ class PushNewFriendDynamicsViewController: UIViewController {
 
     @IBOutlet weak var pushtextview: UITextView!
     
-    let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    
     
     var use: User!
-    
+    let viewContext = dataStack.viewContext
     let disposeBag = DisposeBag()
     
     var delegate: PushNewFriendDynamicsDelegate!
@@ -31,17 +31,18 @@ class PushNewFriendDynamicsViewController: UIViewController {
         super.viewDidLoad()
         
         title = "发布新的动态"
-        let context = persistentContainer.viewContext
-        let resquest = NSFetchRequest<User>(entityName: User.entityName)
-        resquest.includesPropertyValues = true
-        resquest.returnsObjectsAsFaults = false
-        let users = try! context.fetch(resquest).first
-        guard  let user = users else {
+        let querySort = QuerySet<User>(viewContext, User.entityName)
+        do {
+            let users = try querySort.first()
+            guard  let user = users else {
+                self.navigationController!.popViewController(animated: true)
+                return
+            }
+            use = user
+        }catch {
             self.navigationController!.popViewController(animated: true)
             return
         }
-        
-        use = user
     }
     
     

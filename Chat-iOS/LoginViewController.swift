@@ -36,9 +36,9 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let responseData):
                 
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                let user = User(fromData: responseData.data, context: context)
-                
+                let viewContext = dataStack.viewContext
+                let user = User(fromData: responseData.data, context: viewContext)
+            
                 guard let _ = user else {
                     print("no user")
                     return
@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
                 let defaults = UserDefaults.standard
                 defaults.set(true, forKey: UserDefaultsKeys.isLogin.rawValue)
                 defaults.synchronize()
-                try! context.save()
+                try! viewContext.save()
                 self.navigationController!.popToRootViewController(animated: true)
                 
             case .failure(_):

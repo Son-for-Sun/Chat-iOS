@@ -10,6 +10,14 @@ import Foundation
 import SwiftyJSON
 import Moya
 import RxSwift
+import DATAStack
+
+var dataStack: DATAStack = {
+    let dataStack = DATAStack(modelName: "Chat-iOS")
+    
+    return dataStack
+}()
+
 /// 需要从 JSON 到 Model 转换的模型 来继承这个协议
 protocol ALSwiftyJSONAble {
     

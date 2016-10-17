@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import SwiftyJSON
+import QueryKit
 final class User: NSManagedObject {
     
     @NSManaged var v: String
@@ -34,7 +35,7 @@ final class User: NSManagedObject {
         }
         let json = JSON(data: data)
         
-        guard !json.isEmpty else {
+        guard json.exists() else {
             return nil
         }
         let entity = NSEntityDescription.entity(forEntityName: User.entityName, in: context)
@@ -54,5 +55,10 @@ final class User: NSManagedObject {
 
 extension User: ManagedObjectType {
     static var entityName: String { return "User"}
-//    static var defaultSortDescriptioin: [NSSortDescriptor] {get}
+    
+    static var id:Attribute<String> { return Attribute("id") }
+    static var loginname:Attribute<String> { return Attribute("loginname") }
+    static var name:Attribute<String> { return Attribute("name") }
 }
+
+

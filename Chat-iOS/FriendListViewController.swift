@@ -8,15 +8,15 @@
 
 import UIKit
 import MJRefresh
+import QueryKit
 import CoreData
-
 ///TODO 好友列表，网络获取本地缓存。
 class FriendListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     var fetchedResultsController: NSFetchedResultsController<Friend>!
-    let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+//    let persistentContainer = 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +42,14 @@ class FriendListViewController: UIViewController {
 
 extension FriendListViewController {
     func setUpFetchResultsController() {
-        let fetchRequest = NSFetchRequest<Friend>(entityName: Friend.entityName)
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        let querySort = QuerySet<Friend>(dataStack.mainContext, Friend.entityName).orderBy(sortDescriptor)
+        let fetchRequest = querySort.fetchRequest
         fetchRequest.sortDescriptors = [sortDescriptor]
         fetchRequest.returnsObjectsAsFaults = false
         fetchRequest.includesPropertyValues = true
         fetchRequest.fetchBatchSize = 5
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
