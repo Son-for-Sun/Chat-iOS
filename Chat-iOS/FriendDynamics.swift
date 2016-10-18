@@ -10,7 +10,7 @@
 import Moya
 
 let friendDynamicRXprovider = RxMoyaProvider<FriendDynamics>()
-
+let friendDynamicProvider = MoyaProvider<FriendDynamics>()
 enum FriendDynamics {
     
     case add(userid: String, userName: String, userava: String, vaslue: String, pushdate: String)

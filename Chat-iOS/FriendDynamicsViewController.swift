@@ -9,21 +9,15 @@
 import UIKit
 import MJRefresh
 import SwiftyJSON
-import RxSwift
 import Kingfisher
 import Haneke
+import PromiseKit
 ///好友动态，网络获取本地缓存.
 class FriendDynamicsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-
-    let disposeBag = DisposeBag()
-    var dynamics = [DynamicsModel]() {
-        didSet{
-            tableView.reloadData()
-        }
-    }
+    var dynamics = [DynamicsModel]()
     
     let cache = Shared.dataCache
     
@@ -35,7 +29,7 @@ class FriendDynamicsViewController: UIViewController {
  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,50 +82,39 @@ class FriendDynamicsViewController: UIViewController {
     func noDataNoties() {
         print("发生了错误")
     }
-    
+    func tabled(array: [DynamicsModel]) -> Promise<Void> {
+        return Promise{ fulfill, reject in
+            self.dynamics = array.sorted{$0.0.pushdate > $0.1.pushdate}
+            fulfill()
+        }
+    }
     /// 从网络中获取数据
     func fetchDataFormNet() {
-
-        friendDynamicRXprovider.request(FriendDynamics.show(pushdate: "")).subscribe(onNext: { (response) in
-            do {
-                let getResponseObject = try response.filterSuccessfulStatusAndRedirectCodes().mapArray(DynamicsModel.self).sorted(by: { (one, two) -> Bool in
-                    return one.pushdate > two.pushdate
-                })
-                self.dynamics = getResponseObject
-                //缓存数据
-                self.cache.set(value: response.data, key: "FriendDynamicsViewController")
+            friendDynamicProvider
+            .request(FriendDynamics.show(pushdate: "dd"))
+            .then{ Shared.dataCache.set(data: $0.data, key: "FriendDynamics")}
+            .then{ $0.mapObjectsArray(type: DynamicsModel.self) }
+            .then{ self.tabled(array: $0) }
+            .always {
                 self.tableView.mj_header.endRefreshing()
-            }catch {
-                self.noDataNoties()
-                self.tableView.mj_header.endRefreshing()
+                self.tableView.reloadData()
             }
-            }, onError: { (error) in
-                self.noDataNoties()
-                self.tableView.mj_header.endRefreshing()
-            }).addDisposableTo(disposeBag)
-
     }
     
     /// 从缓存中获数据
     ///
     /// - returns: 返回缓存中的数据可能是空值
         func fetchDataFromCoreData(){
-        
-        cache.fetch(key: "FriendDynamicsViewController").onSuccess {(data) in
-            
-                let objectArray = data.mapObjectsArray(type: DynamicsModel.self)?.sorted(by: { (one, two) -> Bool in
-                    
-                    return one.pushdate > two.pushdate
+            _ = cache
+                .fetch("FriendDynamics")
+                .recover(execute: { (_) -> Promise<Data> in
+                    return friendDynamicProvider
+                        .request(FriendDynamics.show(pushdate: ""))
+                        .then{ Shared.dataCache.set(data: $0.data, key: "FriendDynamics")}
                 })
-                
-                guard let resarray = objectArray else {
-                    self.fetchDataFormNet()
-                    return
-                }
-                self.dynamics = resarray
-            }.onFailure { _ in
-             self.fetchDataFormNet()
-        }
+                .then{ $0.mapObjectsArray(type: DynamicsModel.self) }
+                .then{ self.tabled(array: $0)}
+                .always { self.tableView.reloadData()}
     }
 }
 

@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct DynamicsModel: ALSwiftyJSONAble {
+struct DynamicsModel: SwiftyJSONAble {
     
     /// 用户ID
     var userid: String
