@@ -26,7 +26,6 @@
 		AB7F56031D6F0696005303C5 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56021D6F0696005303C5 /* RootTabBarViewController.swift */; };
 		AB7F56061D6F0875005303C5 /* FriendDynamicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56051D6F0875005303C5 /* FriendDynamicsViewController.swift */; };
 		AB7F56131D6FCA58005303C5 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56121D6FCA58005303C5 /* UserRouter.swift */; };
-		AB7F56161D6FD457005303C5 /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56151D6FD457005303C5 /* RequestAPI.swift */; };
 		AB7F56191D7011FA005303C5 /* LeftMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56181D7011FA005303C5 /* LeftMenuTableViewCell.swift */; };
 		AB885C061D9A0EB500FBD1BF /* FriendDynamicsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB885C051D9A0EB500FBD1BF /* FriendDynamicsTableViewCell.swift */; };
 		AB885C081D9A221C00FBD1BF /* SwiftExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB885C071D9A221C00FBD1BF /* SwiftExtention.swift */; };
@@ -64,7 +63,6 @@
 		AB7F56021D6F0696005303C5 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
 		AB7F56051D6F0875005303C5 /* FriendDynamicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDynamicsViewController.swift; sourceTree = "<group>"; };
 		AB7F56121D6FCA58005303C5 /* UserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
-		AB7F56151D6FD457005303C5 /* RequestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestAPI.swift; sourceTree = "<group>"; };
 		AB7F56181D7011FA005303C5 /* LeftMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuTableViewCell.swift; sourceTree = "<group>"; };
 		AB885C051D9A0EB500FBD1BF /* FriendDynamicsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDynamicsTableViewCell.swift; sourceTree = "<group>"; };
 		AB885C071D9A221C00FBD1BF /* SwiftExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtention.swift; sourceTree = "<group>"; };
@@ -198,14 +196,6 @@
 			name = Routers;
 			sourceTree = "<group>";
 		};
-		AB7F56141D6FD42D005303C5 /* ExeAPIRequest */ = {
-			isa = PBXGroup;
-			children = (
-				AB7F56151D6FD457005303C5 /* RequestAPI.swift */,
-			);
-			name = ExeAPIRequest;
-			sourceTree = "<group>";
-		};
 		AB7F56171D7011CE005303C5 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,7 +238,6 @@
 				ABC23A6F1D86780D000FB75A /* Commit */,
 				AB05C2FA1D75692400C60D8D /* Model */,
 				AB7F56171D7011CE005303C5 /* CustomCell */,
-				AB7F56141D6FD42D005303C5 /* ExeAPIRequest */,
 				AB7F56111D6FCA3C005303C5 /* Routers */,
 				AB7F56041D6F0854005303C5 /* FriendDynamics */,
 				AB7F55FF1D6F05E6005303C5 /* NavigationAndTabar */,
@@ -422,7 +411,6 @@
 				AB675D611D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift in Sources */,
 				AB885C081D9A221C00FBD1BF /* SwiftExtention.swift in Sources */,
 				ABC933771D77D10A0039BEB7 /* FriendListTableViewCell.swift in Sources */,
-				AB7F56161D6FD457005303C5 /* RequestAPI.swift in Sources */,
 				AB675D5F1D9171AE00B87F11 /* DynamicsModel.swift in Sources */,
 				ABE495BF1D6DBF180005CA71 /* AppDelegate.swift in Sources */,
 				ABF234031D8FC74200AD1BA2 /* Friend.swift in Sources */,

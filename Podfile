@@ -15,6 +15,7 @@ target 'Chat-iOS' do
   pod 'Moya/RxSwift'
   pod 'RxSwift', '3.0.0-beta.1'
   pod 'RxCocoa', '3.0.0-beta.1'
+  pod 'PromiseKit', '~> 4.0'
   pod 'MJRefresh'
   pod 'HanekeSwift' , :git => 'https://github.com/Haneke/HanekeSwift.git', :branch => 'feature/swift-3'
   

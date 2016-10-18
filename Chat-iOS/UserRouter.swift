@@ -9,9 +9,56 @@
 import Foundation
 import Moya
 import Alamofire
-
-
+import PromiseKit
+import SwiftyJSON
 let UserRouterMoyaProvider = MoyaProvider<UserRouterMoya>()
+
+extension MoyaProvider {
+    
+    /// 结合 PromiseKit 获取 moyaProvider 请求
+    ///
+    /// - parameter target: 请求的目标
+    ///
+    /// - returns: Promise<Data>
+    func request(_ target: Target) -> Promise<Data> {
+        
+        return Promise(resolvers: { (fulfill, reject) in
+            self.request(target) { (result) in
+                switch result {
+                case .success(let value):
+                    return fulfill(value.data)
+                case .failure(let error):
+                    return reject(error)
+                }
+            }
+        })
+    }
+}
+extension Response {
+    func mapJSON(data: Data) -> Promise<JSON> {
+        
+        return Promise{ fulfill, reject in
+            do {
+                let any = try self.mapJSON()
+                let json = JSON(any)
+                fulfill(json)
+            }catch {
+                reject(NSError())
+            }
+        }
+    }
+    
+    func mapObject<T: ALSwiftyJSONAble>(json: JSON) -> Promise<T> {
+        return Promise{ fulfill, reject in
+            do {
+                let object = try mapObject(T.self)
+                fulfill(object)
+            }catch {
+                reject(NSError())
+            }
+        }
+    }
+}
 
 enum UserRouterMoya {
     case login(name: String, pass: String)

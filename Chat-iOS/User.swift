@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import SwiftyJSON
 import QueryKit
+
 final class User: NSManagedObject {
     
     @NSManaged var v: String

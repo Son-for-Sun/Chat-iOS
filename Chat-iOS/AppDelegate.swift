@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import CoreData
-import DATAStack
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,11 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         saveContext()
     }
-
     func saveContext() {
         dataStack.performInNewBackgroundContext { (back) in
             try? back.save()
         }
     }
+    
 }
 
