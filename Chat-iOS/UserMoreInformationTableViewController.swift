@@ -79,6 +79,7 @@ class UserMoreInformationTableViewController: UITableViewController {
     func sectionThree(indxPath:IndexPath) {
         
         defaults.set(false, forKey: "isLogin")
+        defaults.set(nil, forKey: "uesrname")
         defaults.synchronize()
         //TODO 删除 CoreData 中的 User 表中的数据
         let querySort = QuerySet<User>(context, User.entityName)

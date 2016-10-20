@@ -90,7 +90,7 @@ class FriendDynamicsViewController: UIViewController {
     }
     /// 从网络中获取数据
     func fetchDataFormNet() {
-            friendDynamicProvider
+        _ = friendDynamicProvider
             .request(FriendDynamics.show(pushdate: "dd"))
             .then{ Shared.dataCache.set(data: $0.data, key: "FriendDynamics")}
             .then{ $0.mapObjectsArray(type: DynamicsModel.self) }

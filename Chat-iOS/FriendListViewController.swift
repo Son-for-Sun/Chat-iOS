@@ -8,23 +8,55 @@
 
 import UIKit
 import MJRefresh
-import QueryKit
-import CoreData
+
 ///TODO 好友列表，网络获取本地缓存。
 class FriendListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var fetchedResultsController: NSFetchedResultsController<Friend>!
-//    let persistentContainer = 
-    
+   
+    var friends = [Friend]()
+    var friendslist = [FriendsList]()
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpFetchResultsController()
-    }
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = segue.identifier else {
+            return
+        }
+        switch id {
+        case "gofriendinformation":
+            let vc = segue.destination as! FriendInformationViewController
+            let index = tableView.indexPathForSelectedRow!
+            vc.friend = friends[index.row]
+        default:
+            break
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        _ = friendsRouterProvider.request(FriendsRouter.allFriend(userphonenumber: defaults.string(forKey: UserDefaultsKeys.userName.rawValue) ?? ""))
+            .then{$0.mapObjectArrayPromise(type: FriendsList.self)}
+            .then{self.friendslist = $0 }
+            .always {
+                self.friends = []
+                self.friendslist.forEach{
+                    _ = UserRouterMoyaProvider.request(UserRouterMoya.showUser(name: $0.name))
+                        .then{ $0.mapObjectPromise(type: Friend.self) }
+                        .then{ self.friends.append($0)}
+                        .always {
+                        self.tableView.reloadData()
+                    }
+                }
+                
+            }
+    }
     @IBAction func friendToAbout(_ sender: AnyObject) {
-        let defaults = UserDefaults.standard
+        
         if !defaults.bool(forKey: UserDefaultsKeys.isLogin.rawValue) {
             let vc = storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
             self.navigationController?.pushViewController(vc, animated: true)
@@ -38,50 +70,9 @@ class FriendListViewController: UIViewController {
 
 }
 
-//MARK: Function
 
-extension FriendListViewController {
-    func setUpFetchResultsController() {
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        let querySort = QuerySet<Friend>(dataStack.mainContext, Friend.entityName).orderBy(sortDescriptor)
-        let fetchRequest = querySort.fetchRequest
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchRequest.returnsObjectsAsFaults = false
-        fetchRequest.includesPropertyValues = true
-        fetchRequest.fetchBatchSize = 5
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
-        do {
-            try fetchedResultsController.performFetch()
-        }catch let error as NSError{
-            print(error.description)
-        }
-        
-    }
-}
 
-//MARK: NSFetchedResultsControllerDelegate
-extension FriendListViewController: NSFetchedResultsControllerDelegate {
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-    
 
-    
-}
 
 //MARK: UITableViewDataSource
 extension FriendListViewController: UITableViewDataSource {
@@ -91,23 +82,16 @@ extension FriendListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let sections = fetchedResultsController.sections
-        guard let sectionss = sections else {
-            return 0
-        }
-        return sectionss[section].numberOfObjects
+            return friends.count
+
     }
-    
+//
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsCell", for: indexPath) as! FriendListTableViewCell
         
-        let friend = fetchedResultsController.object(at: indexPath)
+        let friend = friends[indexPath.row]
         cell.setupCell(userPhotoURL: friend.avatar, userName: friend.name)
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        let sectioninfor = fetchedResultsController.sections?[section]
-//        return sectioninfor?.name
-//    }
+
 }

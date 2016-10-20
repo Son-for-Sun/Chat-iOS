@@ -9,49 +9,45 @@
 import Foundation
 import CoreData
 import SwiftyJSON
-class Friend: NSManagedObject {
+
+
+struct FriendsList: SwiftyJSONAble {
+    var name: String
     
-    @NSManaged var v: String
-    @NSManaged var id: String
-    @NSManaged var avatar: String
-    @NSManaged var email: String
-    @NSManaged var location: String
-    @NSManaged var loginname: String
-    @NSManaged var name: String
-    @NSManaged var pass: String
-    @NSManaged var profile: String
-    @NSManaged var signature: String
-    @NSManaged var own: User?
-    
-    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertInto: context)
-    }
-    
-    init?(fromData data: Data?, context: NSManagedObjectContext){
-        guard let data = data else {
+    init?(jsonData:SwiftyJSON.JSON) {
+        guard let  name = jsonData["friend"].string else {
             return nil
         }
-        let json = JSON(data: data)
-        
-        guard !json.isEmpty else {
-            return nil
-        }
-        let entity = NSEntityDescription.entity(forEntityName: User.entityName, in: context)
-        super.init(entity: entity!, insertInto: context)
-        v = json["__v"].stringValue
-        id = json["_id"].stringValue
-        avatar = json["avatar"].stringValue
-        email = json["email"].stringValue
-        location = json["location"].stringValue
-        loginname = json["loginname"].stringValue
-        name = json["name"].stringValue
-        pass = json["pass"].stringValue
-        profile = json["profile"].stringValue
-        signature = json["signature"].stringValue
+        self.name = name
     }
+}
+
+struct Friend: SwiftyJSONAble {
+    
+     var v: String
+     var id: String
+     var avatar: String
+     var email: String
+     var location: String
+     var loginname: String
+     var name: String
+     var pass: String
+     var profile: String
+     var signature: String
+    
+     init?(jsonData:SwiftyJSON.JSON) {
+        v = jsonData["__v"].stringValue
+        id = jsonData["_id"].stringValue
+        avatar = jsonData["avatar"].stringValue
+        email = jsonData["email"].stringValue
+        location = jsonData["location"].stringValue
+        loginname = jsonData["loginname"].stringValue
+        name = jsonData["name"].stringValue
+        pass = jsonData["pass"].stringValue
+        profile = jsonData["profile"].stringValue
+        signature = jsonData["signature"].stringValue
+    }
+
 
 }
 
-extension Friend: ManagedObjectType {
-    static var entityName: String { return "Friend"}
-}

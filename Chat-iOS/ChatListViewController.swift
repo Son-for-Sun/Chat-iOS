@@ -7,15 +7,14 @@
 //
 
 import UIKit
-import Alamofire
-import CoreData
-import SwiftyJSON
-/// TODO: 聊天列表缓存到本地
+import SocketIO
+
 class ChatListViewController:UIViewController {
     
 
     @IBOutlet weak var tableView: UITableView!
-
+    
+    let socket = SocketIOClient(socketURL: URL(string: "http://localhost:3000")!, config: [.log(true), .forcePolling(true)])
     
     
     var chatList = [ChatList]()
@@ -23,6 +22,15 @@ class ChatListViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
+        
+        socket.emit("new user", "yangxiaolei")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        socket.on("usernames") { (data, ack) in
+            print(data)
+        }
+
     }
 
 @IBAction func chatToAbout(_ sender: UIBarButtonItem) {

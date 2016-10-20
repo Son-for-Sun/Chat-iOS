@@ -23,7 +23,7 @@ final class User: NSManagedObject {
     @NSManaged var pass: String
     @NSManaged var profile: String
     @NSManaged var signature: String
-    @NSManaged var friend: Set<Friend>?
+    
     
    
     override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {

@@ -15,6 +15,9 @@ enum FriendsRouter {
     case allFriend(userphonenumber: String)
     case addNewFriend(userPhoneNumber:String,friendPhoneNumber:String)
     case deletFriend(userPhoneNumber:String,friendPhoneNumber:String)
+    case notefriend(userphonenumber: String)
+    case noteagree(userphonenumber: String)
+    case agereefriend(userPhoneNumber:String,friendPhoneNumber:String)
 }
 
 extension FriendsRouter: TargetType {
@@ -27,6 +30,12 @@ extension FriendsRouter: TargetType {
             return "/deleteFriend"
         case .allFriend:
             return "/all"
+        case .noteagree:
+            return "/noteagree"
+        case .notefriend:
+            return "/notefriend"
+        case .agereefriend:
+            return "/agereefriend"
         }
     }
     var method: Moya.Method { return .POST }
@@ -38,6 +47,12 @@ extension FriendsRouter: TargetType {
             return ["name1":userPhoneNumber,"name2":friendPhoneNumber]
         case .allFriend(let userphonenumber):
             return ["name":userphonenumber]
+        case .noteagree(let userphonenumber):
+            return ["name": userphonenumber]
+        case .notefriend(let userphonenumber):
+            return ["name": userphonenumber]
+        case .agereefriend(let userPhoneNumber, let friendPhoneNumber):
+            return ["name1":userPhoneNumber,"name2":friendPhoneNumber]
         }
     }
     var sampleData: Data { return "yangxiaolei".data(using: String.Encoding.utf8)! }

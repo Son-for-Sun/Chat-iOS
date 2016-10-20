@@ -40,13 +40,14 @@ class LoginViewController: UIViewController {
                 let viewContext = dataStack.viewContext
                 let user = User(fromData: responseData.data, context: viewContext)
             
-                guard let _ = user else {
+                guard let u = user else {
                     print("no user")
                     return
                 }
                 
                 let defaults = UserDefaults.standard
                 defaults.set(true, forKey: UserDefaultsKeys.isLogin.rawValue)
+                defaults.set(u.loginname, forKey: UserDefaultsKeys.userName.rawValue)
                 defaults.synchronize()
                 try! viewContext.save()
                 self.navigationController!.popToRootViewController(animated: true)

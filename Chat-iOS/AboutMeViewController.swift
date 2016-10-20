@@ -40,7 +40,7 @@ class AboutMeViewController: UIViewController {
         do {
             
             let users = try querySet.first()
-            print(users)
+            
             guard let user = users else {
                 
                 return
@@ -58,14 +58,14 @@ class AboutMeViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-//        if user.hasChanges {
-//            try! viewContext.save()
-//            name.text = user.name
-//            sign.text = user.signature
-//            emaillabel.text = user.email
-//            phonenumber.text = user.loginname
-//            profiletextview.text = user.profile
-//        }
+        if user.hasChanges {
+            try! viewContext.save()
+            name.text = user.name
+            sign.text = user.signature
+            emaillabel.text = user.email
+            phonenumber.text = user.loginname
+            profiletextview.text = user.profile
+        }
     }
     func tapBackImageAction() {
         print("更换背景图")
