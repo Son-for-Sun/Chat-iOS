@@ -18,9 +18,7 @@
 		AB2C03CF1D8F716300FC6155 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2C03CE1D8F716300FC6155 /* User.swift */; };
 		AB621D991DB7514F0083142C /* FriendInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB621D981DB7514F0083142C /* FriendInformationViewController.swift */; };
 		AB675D5B1D91620800B87F11 /* FriendDynamics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB675D5A1D91620800B87F11 /* FriendDynamics.swift */; };
-		AB675D5F1D9171AE00B87F11 /* DynamicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB675D5E1D9171AE00B87F11 /* DynamicsModel.swift */; };
 		AB675D611D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB675D601D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift */; };
-		AB675D631D9239A600B87F11 /* DynamicsValueInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB675D621D9239A600B87F11 /* DynamicsValueInformationViewController.swift */; };
 		AB7F55F81D6F0474005303C5 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F55F71D6F0474005303C5 /* ChatListViewController.swift */; };
 		AB7F55FA1D6F0483005303C5 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F55F91D6F0483005303C5 /* FriendListViewController.swift */; };
 		AB7F55FC1D6F04B4005303C5 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F55FB1D6F04B4005303C5 /* AboutMeViewController.swift */; };
@@ -30,6 +28,8 @@
 		AB7F56191D7011FA005303C5 /* LeftMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F56181D7011FA005303C5 /* LeftMenuTableViewCell.swift */; };
 		AB885C061D9A0EB500FBD1BF /* FriendDynamicsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB885C051D9A0EB500FBD1BF /* FriendDynamicsTableViewCell.swift */; };
 		AB885C081D9A221C00FBD1BF /* SwiftExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB885C071D9A221C00FBD1BF /* SwiftExtention.swift */; };
+		AB88A2401E1D045A009A2515 /* DynamicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB88A23F1E1D045A009A2515 /* DynamicsModel.swift */; };
+		AB88A2421E1D04CD009A2515 /* DynamicsValueInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB88A2411E1D04CD009A2515 /* DynamicsValueInformationViewController.swift */; };
 		ABC23A711D867835000FB75A /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC23A701D867835000FB75A /* UserDefaultsKeys.swift */; };
 		ABC23A741D869A0C000FB75A /* ChangeJianJieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC23A731D869A0C000FB75A /* ChangeJianJieViewController.swift */; };
 		ABC23A761D86C370000FB75A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC23A751D86C370000FB75A /* ChatViewController.swift */; };
@@ -56,9 +56,7 @@
 		AB2C03CE1D8F716300FC6155 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AB621D981DB7514F0083142C /* FriendInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendInformationViewController.swift; sourceTree = "<group>"; };
 		AB675D5A1D91620800B87F11 /* FriendDynamics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDynamics.swift; sourceTree = "<group>"; };
-		AB675D5E1D9171AE00B87F11 /* DynamicsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicsModel.swift; sourceTree = "<group>"; };
 		AB675D601D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNewFriendDynamicsViewController.swift; sourceTree = "<group>"; };
-		AB675D621D9239A600B87F11 /* DynamicsValueInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicsValueInformationViewController.swift; sourceTree = "<group>"; };
 		AB7F55F71D6F0474005303C5 /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		AB7F55F91D6F0483005303C5 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		AB7F55FB1D6F04B4005303C5 /* AboutMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +66,8 @@
 		AB7F56181D7011FA005303C5 /* LeftMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuTableViewCell.swift; sourceTree = "<group>"; };
 		AB885C051D9A0EB500FBD1BF /* FriendDynamicsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDynamicsTableViewCell.swift; sourceTree = "<group>"; };
 		AB885C071D9A221C00FBD1BF /* SwiftExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtention.swift; sourceTree = "<group>"; };
+		AB88A23F1E1D045A009A2515 /* DynamicsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicsModel.swift; sourceTree = "<group>"; };
+		AB88A2411E1D04CD009A2515 /* DynamicsValueInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicsValueInformationViewController.swift; sourceTree = "<group>"; };
 		ABC23A701D867835000FB75A /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		ABC23A731D869A0C000FB75A /* ChangeJianJieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeJianJieViewController.swift; sourceTree = "<group>"; };
 		ABC23A751D86C370000FB75A /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -111,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				AB2C03C61D8E736100FC6155 /* CoreData */,
-				AB675D5E1D9171AE00B87F11 /* DynamicsModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -119,6 +118,7 @@
 		AB2C03C61D8E736100FC6155 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				AB88A23F1E1D045A009A2515 /* DynamicsModel.swift */,
 				AB2C03C71D8E739000FC6155 /* Chat-iOS.xcdatamodeld */,
 				AB2C03CA1D8E747800FC6155 /* ChatList.swift */,
 				ABF234021D8FC74200AD1BA2 /* Friend.swift */,
@@ -183,7 +183,7 @@
 			children = (
 				AB7F56051D6F0875005303C5 /* FriendDynamicsViewController.swift */,
 				AB885C051D9A0EB500FBD1BF /* FriendDynamicsTableViewCell.swift */,
-				AB675D621D9239A600B87F11 /* DynamicsValueInformationViewController.swift */,
+				AB88A2411E1D04CD009A2515 /* DynamicsValueInformationViewController.swift */,
 				AB675D601D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift */,
 			);
 			name = FriendDynamics;
@@ -387,7 +387,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB675D631D9239A600B87F11 /* DynamicsValueInformationViewController.swift in Sources */,
 				AB7F56131D6FCA58005303C5 /* UserRouter.swift in Sources */,
 				AB7F56191D7011FA005303C5 /* LeftMenuTableViewCell.swift in Sources */,
 				AB675D5B1D91620800B87F11 /* FriendDynamics.swift in Sources */,
@@ -399,12 +398,14 @@
 				ABC23A741D869A0C000FB75A /* ChangeJianJieViewController.swift in Sources */,
 				AB7F55FC1D6F04B4005303C5 /* AboutMeViewController.swift in Sources */,
 				AB05C3001D75A99200C60D8D /* FriendsRouter.swift in Sources */,
+				AB88A2401E1D045A009A2515 /* DynamicsModel.swift in Sources */,
 				AB2C03C91D8E739000FC6155 /* Chat-iOS.xcdatamodeld in Sources */,
 				AB7F56031D6F0696005303C5 /* RootTabBarViewController.swift in Sources */,
 				AB885C061D9A0EB500FBD1BF /* FriendDynamicsTableViewCell.swift in Sources */,
 				AB7F56061D6F0875005303C5 /* FriendDynamicsViewController.swift in Sources */,
 				ABC23A711D867835000FB75A /* UserDefaultsKeys.swift in Sources */,
 				ABC23A761D86C370000FB75A /* ChatViewController.swift in Sources */,
+				AB88A2421E1D04CD009A2515 /* DynamicsValueInformationViewController.swift in Sources */,
 				ABDA8C231D7030D7008CBE56 /* UserMoreInformationTableViewController.swift in Sources */,
 				AB2C03CB1D8E747800FC6155 /* ChatList.swift in Sources */,
 				AB2C03CF1D8F716300FC6155 /* User.swift in Sources */,
@@ -415,7 +416,6 @@
 				AB675D611D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift in Sources */,
 				AB885C081D9A221C00FBD1BF /* SwiftExtention.swift in Sources */,
 				ABC933771D77D10A0039BEB7 /* FriendListTableViewCell.swift in Sources */,
-				AB675D5F1D9171AE00B87F11 /* DynamicsModel.swift in Sources */,
 				ABE495BF1D6DBF180005CA71 /* AppDelegate.swift in Sources */,
 				ABF234031D8FC74200AD1BA2 /* Friend.swift in Sources */,
 			);

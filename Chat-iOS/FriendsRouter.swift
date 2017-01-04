@@ -38,7 +38,7 @@ extension FriendsRouter: TargetType {
             return "/agereefriend"
         }
     }
-    var method: Moya.Method { return .POST }
+    var method: Moya.Method { return .post }
     var parameters: [String: Any]? {
         switch self {
         case .addNewFriend(let userPhoneNumber, let friendPhoneNumber):

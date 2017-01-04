@@ -35,7 +35,7 @@ final class User: NSManagedObject {
             return nil
         }
         let json = JSON(data: data)
-        
+
         guard json.exists() else {
             return nil
         }

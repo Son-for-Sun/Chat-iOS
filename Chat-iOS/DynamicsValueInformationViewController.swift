@@ -8,7 +8,7 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
+//import RxCocoa
 
 class DynamicsValueInformationViewController: UIViewController {
 
@@ -22,14 +22,14 @@ class DynamicsValueInformationViewController: UIViewController {
         super.viewDidLoad()
         
 
-        button.rx.tap.subscribe { [weak self] (event) in
-            switch event {
-            case .next:
-                self?.leabelte.text = "1"
-            default:
-                break
-            }
-        }.addDisposableTo(disposeBag)
+//        button.rx.tap.subscribe { [weak self] (event) in
+//            switch event {
+//            case .next:
+//                self?.leabelte.text = "1"
+//            default:
+//                break
+//            }
+//        }.addDisposableTo(disposeBag)
         
     }
 

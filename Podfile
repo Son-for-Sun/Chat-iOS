@@ -9,13 +9,14 @@ target 'Chat-iOS' do
   # Pods for Chat-iOS
   
   pod 'SwiftyJSON'
-  pod 'Kingfisher', '~> 3.0'
+  pod 'Kingfisher'
   pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift.git', :branch => 'development'
-  pod 'Moya', '8.0.0-beta.2'
+  pod 'URLNavigator'
+  pod 'Moya', '8.0.0-beta.6'
   pod 'Moya/RxSwift'
-  pod 'RxSwift', '3.0.0-beta.1'
-  pod 'RxCocoa', '3.0.0-beta.1'
-  pod 'PromiseKit', '~> 4.0'
+#  pod 'RxSwift'
+#  pod 'RxCocoa'
+  pod 'PromiseKit'
   pod 'MJRefresh'
   pod 'HanekeSwift' , :git => 'https://github.com/Haneke/HanekeSwift.git', :branch => 'feature/swift-3'
   

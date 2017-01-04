@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func applicationWillTerminate(_ application: UIApplication) {
+        
         saveContext()
     }
     func saveContext() {

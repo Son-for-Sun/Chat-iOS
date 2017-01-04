@@ -11,7 +11,6 @@ import Moya
 import Alamofire
 import PromiseKit
 import SwiftyJSON
-let UserRouterMoyaProvider = MoyaProvider<UserRouterMoya>()
 
 enum UserRouterMoya {
     case login(name: String, pass: String)
@@ -27,16 +26,16 @@ enum UserRouterMoya {
 
 extension UserRouterMoya: TargetType {
     var baseURL: URL {
-        return URL(string: "http://localhost:3000/api/user")!
+        return URL(string: "http://localhost:8181/v1/users")!
     }
     var path: String {
         switch self {
         case .login:
             return  "/login"
         case .showUser(let name):
-            return "/\(name)"
+            return "byname/\(name)"
         case .newUser:
-            return "/newUser"
+            return "/newuser"
         case .changeName:
             return "/newname"
         case .changePass:
@@ -54,9 +53,9 @@ extension UserRouterMoya: TargetType {
     var method: Moya.Method {
         switch self {
         case .showUser:
-            return .GET
+            return .get
         default:
-            return .POST
+            return .post
         }
     }
     var parameters: [String: Any]? {
@@ -86,4 +85,6 @@ extension UserRouterMoya: TargetType {
     var task: Task { return .request }
 }
 
+let UserRouterMoyaProvider = MoyaProvider<UserRouterMoya>()
+//let end = UserRouterMoyaProvider.endpoint(UserRouterMoya.changeAvatar(id: "", avatar: "")).endpointByAddingHTTPHeaderFields(["":""])
 
