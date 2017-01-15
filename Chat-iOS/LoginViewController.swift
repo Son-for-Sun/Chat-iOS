@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
                 
                 let viewContext = dataStack.viewContext
                 let user = User(fromData: responseData.data, context: viewContext)
-            
+                
                 guard let u = user else {
                     print("no user")
                     return

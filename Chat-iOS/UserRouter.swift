@@ -37,17 +37,17 @@ extension UserRouterMoya: TargetType {
         case .newUser:
             return "/newuser"
         case .changeName:
-            return "/newname"
+            return "/changeName"
         case .changePass:
-            return "/changepass"
+            return "/changePass"
         case .changeAvatar:
-            return "/updateavatar"
+            return "/changeAvatar"
         case .changeLocation:
-            return "/updatelocation"
+            return "/changeLocation"
         case .changeSignature:
-            return "/updatesignature"
+            return "/changeSignature"
         case .changeProfile:
-            return "/updatepro"
+            return "/changeProfile"
         }
     }
     var method: Moya.Method {
@@ -66,16 +66,17 @@ extension UserRouterMoya: TargetType {
             return nil
         case let .newUser(name, pass, phoneNum, email):
             return ["name":name,"pass":pass,"loginname":phoneNum,"email":email]
+        
         case let .changeName(id, newName):
-            return ["id":id,"newname":newName]
+            return ["id":id,"name":newName]
         case let .changePass(phoneNumber, newPass):
-            return ["loginname":phoneNumber,"newpass":newPass]
+            return ["loginname":phoneNumber,"pass":newPass]
         case let .changeAvatar(id, avatar):
-            return ["id":id,"newavatar":avatar]
+            return ["id":id,"avatar":avatar]
         case let .changeLocation(id, location):
-            return ["id":id,"newlocation":location]
+            return ["id":id,"location":location]
         case let .changeSignature(id, signature):
-            return ["id":id,"newsignature":signature]
+            return ["id":id,"signature":signature]
         case let .changeProfile(id, profile):
             return ["id":id,"profile":profile]
         }

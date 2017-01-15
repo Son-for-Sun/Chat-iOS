@@ -36,13 +36,14 @@ final class User: NSManagedObject {
         }
         let json = JSON(data: data)
 
-        guard json.exists() else {
+        guard json["error"].boolValue != true else {
             return nil
         }
+      
         let entity = NSEntityDescription.entity(forEntityName: User.entityName, in: context)
         super.init(entity: entity!, insertInto: context)
         v = json["__v"].stringValue
-        id = json["_id"].stringValue
+        id = json["id"].stringValue
         avatar = json["avatar"].stringValue
         email = json["email"].stringValue
         location = json["location"].stringValue

@@ -150,14 +150,16 @@ class UserMoreInformationTableViewController: UITableViewController {
                     switch result {
                     case .success(let response):
                         let json = JSON(data: response.data)
+                      
                         if json["success"].boolValue {
                             self.user.name = newvalue
                             self.username.text = newvalue
                         }else {
+                          print("修改失败")
                          fallthrough
                         }
-                    case .failure(_): break
-                        
+                    case .failure(_):
+                        print("请求失败")
                     }
                 })
             case 3:
