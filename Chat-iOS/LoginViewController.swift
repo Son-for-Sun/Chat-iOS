@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import SwiftyJSON
+import SwifterSwift
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var phoneNumber: UITextField!
@@ -19,6 +20,9 @@ class LoginViewController: UIViewController {
         phoneNumber.becomeFirstResponder()
     }
 
+  @IBAction func cancel(_ sender: Any) {
+    dismiss(animated: true, completion: nil)
+  }
     @IBAction func login(_ sender: AnyObject) {
             userlogin()
     }
@@ -32,36 +36,23 @@ class LoginViewController: UIViewController {
         guard  !phone.isEmpty && !pass.isEmpty else {
             return
         }
-        
+        /// 用户请求登陆
         UserRouterMoyaProvider.request(UserRouterMoya.login(name: phone, pass: pass)) { (result) in
-            switch result {
-            case .success(let responseData):
-                
-                let viewContext = dataStack.viewContext
-                let user = User(fromData: responseData.data, context: viewContext)
-                
-                guard let u = user else {
-                    print("no user")
-                    return
-                }
-                
-                let defaults = UserDefaults.standard
-                defaults.set(true, forKey: UserDefaultsKeys.isLogin.rawValue)
-                defaults.set(u.loginname, forKey: UserDefaultsKeys.userName.rawValue)
-                defaults.synchronize()
-                try! viewContext.save()
-                self.navigationController!.popToRootViewController(animated: true)
-                
-            case .failure(_):
-                print(" error ")
-                break
+          switch result {
+          case .failure:
+            break
+          case .success(let value):
+            let user = value.data.mapObject(type: User.self)
+            if let user = user {
+              let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! RootTabBarViewController
+              SwifterSwift.sharedApplication.keyWindow?.rootViewController = mainVC
+              UserData.isLogin.store(value: true)
+              User.add(user: user)
+            }else {
+              debugPrint("user login error")
             }
-        }
-    }
-    
-    @IBAction func gozhuce(_ sender: AnyObject) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "zhuce") as! RegisViewController
-        navigationController?.pushViewController(vc, animated: true)
+          }
+      }
     }
 }
 

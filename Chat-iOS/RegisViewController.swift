@@ -10,6 +10,9 @@ import UIKit
 
 class RegisViewController: UIViewController {
 
+  @IBAction func cancel(_ sender: Any) {
+    dismiss(animated: true, completion: nil)
+  }
     @IBOutlet weak var passworld: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var nicheng: UITextField!
@@ -32,27 +35,24 @@ class RegisViewController: UIViewController {
               let email = self.email.text,
               let nicheng = self.nicheng.text,
               let logname = self.logname.text else {
-                print("error")
+              debugPrint("user information is empty")
             return
         }
         guard !pass.isEmpty && !email.isEmpty && !nicheng.isEmpty && !logname.isEmpty else {
-            print("errrrr")
+              debugPrint("user information is empty")
             return
         }
         
         UserRouterMoyaProvider.request(UserRouterMoya.newUser(name: nicheng, pass: pass, phoneNum: logname, email: email)) { (result) in
             switch result {
             case .success(let value):
-                do {
-                    let jsonData = try JSONSerialization.jsonObject(with: value.data, options: .allowFragments)
-                    guard let jsonDic = jsonData as? NSDictionary,let res = jsonDic["success"] as? Bool else {
-                        return
-                    }
-                    print(res)
-                }catch {
-                    print("data to json is error")
-                }
+              guard let _ = value.data.mapObject(type: User.self) else {
+                debugPrint("usesr regis error")
+                return
+              }
+              self.dismiss(animated: true, completion: nil)
             case .failure(_):
+              debugPrint("user regis error")
                 break
             }
 

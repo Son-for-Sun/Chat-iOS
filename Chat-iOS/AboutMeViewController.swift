@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import QueryKit
-import DATAStack
+
 class AboutMeViewController: UIViewController {
 
     @IBOutlet weak var sign: UILabel!
@@ -20,8 +19,7 @@ class AboutMeViewController: UIViewController {
     @IBOutlet weak var vcon: NSLayoutConstraint!
     @IBOutlet weak var profiletextview: UITextView!
     
-    let viewContext = dataStack.viewContext
-    let defaults = UserDefaults.standard
+  
     var user: User!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,39 +32,10 @@ class AboutMeViewController: UIViewController {
         let tapUsrePhoto = UITapGestureRecognizer(target: self, action: #selector(tapUserPhotoAction))
         userPhoto.addGestureRecognizer(tapUsrePhoto)
         
-        /// 从 CoreData 中获取数据
-        let querySet = QuerySet<User>(viewContext, User.entityName)
-
-        do {
-            
-            let users = try querySet.first()
-            
-            guard let user = users else {
-                
-                return
-            }
-            
-            self.user = user
-            name.text = user.name
-            sign.text = user.signature
-            emaillabel.text = user.email
-            phonenumber.text = user.loginname
-            profiletextview.text = user.profile
-        }catch {
-            print("Core Data 获取数据失败")
-        }
+        /// 从 Realm 中获取数据
+        user = User.fetchCurrentUser()!
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        if user.hasChanges {
-            try! viewContext.save()
-            name.text = user.name
-            sign.text = user.signature
-            emaillabel.text = user.email
-            phonenumber.text = user.loginname
-            profiletextview.text = user.profile
-        }
-    }
     func tapBackImageAction() {
         print("更换背景图")
     }
@@ -80,7 +49,6 @@ class AboutMeViewController: UIViewController {
         switch id {
         case "gomoreinformation":
             let vc = segue.destination as! UserMoreInformationTableViewController
-            print(self.user)
             vc.user = self.user
         default:
             break

@@ -9,7 +9,7 @@
 
 import Moya
 
-let friendDynamicRXprovider = RxMoyaProvider<FriendDynamics>()
+
 let friendDynamicProvider = MoyaProvider<FriendDynamics>()
 enum FriendDynamics {
     
@@ -21,6 +21,7 @@ enum FriendDynamics {
 
 
 extension FriendDynamics: TargetType {
+    var parameterEncoding: ParameterEncoding { return URLEncoding.default }
     var baseURL: URL { return URL(string: "http://localhost:3000/api/life")! }
     
     var path: String {

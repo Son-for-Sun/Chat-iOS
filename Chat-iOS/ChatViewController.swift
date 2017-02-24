@@ -7,26 +7,18 @@
 //
 
 import UIKit
-import SocketIO
 import SwiftyJSON
+
 class ChatViewController: UIViewController {
 
     var user: User!
     var friend: Friend!
     
-    var webSocket: SocketIOClient!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webSocket = SocketIOClient(socketURL: URL(string: "http://localhost:3001")!)
-        
-        webSocket.on("message") {data, ack in
-            let json = JSON(data.first!)
-            print(json["hello"].stringValue)
-            
-        }
-        webSocket.connect()
     }
 
 

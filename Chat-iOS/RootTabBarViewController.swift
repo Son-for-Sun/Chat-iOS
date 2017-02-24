@@ -13,4 +13,8 @@ class RootTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+  
+  func createSubViewControllers() {
+    
+  }
 }

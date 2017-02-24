@@ -35,7 +35,7 @@ struct DynamicsModel: SwiftyJSONAble {
         
         self.userName = userName
         self.userid = userid
-        self.userava = json["userava"].URL
+        self.userava = json["userava"].url
         self.pushvalue = pushvalue
         self.pushdate = pushdate
     }

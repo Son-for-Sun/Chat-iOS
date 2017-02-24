@@ -21,6 +21,7 @@ enum FriendsRouter {
 }
 
 extension FriendsRouter: TargetType {
+    var parameterEncoding: ParameterEncoding { return URLEncoding.default }
     var baseURL: URL { return URL(string: "http://localhost:3000/api/friend")! }
     var path: String {
         switch self {

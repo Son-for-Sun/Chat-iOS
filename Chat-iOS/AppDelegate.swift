@@ -13,16 +13,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        
-        saveContext()
-    }
-    func saveContext() {
-        dataStack.performInNewBackgroundContext { (back) in
-            try? back.save()
-        }
-    }
+  
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+      let mainViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! RootTabBarViewController
+      window = UIWindow()
+      window?.rootViewController = UserData.isLogin.storedBool ? mainViewController : UserViewController()
+      window?.makeKeyAndVisible()
+      realm = setDefaultRealmForUser(username: "chat-iOS", version: 1)
+      return true
+  }
+
+ 
     
 }
 

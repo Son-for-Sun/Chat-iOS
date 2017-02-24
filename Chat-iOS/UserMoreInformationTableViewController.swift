@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import QueryKit
 import SwiftyJSON
 
 class UserMoreInformationTableViewController: UITableViewController {
 
-    let defaults = UserDefaults.standard
+  
     
     @IBOutlet weak var loglabel: UILabel!
     
@@ -25,7 +24,7 @@ class UserMoreInformationTableViewController: UITableViewController {
     
     var user: User!
     
-    let context = dataStack.viewContext
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +37,7 @@ class UserMoreInformationTableViewController: UITableViewController {
         userlocation.text = user.location
         useremail.text = user.email
     }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
+
     
     // MARK: - Table view data source
 
@@ -77,16 +72,8 @@ class UserMoreInformationTableViewController: UITableViewController {
     
     //第三个 Section的每个 cell 的操作
     func sectionThree(indxPath:IndexPath) {
-        
-        defaults.set(false, forKey: "isLogin")
-        defaults.set(nil, forKey: "uesrname")
-        defaults.synchronize()
-        //TODO 删除 CoreData 中的 User 表中的数据
-        let querySort = QuerySet<User>(context, User.entityName)
-        let _ = try! querySort.delete()
-        try! context.save()
-        self.navigationController!.popToRootViewController(animated: true)
-
+        UserData.isLogin.store(value: false)
+        //TODO 删除 Realm 中的 User 表中的数据
     }
     //第二个 Section 的每个 cell 的操作
     func sectionTwo(indxPath:IndexPath) {
@@ -150,10 +137,13 @@ class UserMoreInformationTableViewController: UITableViewController {
                     switch result {
                     case .success(let response):
                         let json = JSON(data: response.data)
-                      
+                        
                         if json["success"].boolValue {
-                            self.user.name = newvalue
-                            self.username.text = newvalue
+                          realm.beginWrite()
+                          self.user.name = newvalue
+                          try! realm.commitWrite()
+                          
+                          self.username.text = newvalue
                         }else {
                           print("修改失败")
                          fallthrough
@@ -167,10 +157,14 @@ class UserMoreInformationTableViewController: UITableViewController {
                 UserRouterMoyaProvider.request(UserRouterMoya.changeLocation(id: self.user.id, location: newvalue), completion: { (result) in
                     switch result {
                     case .success(let response):
+                      
                         let json = JSON(data: response.data)
                         if json["success"].boolValue {
+                            realm.beginWrite()
                             self.user.location = newvalue
+                            try! realm.commitWrite()
                             self.userlocation.text = newvalue
+                        
                         }else {
                             fallthrough
                         }
@@ -184,7 +178,9 @@ class UserMoreInformationTableViewController: UITableViewController {
                     case .success(let response):
                         let json = JSON(data: response.data)
                         if json["success"].boolValue {
+                            realm.beginWrite()
                             self.user.signature = newvalue
+                            try! realm.commitWrite()
                             self.usersign.text = newvalue
                         }else {
                             fallthrough

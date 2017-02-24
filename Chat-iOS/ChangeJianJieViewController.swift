@@ -28,8 +28,11 @@ class ChangeJianJieViewController: UIViewController {
             case .success(let response):
                 let json = JSON(data: response.data)
                 if json["success"].boolValue {
+                  realm.beginWrite()
                   self.user.profile = value!
-                  self.navigationController?.popViewController(animated: true)
+                  try! realm.commitWrite()
+                  self.navigationController!.popViewController(animated: true)
+                  
                 }else {
                     print("修改失败")
                 }

@@ -8,7 +8,8 @@
 
 import UIKit
 import MJRefresh
-
+import DZNEmptyDataSet
+import AttributedLib
 ///TODO 好友列表，网络获取本地缓存。
 class FriendListViewController: UIViewController {
 
@@ -17,10 +18,12 @@ class FriendListViewController: UIViewController {
    
     var friends = [Friend]()
     var friendslist = [FriendsList]()
-    let defaults = UserDefaults.standard
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.tableFooterView = UIView()
+        tableView.emptyDataSetDelegate = self
+        tableView.emptyDataSetSource = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -36,44 +39,34 @@ class FriendListViewController: UIViewController {
             break
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        _ = friendsRouterProvider.request(FriendsRouter.allFriend(userphonenumber: defaults.string(forKey: UserDefaultsKeys.userName.rawValue) ?? ""))
-            .then{$0.mapObjectArrayPromise(type: FriendsList.self)}
-            .then{self.friendslist = $0 }
-            .always {
-                self.friends = []
-                self.friendslist.forEach{
-                    _ = UserRouterMoyaProvider.request(UserRouterMoya.showUser(name: $0.name))
-                        .then{ $0.mapObjectPromise(type: Friend.self) }
-                        .then{ self.friends.append($0)}
-                        .always {
-                        self.tableView.reloadData()
-                    }
-                }
-                
-            }
-    }
-    @IBAction func friendToAbout(_ sender: AnyObject) {
-        
-        if !defaults.bool(forKey: UserDefaultsKeys.isLogin.rawValue) {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-        }else {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "about") as! AboutMeViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-
-
-
 }
 
 
 
+extension FriendListViewController: DZNEmptyDataSetSource {
+  func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+    return "你还没有任何的好友".attributed{
+      $0.font(UIFont.boldSystemFont(ofSize: 18.0))
+      .foreground(color: UIColor.darkGray)
+    }
+  }
+  
+  func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+    return "赶快去添加好友，一起来聊天吧".attributed{
+      $0.font(UIFont.systemFont(ofSize: 15.0))
+      .foreground(color: UIColor.darkGray)
+    }
+  }
+  
+  func backgroundColor(forEmptyDataSet scrollView: UIScrollView!) -> UIColor! {
+    return .white
+  }
+  
+}
 
-
+extension FriendListViewController: DZNEmptyDataSetDelegate {
+  
+}
 //MARK: UITableViewDataSource
 extension FriendListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

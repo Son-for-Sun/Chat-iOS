@@ -6,11 +6,9 @@
 //  Copyright © 2016年 xiaolei. All rights reserved.
 //
 
-import Foundation
+
 import Moya
-import Alamofire
-import PromiseKit
-import SwiftyJSON
+
 
 enum UserRouterMoya {
     case login(name: String, pass: String)
@@ -84,8 +82,10 @@ extension UserRouterMoya: TargetType {
     var sampleData: Data { return "fdfd".data(using: String.Encoding.utf8)! }
     
     var task: Task { return .request }
+  
+    var parameterEncoding: ParameterEncoding { return URLEncoding.default }
 }
 
 let UserRouterMoyaProvider = MoyaProvider<UserRouterMoya>()
-//let end = UserRouterMoyaProvider.endpoint(UserRouterMoya.changeAvatar(id: "", avatar: "")).endpointByAddingHTTPHeaderFields(["":""])
+
 
