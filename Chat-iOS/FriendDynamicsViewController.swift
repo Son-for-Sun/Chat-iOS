@@ -16,10 +16,12 @@ class FriendDynamicsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var dynamics = [DynamicsModel]()
-    
-    
-    
+  var dynamics = [DynamicsModel]() {
+    didSet {
+      self.tableView.reloadData()
+    }
+  }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +32,7 @@ class FriendDynamicsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "toinsforfdk":
+
             let vc = segue.destination as! DynamicsValueInformationViewController
             let index = tableView.indexPathForSelectedRow!
             let dyn = dynamics[index.row]
@@ -68,14 +71,22 @@ class FriendDynamicsViewController: UIViewController {
 
     /// 从网络中获取数据
     func fetchDataFormNet() {
-    
+      friendDynamicProvider.request(FriendDynamics.show) { (result) in
+        switch result {
+        case .failure(let error):
+          print(error.localizedDescription)
+        case .success(let response):
+          let pots = response.data.mapObjectsArray(type: DynamicsModel.self)
+          self.dynamics = pots ?? []
+        }
+      }
     }
-    
+  
     /// 从缓存中获数据
     ///
     /// - returns: 返回缓存中的数据可能是空值
     func fetchDataFromCoreData(){
-    
+      fetchDataFormNet()
     }
 }
 
@@ -103,7 +114,7 @@ extension FriendDynamicsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MomentsCell", for: indexPath) as! FriendDynamicsTableViewCell
         let value = dynamics[indexPath.row]
-        cell.username.text = value.userName
+        cell.username.text = value.user.name
         cell.pushvalue.text = value.pushvalue
 //        cell.userimage.kf.setImage(with: value.userava, placeholder: Image(named: "Mummy Filled"))
         return cell

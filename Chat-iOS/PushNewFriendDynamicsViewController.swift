@@ -19,7 +19,7 @@ class PushNewFriendDynamicsViewController: UIViewController {
     
     
     
-    var use: User!
+    var use = User.fetchCurrentUser()!
 
     
     var delegate: PushNewFriendDynamicsDelegate!
@@ -38,7 +38,15 @@ class PushNewFriendDynamicsViewController: UIViewController {
         guard  let pushvalue = value else {
             return
         }
-
+      
+        friendDynamicProvider.request(FriendDynamics.add(userid: use.id, vaslue: pushvalue)) { (result) in
+          switch result {
+          case .failure(let error):
+            print(error.localizedDescription)
+          case .success(let response):
+            print(try! response.mapJSON())
+          }
+      }
     }
     
 

@@ -11,37 +11,44 @@ import Moya
 
 
 let friendDynamicProvider = MoyaProvider<FriendDynamics>()
+
+
 enum FriendDynamics {
     
-    case add(userid: String, userName: String, userava: String, vaslue: String, pushdate: String)
-    case show(pushdate: String)
+    case add(userid: String, vaslue: String)
+    case show
     
 }
 
-
-
 extension FriendDynamics: TargetType {
     var parameterEncoding: ParameterEncoding { return URLEncoding.default }
-    var baseURL: URL { return URL(string: "http://localhost:3000/api/life")! }
+    var baseURL: URL { return URL(string: "http://localhost:8181/v1/post")! }
     
     var path: String {
         switch self {
         case .add:
-            return "/newlife"
+            return "/store"
         default:
-            return "/selecall"
+            return "/all"
         }
     }
     
-    var method: Moya.Method { return .post }
+    var method: Moya.Method {
+      switch self {
+      case .add:
+         return .post
+      default:
+        return .get
+      }
+  }
     
     var parameters: [String: Any]? {
         switch self {
-        case let .add(userid, userName, userava, vaslue, pushdate):
-            return ["userid":userid,"userName":userName,"userava":userava,"vaslue":vaslue,"pushdate":pushdate]
+        case let .add(userid,vaslue):
+            return ["userid":userid,"vaslue":vaslue]
             
-        case .show(let pushdate):
-            return ["pushdate":pushdate]
+        case .show:
+          return nil
         }
     }
     var sampleData: Data { return "yangxiaoeli".data(using: String.Encoding.utf8)! }
