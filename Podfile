@@ -14,4 +14,5 @@ target 'Chat-iOS' do
   pod 'RealmSwift'
   pod 'DZNEmptyDataSet'
   pod 'AttributedLib'
+  pod 'Kingfisher'
 end

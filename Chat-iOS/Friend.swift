@@ -15,7 +15,7 @@ struct FriendsList: SwiftyJSONAble {
     var name: String
     
     init?(jsonData:SwiftyJSON.JSON) {
-        guard let  name = jsonData["friend"].string else {
+        guard let  name = jsonData["two"].string else {
             return nil
         }
         self.name = name

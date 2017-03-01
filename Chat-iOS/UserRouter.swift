@@ -20,6 +20,9 @@ enum UserRouterMoya {
     case changeLocation(id: String, location: String)
     case changeSignature(id: String, signature: String)
     case changeProfile(id: String, profile: String)
+  
+  case addNewFriend(one: String, two: String)
+  case fetchFriiend(id: String)
 }
 
 extension UserRouterMoya: TargetType {
@@ -31,7 +34,7 @@ extension UserRouterMoya: TargetType {
         case .login:
             return  "/login"
         case .showUser(let name):
-            return "byname/\(name)"
+            return "byid/\(name)"
         case .newUser:
             return "/newuser"
         case .changeName:
@@ -46,6 +49,10 @@ extension UserRouterMoya: TargetType {
             return "/changeSignature"
         case .changeProfile:
             return "/changeProfile"
+        case .addNewFriend:
+            return "/addfriend"
+        case .fetchFriiend:
+            return "/fetchfriend"
         }
     }
     var method: Moya.Method {
@@ -77,6 +84,10 @@ extension UserRouterMoya: TargetType {
             return ["id":id,"signature":signature]
         case let .changeProfile(id, profile):
             return ["id":id,"profile":profile]
+        case let .addNewFriend(one, two):
+            return ["one":one,"two":two]
+        case let .fetchFriiend(id):
+            return ["id":id]
         }
     }
     var sampleData: Data { return "fdfd".data(using: String.Encoding.utf8)! }

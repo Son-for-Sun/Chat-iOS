@@ -11,7 +11,7 @@ import UIKit
 class FriendInformationViewController: UIViewController {
 
     
-    var friend: Friend!
+    var friend: User!
     override func viewDidLoad() {
         super.viewDidLoad()
 

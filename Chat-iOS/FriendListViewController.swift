@@ -16,7 +16,11 @@ class FriendListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
    
-    var friends = [Friend]()
+  var friends = [User]() {
+    didSet{
+      tableView.reloadData()
+    }
+  }
     var friendslist = [FriendsList]()
   
     override func viewDidLoad() {
@@ -24,6 +28,24 @@ class FriendListViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.emptyDataSetDelegate = self
         tableView.emptyDataSetSource = self
+        let user = User.fetchCurrentUser()!
+        UserRouterMoyaProvider.request(UserRouterMoya.fetchFriiend(id: user.id)) { (result) in
+          switch result {
+          case .failure(_):
+            break
+          case .success(let response):
+            
+            let list = response.data.mapObjectsArray(type: FriendsList.self)
+            self.friendslist = list ?? []
+            self.friendslist.forEach({ (friend) in
+                UserRouterMoyaProvider.request(UserRouterMoya.showUser(name: friend.name), completion: { (result) in
+                  let data = result.value!.data
+                  let user = data.mapObject(type: User.self)
+                  self.friends.append(user!)
+                })
+            })
+          }
+      }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,7 +100,7 @@ extension FriendListViewController: UITableViewDataSource {
             return friends.count
 
     }
-//
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsCell", for: indexPath) as! FriendListTableViewCell
         

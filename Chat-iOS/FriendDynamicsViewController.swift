@@ -11,6 +11,7 @@ import MJRefresh
 import SwiftyJSON
 import DZNEmptyDataSet
 import AttributedLib
+import Kingfisher
 ///好友动态，网络获取本地缓存.
 class FriendDynamicsViewController: UIViewController {
 
@@ -116,7 +117,7 @@ extension FriendDynamicsViewController: UITableViewDataSource {
         let value = dynamics[indexPath.row]
         cell.username.text = value.user.name
         cell.pushvalue.text = value.pushvalue
-//        cell.userimage.kf.setImage(with: value.userava, placeholder: Image(named: "Mummy Filled"))
+        cell.userimage.kf.setImage(with: URL(string: value.user.avatar), placeholder: #imageLiteral(resourceName: "Mummy Filled"))
         return cell
     }
 }

@@ -11,7 +11,6 @@
 		AB05C2ED1D75205900C60D8D /* RegisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C2EC1D75205900C60D8D /* RegisViewController.swift */; };
 		AB05C2EF1D752F6300C60D8D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C2EE1D752F6300C60D8D /* LoginViewController.swift */; };
 		AB05C2FE1D75A7D000C60D8D /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C2FD1D75A7D000C60D8D /* AddFriendsViewController.swift */; };
-		AB05C3001D75A99200C60D8D /* FriendsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C2FF1D75A99200C60D8D /* FriendsRouter.swift */; };
 		AB2C03CB1D8E747800FC6155 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2C03CA1D8E747800FC6155 /* ChatList.swift */; };
 		AB2C03CD1D8E806D00FC6155 /* ManagedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2C03CC1D8E806D00FC6155 /* ManagedObjectType.swift */; };
 		AB2C03CF1D8F716300FC6155 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2C03CE1D8F716300FC6155 /* User.swift */; };
@@ -51,7 +50,6 @@
 		AB05C2EC1D75205900C60D8D /* RegisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisViewController.swift; sourceTree = "<group>"; };
 		AB05C2EE1D752F6300C60D8D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB05C2FD1D75A7D000C60D8D /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
-		AB05C2FF1D75A99200C60D8D /* FriendsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsRouter.swift; sourceTree = "<group>"; };
 		AB2C03CA1D8E747800FC6155 /* ChatList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		AB2C03CC1D8E806D00FC6155 /* ManagedObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectType.swift; sourceTree = "<group>"; };
 		AB2C03CE1D8F716300FC6155 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				AB7F56121D6FCA58005303C5 /* UserRouter.swift */,
-				AB05C2FF1D75A99200C60D8D /* FriendsRouter.swift */,
 				AB675D5A1D91620800B87F11 /* FriendDynamics.swift */,
 			);
 			name = Routers;
@@ -412,7 +409,6 @@
 				ABC933731D77CB5E0039BEB7 /* ChatListTableViewCell.swift in Sources */,
 				ABC23A741D869A0C000FB75A /* ChangeJianJieViewController.swift in Sources */,
 				AB7F55FC1D6F04B4005303C5 /* AboutMeViewController.swift in Sources */,
-				AB05C3001D75A99200C60D8D /* FriendsRouter.swift in Sources */,
 				AB88A2401E1D045A009A2515 /* DynamicsModel.swift in Sources */,
 				AB7F56031D6F0696005303C5 /* RootTabBarViewController.swift in Sources */,
 				AB885C061D9A0EB500FBD1BF /* FriendDynamicsTableViewCell.swift in Sources */,
