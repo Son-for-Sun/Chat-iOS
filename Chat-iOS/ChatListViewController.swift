@@ -9,18 +9,47 @@
 import UIKit
 import DZNEmptyDataSet
 import AttributedLib
+import Starscream
 class ChatListViewController:UIViewController {
     
 
     @IBOutlet weak var tableView: UITableView!
   
     var chatList = [ChatList]()
-    
+  
+  
+  let socket = WebSocket(url: URL(string: "ws://localhost:8181/chat")!)
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
-
+        socket.delegate = self
+        socket.headers["to"] = "123"
+        socket.connect()
     }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    socket.write(string: "我是杨晓磊")
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    socket.write(string: "view will appear")
+  }
+}
+
+
+extension ChatListViewController: WebSocketDelegate {
+  func websocketDidConnect(socket: WebSocket) {
+    
+  }
+  func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+    
+  }
+  func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+      print(text)
+  }
+  func websocketDidReceiveData(socket: WebSocket, data: Data) {
+    
+  }
 }
 
 extension ChatListViewController: DZNEmptyDataSetSource {

@@ -6,7 +6,7 @@ target 'Chat-iOS' do
   use_frameworks!
   
   pod 'SwiftyJSON'
-  pod 'Socket.IO-Client-Swift'
+  pod 'Starscream'
   pod 'Moya'
   pod 'MJRefresh'
   pod 'SnapKit'
