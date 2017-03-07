@@ -22,7 +22,7 @@ enum FriendDynamics {
 
 extension FriendDynamics: TargetType {
     var parameterEncoding: ParameterEncoding { return URLEncoding.default }
-    var baseURL: URL { return URL(string: "http://localhost:8181/v1/post")! }
+    var baseURL: URL { return URL(string: "http://192.168.0.117:8181/:8181/v1/post")! }
     
     var path: String {
         switch self {

@@ -27,7 +27,7 @@ enum UserRouterMoya {
 
 extension UserRouterMoya: TargetType {
     var baseURL: URL {
-        return URL(string: "http://localhost:8181/v1/users")!
+        return URL(string: "http://192.168.0.117:8181/v1/users")!
     }
     var path: String {
         switch self {
