@@ -18,7 +18,7 @@ class ChatListViewController:UIViewController {
     var chatList = [ChatList]()
   
   
-  let socket = WebSocket(url: URL(string: "ws://localhost:8181/chat")!)
+  let socket = WebSocket(url: URL(string: "ws://192.168.0.103:8181/chat")!)
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
@@ -39,7 +39,7 @@ class ChatListViewController:UIViewController {
 
 extension ChatListViewController: WebSocketDelegate {
   func websocketDidConnect(socket: WebSocket) {
-    
+      socket.write(string: "Hello WebSocket")
   }
   func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
     

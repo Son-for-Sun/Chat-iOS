@@ -7,17 +7,16 @@
 //
 
 import Foundation
-import CoreData
-
-class ChatList: NSManagedObject {
+import RealmSwift
+class ChatList: Object  {
     
-    @NSManaged var id: String
-    @NSManaged var userName: String
-    @NSManaged var userPhoto: String
-    @NSManaged var time: String
-    @NSManaged var chatValue: String
+     dynamic var id: String = ""
+     dynamic var userName: String = ""
+     dynamic var userPhoto: String = ""
+     dynamic var time: String = ""
+     dynamic var chatValue: String = ""
+  
+    override class func primaryKey() -> String? { return "id" }
+    override class func indexedProperties() -> [String] { return ["id"] }
 }
 
-extension ChatList: ManagedObjectType {
-    static var entityName: String { return "ChatList"}
-}

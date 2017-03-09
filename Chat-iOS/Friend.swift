@@ -6,8 +6,7 @@
 //  Copyright © 2016年 xiaolei. All rights reserved.
 //
 
-import Foundation
-import CoreData
+
 import SwiftyJSON
 
 

@@ -15,4 +15,5 @@ target 'Chat-iOS' do
   pod 'DZNEmptyDataSet'
   pod 'AttributedLib'
   pod 'Kingfisher'
+  pod 'JSQMessagesViewController', :git => 'https://github.com/jessesquires/JSQMessagesViewController.git', :branch => 'develop'
 end

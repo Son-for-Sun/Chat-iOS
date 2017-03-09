@@ -8,6 +8,7 @@
 
 import UIKit
 
+let baseUrl = "http://192.168.0.103:8181"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
