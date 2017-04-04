@@ -13,6 +13,7 @@
 		AB05C2FE1D75A7D000C60D8D /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05C2FD1D75A7D000C60D8D /* AddFriendsViewController.swift */; };
 		AB2C03CB1D8E747800FC6155 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2C03CA1D8E747800FC6155 /* ChatList.swift */; };
 		AB2C03CF1D8F716300FC6155 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2C03CE1D8F716300FC6155 /* User.swift */; };
+		AB40BE831E73F6260011825A /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40BE821E73F6260011825A /* ChatModel.swift */; };
 		AB621D991DB7514F0083142C /* FriendInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB621D981DB7514F0083142C /* FriendInformationViewController.swift */; };
 		AB675D5B1D91620800B87F11 /* FriendDynamics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB675D5A1D91620800B87F11 /* FriendDynamics.swift */; };
 		AB675D611D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB675D601D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift */; };
@@ -51,6 +52,7 @@
 		AB05C2FD1D75A7D000C60D8D /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
 		AB2C03CA1D8E747800FC6155 /* ChatList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		AB2C03CE1D8F716300FC6155 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AB40BE821E73F6260011825A /* ChatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		AB621D981DB7514F0083142C /* FriendInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendInformationViewController.swift; sourceTree = "<group>"; };
 		AB675D5A1D91620800B87F11 /* FriendDynamics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDynamics.swift; sourceTree = "<group>"; };
 		AB675D601D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNewFriendDynamicsViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				AB2C03C61D8E736100FC6155 /* CoreData */,
+				AB40BE821E73F6260011825A /* ChatModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				AB675D611D922BEA00B87F11 /* PushNewFriendDynamicsViewController.swift in Sources */,
 				AB885C081D9A221C00FBD1BF /* SwiftExtention.swift in Sources */,
 				ABF93F2B1E5EF15A001E7848 /* Expression.swift in Sources */,
+				AB40BE831E73F6260011825A /* ChatModel.swift in Sources */,
 				ABC933771D77D10A0039BEB7 /* FriendListTableViewCell.swift in Sources */,
 				ABE495BF1D6DBF180005CA71 /* AppDelegate.swift in Sources */,
 				ABF234031D8FC74200AD1BA2 /* Friend.swift in Sources */,

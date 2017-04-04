@@ -17,40 +17,27 @@ class ChatListViewController:UIViewController {
   
     var chatList = [ChatList]()
   
+  private lazy var model: ChatModel = ChatModel(self)
   
-  let socket = WebSocket(url: URL(string: "ws://192.168.0.103:8181/chat")!)
+  
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
-        socket.delegate = self
-        socket.headers["to"] = "123"
-        socket.connect()
+      
+        model.username = "杨晓磊"
+        model.start() 
+        model.send(msg: "Hello World")
     }
+
   
   override func viewDidAppear(_ animated: Bool) {
-    socket.write(string: "我是杨晓磊")
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    socket.write(string: "view will appear")
+    model.send(msg: "Hello")
   }
 }
 
 
-extension ChatListViewController: WebSocketDelegate {
-  func websocketDidConnect(socket: WebSocket) {
-      socket.write(string: "Hello WebSocket")
-  }
-  func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
-    
-  }
-  func websocketDidReceiveMessage(socket: WebSocket, text: String) {
-      print(text)
-  }
-  func websocketDidReceiveData(socket: WebSocket, data: Data) {
-    
-  }
-}
+
 
 extension ChatListViewController: DZNEmptyDataSetSource {
   func backgroundColor(forEmptyDataSet scrollView: UIScrollView!) -> UIColor! {
