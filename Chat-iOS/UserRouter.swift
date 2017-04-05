@@ -20,9 +20,9 @@ enum UserRouterMoya {
     case changeLocation(id: String, location: String)
     case changeSignature(id: String, signature: String)
     case changeProfile(id: String, profile: String)
-  
-  case addNewFriend(one: String, two: String)
-  case fetchFriiend(id: String)
+    case changeUserPhone(id: String, image: Data)
+    case addNewFriend(one: String, two: String)
+    case fetchFriiend(id: String)
 }
 
 extension UserRouterMoya: TargetType {
@@ -53,12 +53,16 @@ extension UserRouterMoya: TargetType {
             return "/addfriend"
         case .fetchFriiend:
             return "/fetchfriend"
+        case .changeUserPhone:
+            return "/changeuserphone"
         }
     }
     var method: Moya.Method {
         switch self {
         case .showUser:
             return .get
+        case .changeUserPhone:
+            return .put
         default:
             return .post
         }
@@ -88,11 +92,23 @@ extension UserRouterMoya: TargetType {
             return ["one":one,"two":two]
         case let .fetchFriiend(id):
             return ["id":id]
+        case let .changeUserPhone(id,_):
+          return ["id":id]
         }
     }
     var sampleData: Data { return "fdfd".data(using: String.Encoding.utf8)! }
     
-    var task: Task { return .request }
+    var task: Task {
+      switch self {
+
+      case let .changeUserPhone(_,data):
+        
+        return .upload(UploadType.multipart([MultipartFormData(provider: .data(data), name: "image")]))
+      default:
+        return .request
+      }
+
+  }
   
     var parameterEncoding: ParameterEncoding { return URLEncoding.default }
 }

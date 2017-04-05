@@ -21,6 +21,18 @@ class AboutMeViewController: UIViewController {
     
   
     var user: User!
+  
+  enum PhoneType {
+    case userPhone
+    case backImage
+  }
+  
+  var phoneType: PhoneType = .userPhone
+  
+   lazy var imagePicker: UIImagePickerController = {
+    let imagePickerController = UIImagePickerController()
+    return imagePickerController
+  }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -37,11 +49,20 @@ class AboutMeViewController: UIViewController {
     }
 
     func tapBackImageAction() {
-        print("更换背景图")
+      phoneType = .backImage
+      imagePicker.delegate = self
+      imagePicker.allowsEditing = true
+      imagePicker.sourceType = .photoLibrary
+      self.present(imagePicker, animated: true, completion: nil)
+      
     }
     
     func tapUserPhotoAction() {
-        print("更换头像")
+        phoneType = .userPhone
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -55,4 +76,45 @@ class AboutMeViewController: UIViewController {
         }
     }
     
+}
+
+extension AboutMeViewController: UINavigationControllerDelegate {
+  
+}
+
+extension AboutMeViewController: UIImagePickerControllerDelegate {
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+      return
+    }
+    switch phoneType {
+    case .backImage:
+      backimage.image = image
+      backimage.contentMode = .scaleAspectFill
+
+    default:
+      userPhoto.contentMode = .scaleAspectFill
+      userPhoto.image = image
+      let data = image.compressedData()!.base64EncodedData()
+      
+      UserRouterMoyaProvider.request(UserRouterMoya.changeUserPhone(id: user.id, image: data), completion: { (result) in
+        switch result {
+        case .failure(let error):
+          print("errroe")
+          break
+        case .success(let value):
+          print(try! value.mapJSON())
+          break
+        }
+      })
+    }
+
+    picker.dismiss(animated: true, completion: nil)
+  }
+  
+ 
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
+  }
 }
