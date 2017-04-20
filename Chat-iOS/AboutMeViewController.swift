@@ -21,6 +21,8 @@ class AboutMeViewController: UIViewController {
     
   
     var user: User!
+	var userHeaderImg: UIImage?
+	var backImg:UIImage?
   
   enum PhoneType {
     case userPhone
@@ -37,11 +39,12 @@ class AboutMeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         vcon.constant = (view.bounds.size.width * (9 / 16) - view.bounds.size.height / 2) / 2
-        userPhoto.layer.cornerRadius = 111 / 2
+		//   userPhoto.layer.cornerRadius = 111 / 2
         let tapBackimage = UITapGestureRecognizer(target: self, action: #selector(tapBackImageAction))
         backimage.addGestureRecognizer(tapBackimage)
         
         let tapUsrePhoto = UITapGestureRecognizer(target: self, action: #selector(tapUserPhotoAction))
+		
         userPhoto.addGestureRecognizer(tapUsrePhoto)
         
         /// 从 Realm 中获取数据
@@ -71,10 +74,15 @@ class AboutMeViewController: UIViewController {
         case "gomoreinformation":
             let vc = segue.destination as! UserMoreInformationTableViewController
             vc.user = self.user
+			vc.userHeaderImg = userHeaderImg ?? UIImage(named: "头像")
+		//	vc.backImg = backImg
         default:
             break
         }
     }
+	
+	
+	
     
 }
 
@@ -91,11 +99,13 @@ extension AboutMeViewController: UIImagePickerControllerDelegate {
     switch phoneType {
     case .backImage:
       backimage.image = image
+	  backImg = image
       backimage.contentMode = .scaleAspectFill
 
     default:
       userPhoto.contentMode = .scaleAspectFill
       userPhoto.image = image
+	  userHeaderImg = image
       let data = image.compressedData()!.base64EncodedData()
       
       UserRouterMoyaProvider.request(UserRouterMoya.changeUserPhone(id: user.id, image: data), completion: { (result) in

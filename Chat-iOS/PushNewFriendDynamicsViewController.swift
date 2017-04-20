@@ -16,8 +16,9 @@ protocol PushNewFriendDynamicsDelegate {
 class PushNewFriendDynamicsViewController: UIViewController {
 
     @IBOutlet weak var pushtextview: UITextView!
+	@IBOutlet weak var placelabel: UILabel!
     
-    
+	
     
     var use = User.fetchCurrentUser()!
 
@@ -28,6 +29,7 @@ class PushNewFriendDynamicsViewController: UIViewController {
         super.viewDidLoad()
         
         title = "发布新的动态"
+		
 
     }
     
@@ -48,7 +50,14 @@ class PushNewFriendDynamicsViewController: UIViewController {
           }
       }
     }
-    
-
 
 }
+
+extension PushNewFriendDynamicsViewController: UITextViewDelegate {
+	func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+		self.placelabel.isHidden = true
+		return true
+	}
+}
+
+

@@ -23,8 +23,10 @@ class UserMoreInformationTableViewController: UITableViewController {
     @IBOutlet weak var userphoto: UIImageView!
     
     var user: User!
-    
-  
+	var userHeaderImg: UIImage!
+	var backImg:UIImage!
+	
+	
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,8 @@ class UserMoreInformationTableViewController: UITableViewController {
         userphone.text = user.loginname
         userlocation.text = user.location
         useremail.text = user.email
+		userphoto.image = userHeaderImg
+		self.tableView.reloadData()
     }
 
     
