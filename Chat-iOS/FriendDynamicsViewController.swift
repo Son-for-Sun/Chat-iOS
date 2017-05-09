@@ -35,8 +35,8 @@ class FriendDynamicsViewController: UIViewController {
         case "toinsforfdk":
 
             let vc = segue.destination as! DynamicsValueInformationViewController
-            let index = tableView.indexPathForSelectedRow!
-            let dyn = dynamics[index.row]
+			//   let index = tableView.indexPathForSelectedRow!
+			//   let dyn = dynamics[index.row]
           
         case "newmoments":
             let vc = segue.destination as! PushNewFriendDynamicsViewController
@@ -110,14 +110,15 @@ extension FriendDynamicsViewController: UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dynamics.count
+		//  return dynamics.count
+		return 10
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MomentsCell", for: indexPath) as! FriendDynamicsTableViewCell
-        let value = dynamics[indexPath.row]
-        cell.username.text = value.user.name
-        cell.pushvalue.text = value.pushvalue
-        cell.userimage.kf.setImage(with: URL(string: value.user.avatar), placeholder: #imageLiteral(resourceName: "Mummy Filled"))
+//        let value = dynamics[indexPath.row]
+//        cell.username.text = value.user.name
+//        cell.pushvalue.text = value.pushvalue
+//        cell.userimage.kf.setImage(with: URL(string: value.user.avatar), placeholder: #imageLiteral(resourceName: "Mummy Filled"))
         return cell
     }
 }

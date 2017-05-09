@@ -55,8 +55,8 @@ class FriendListViewController: UIViewController {
         switch id {
         case "gofriendinformation":
             let vc = segue.destination as! FriendInformationViewController
-            let index = tableView.indexPathForSelectedRow!
-            vc.friend = friends[index.row]
+			//   let index = tableView.indexPathForSelectedRow!
+		//   vc.friend = friends[index.row]
         default:
             break
         }
@@ -96,13 +96,14 @@ extension FriendListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends.count
+		//  return friends.count
+		return 10
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsCell", for: indexPath) as! FriendListTableViewCell
-        let friend = friends[indexPath.row]
-        cell.setupCell(userPhotoURL: friend.avatar, userName: friend.name)
+		// let friend = friends[indexPath.row]
+		//    cell.setupCell(userPhotoURL: friend.avatar, userName: friend.name)
         return cell
     }
 

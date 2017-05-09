@@ -10,7 +10,17 @@ import UIKit
 
 class FriendInformationViewController: UIViewController {
 
+	@IBOutlet weak var backImageView: UIImageView!
     
+	@IBOutlet weak var userHeaderImageView: UIImageView!
+	
+	@IBOutlet weak var userNameLabel: UILabel!
+	
+	@IBOutlet weak var userMotto: UILabel!
+	@IBOutlet weak var phoneNumber: UILabel!
+	@IBOutlet weak var email: UILabel!
+	@IBOutlet weak var introduce: UITextView!
+	
     var friend: User!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +28,11 @@ class FriendInformationViewController: UIViewController {
         print(friend)
     }
 
+	@IBAction func sendMessage(_ sender: UIButton) {
+		
+		
+		
+	}
     
 
 
