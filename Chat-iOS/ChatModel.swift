@@ -8,7 +8,7 @@
 
 import Starscream
 import SwiftyJSON
-private let chatURL = URL(string: "ws://192.168.0.103:8181/chat")!
+private let chatURL = URL(string: "ws://192.168.0.116:8181/chat")!
 
 internal class ChatModel {
   

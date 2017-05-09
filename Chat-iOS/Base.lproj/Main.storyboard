@@ -206,7 +206,6 @@
                                             <outlet property="pushvalue" destination="fcJ-hH-S7o" id="ZeO-e0-9Xr"/>
                                             <outlet property="userimage" destination="dc5-kZ-6Jm" id="dkC-zJ-pHQ"/>
                                             <outlet property="username" destination="nGL-VJ-NsD" id="sOt-me-GUQ"/>
-                                            <segue destination="XQI-2z-Den" kind="show" identifier="toinsforfdk" id="mIg-ts-Xh1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -356,43 +355,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rpr-GQ-ljt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2133.5999999999999" y="1708.6956521739132"/>
-        </scene>
-        <!--动态详情-->
-        <scene sceneID="cI6-j8-pWz">
-            <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="XQI-2z-Den" customClass="DynamicsValueInformationViewController" customModule="Chat_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Skv-Ip-SDx"/>
-                        <viewControllerLayoutGuide type="bottom" id="KYa-M5-Vtt"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jBG-y6-N0Z">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pf-MF-j6c">
-                                <rect key="frame" x="32" y="107" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khf-TS-OIU">
-                                <rect key="frame" x="32" y="159" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="动态详情" id="FN9-J3-vlD"/>
-                    <connections>
-                        <outlet property="button" destination="1Pf-MF-j6c" id="1FZ-fp-ZBw"/>
-                        <outlet property="leabelte" destination="khf-TS-OIU" id="XXo-qg-Gh6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zym-0v-KWm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2881" y="2434"/>
         </scene>
         <!--Friend-->
         <scene sceneID="7PF-75-l7m">
